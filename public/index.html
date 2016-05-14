@@ -19,17 +19,109 @@
     <title>Web Dev Course Home Page</title>
 
 </head>
-<body style="background-color: #98AFC7;" class="container">
 
+<style>
+  .container-fluid{
+    padding-bottom: 70px;
+    padding-top: 70px;
+  }
+  .bg-1 {
+    background-color:  #98AFC7;/*grey*/
+    color: #ffffff;
+  }
+  .bg-2 {
+    background-color: #474e5d; /* Dark Blue */
+    color: #ffffff;
+  }
+  .bg-3 {
+    background-color: #7FFFD4; /* Aqua blue */
+    color: #555555;
+  }
+  .bg-4 {
+    background-color: #FFFFE0; /* light yellow */
+    color: #555555;
+  }
+  .bg-5 {
+    background-color: #b6ff9d; /* light yellow */
+    color: #555555;
+  }
+
+
+  .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+  }
+
+  .navbar-nav li a:hover {
+    color: #1abc9c !important;
+  }
+</style>
+<body >
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#home">Me</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#project">Project</a></li>
+        <li><a href="#assignment">Assignments</a></li>
+        <li><a href="#github">Github</a></li>
+        <li><a href="#mongo">Mongo Test</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div id="home" class="container-fluid bg-1">
 <center>
     <h1> Satya Emani Web Dev Course Home Page</h1>
 
-  <img src="subbudp.jpg" alt="Satya pic" style="width:304px;height:350px;">
+  <img src="subbudp.jpg" class="img-responsive img-circle" alt="Satya pic" style="width:300px;height:350px;" >
+
 
   </center>
-    <p>
-        Customize this home page to your linking.
-    </p>
+</div>
+
+<div id = "project" class="container-fluid bg-2">
+  <center>
+  <h2>Project</h2>
+  <a href="project/index.html">Project</a>
+    </center>
+  </div>
+
+<div id = "assignment" class="container-fluid bg-3">
+  <center>
+    <h2>Assignments</h2>
+    <a href="assignment/index.html">Assignment</a>
+  </center>
+</div>
+
+<div id ="github" class="container-fluid bg-4">
+  <center>
+    <h2>Git Hub Account</h2>
+    <a href="https://github.com/satyaemani/Emani-Satya-web-dev"> Satya Emani Git Hub Repository</a>
+  </center>
+</div>
+
+<div id="mongo" class="container-fluid bg-5">
+  <center>
+    <h2>Mongo Test</h2>
+    <a href="test/index.html">Test MongoDB</a>
+  </center>
+</div>
+
+
 
     <h2>Required links</h2>
     <ul>
@@ -46,5 +138,6 @@
             <a href="https://github.com/satyaemani/Emani-Satya-web-dev"> Satya Emani Git Hub Repository</a>
         </li>
     </ul>
+</div>
 </body>
 </html>
