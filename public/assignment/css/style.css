@@ -11,3 +11,10 @@ body {
 a.thick {
   font-weight: bold;
 }
+
+
+.glyph-right {
+  float: right;
+  margin-top: 2px;
+  margin-right: 4px;
+}
