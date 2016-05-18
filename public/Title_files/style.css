@@ -1,15 +1,14 @@
 input.form-control {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+}
+
+.form-group{
+  margin-bottom: 0px;
 }
 
 body {
   padding-top: 58px;
-  padding-bottom: 58px;
-}
-
-.file {
-  visibility: hidden;
-  position: absolute;
+  padding-bottom: 32px;
 }
 
 

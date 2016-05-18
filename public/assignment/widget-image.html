@@ -12,12 +12,12 @@
 <body>
 <!--header-->
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
+  <div class="container-fluid">
     <div class="navbar-header">
 
       <!--back-->
       <div class="navbar-text pull-left">
-        <a href="website-list.html" class="navbar-link ">
+        <a href="widget-list.html" class="navbar-link ">
           <span class="glyphicon glyphicon-chevron-left ">
           </span>
         </a>
@@ -25,13 +25,13 @@
         <!--name of the page-->
       </div>
       <a class="navbar-brand thick" href="#">
-        Edit Page
+        Widget Edit
       </a>
     </div>
 
     <!--OK-->
     <div class="navbar-text pull-right">
-      <a href="page-list.html" class="navbar-link ">
+      <a href="widget-list.html" class="navbar-link ">
           <span class="glyphicon glyphicon-ok ">
           </span>
       </a>
@@ -49,16 +49,37 @@
   <form>
     <div class="form-group">
       <label for="post name">Name</label>
-      <input type="text" class="form-control" id="post name" placeholder="Blog Post">
+      <input type="text" class="form-control" id="post name">
     </div>
-    <!--Title of the  application-->
+    <!--Text-->
     <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" class="form-control"  id="title" placeholder="Page Title">
+      <label for="text">Text</label>
+      <input type="text" class="form-control"  id="text" >
     </div>
-    <a class="btn btn-danger btn-block"
-       href="page-list.html">Delete</a>
+    <!--URL-->
+    <div class="form-group">
+      <label for="size">URL</label>
+      <input type="url" class="form-control"  id="size" >
+    </div>
 
+    <!--Width-->
+    <div class="form-group">
+      <label for="width">Width</label>
+      <input type="text" class="form-control"  id="width" >
+    </div>
+
+    <!--upload-->
+    <div class="form-group">
+      <label for="upload">Upload</label>
+      <input  type="file" class="form-control"  id="upload" >
+    </div>
+<div class="form-group">
+    <a class="btn btn-primary btn-block"
+       href="#">Upload</a>
+
+    <a class="btn btn-danger btn-block"
+       href="widget-list.html">Delete</a>
+</div>
   </form>
 </div>
 <!---footer-->
