@@ -1,0 +1,13 @@
+input.form-control {
+  margin-bottom: 5px;
+}
+
+body {
+  padding-top: 58px;
+  padding-bottom: 32px;
+}
+
+
+a.thick {
+  font-weight: bold;
+}
