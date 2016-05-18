@@ -3,22 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
-
   <!--Bootstrap css CDN-->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
 
   <!--costum style sheet link-->
   <link href="css/style.css" rel="stylesheet"/>
 </head>
-
-
 <body>
-
 <!--header-->
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-
 
       <!--back-->
       <div class="navbar-text pull-left">
@@ -27,19 +22,20 @@
           </span>
         </a>
 
+        <!--name of the page-->
       </div>
-      <!--name of the page-->
       <a class="navbar-brand thick" href="#">
-        New Website
+        Edit Page
       </a>
     </div>
 
     <!--OK-->
     <div class="navbar-text pull-right">
-      <a href="website-list.html" class="navbar-link ">
+      <a href="page-list.html" class="navbar-link ">
           <span class="glyphicon glyphicon-ok ">
           </span>
       </a>
+
     </div>
 
   </div>
@@ -49,34 +45,37 @@
 <!--FORM-->
 <div class="container">
 
-<!--Name of the new application-->
+  <!--Name of the new application-->
   <form>
     <div class="form-group">
-      <label for="application name"> Name</label>
-      <input type="text" class="form-control" id="application name" placeholder="Blogger">
+      <label for="post name">Name</label>
+      <input type="text" class="form-control" id="post name" placeholder="Blog Post">
     </div>
-
-    <!--Description of the  application-->
+    <!--Title of the  application-->
     <div class="form-group">
-      <label for="Description"> Description</label>
-      <textarea class="form-control" rows="5" id="Description" placeholder="Description"></textarea>
+      <label for="title">Title</label>
+      <input type="text" class="form-control"  id="title" placeholder="Page Title"></input>
     </div>
-
+    <a class="btn btn-danger btn-block"
+       href="page-list.html">Delete</a>
 
   </form>
 </div>
-
 <!---footer-->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container">
+
+    <!--Link to Profile-->
     <div class="row navbar-text pull-right">
 
-      <!--Link to Profile-->
       <a href="profile.html">
         <span class="glyphicon glyphicon-user "></span>
       </a>
 
     </div>
+
+
+
   </div>
 </nav>
 <!--footer close-->
