@@ -1,10 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <!--Bootstrap css CDN-->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!--costum style sheet link-->
+  <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
+<!--header-->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
 
+      <!--back-->
+      <div class="navbar-text pull-left">
+        <a href="widget-list.html" class="navbar-link ">
+          <span class="glyphicon glyphicon-chevron-left ">
+          </span>
+        </a>
+
+        <!--name of the page-->
+      </div>
+      <a class="navbar-brand thick" href="#">
+        Widget Edit
+      </a>
+    </div>
+
+    <!--OK-->
+    <div class="navbar-text pull-right">
+      <a href="widget-list.html" class="navbar-link ">
+          <span class="glyphicon glyphicon-ok ">
+          </span>
+      </a>
+
+    </div>
+
+  </div>
+</nav>
+<!--header close-->
+
+<!--FORM-->
+<div class="container">
+
+  <!--Name of the new application-->
+  <form>
+    <div class="form-group">
+      <label for="post name">Name</label>
+      <input type="text" class="form-control" id="post name">
+    </div>
+    <!--Text-->
+    <div class="form-group">
+      <label for="text">Text</label>
+      <input type="text" class="form-control"  id="text" >
+    </div>
+    <!--URL-->
+    <div class="form-group">
+      <label for="size">URL</label>
+      <input type="url" class="form-control"  id="size" >
+    </div>
+
+    <!--Width-->
+    <div class="form-group">
+      <label for="width">Width</label>
+      <input type="text" class="form-control"  id="width" >
+    </div>
+    <a class="btn btn-danger btn-block"
+         href="widget-list.html">Delete</a>
+
+  </form>
+</div>
+<!---footer-->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+
+    <!--Link to Profile-->
+    <div class="row navbar-text pull-right">
+
+      <a href="profile.html">
+        <span class="glyphicon glyphicon-user "></span>
+      </a>
+
+    </div>
+
+
+
+  </div>
+</nav>
+<!--footer close-->
 </body>
 </html>

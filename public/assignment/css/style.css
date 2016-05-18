@@ -7,19 +7,9 @@ body {
   padding-bottom: 58px;
 }
 
-.file {
-  visibility: hidden;
-  position: absolute;
-}
-
 
 a.thick {
   font-weight: bold;
 }
 
 
-.glyph-right {
-  float: right;
-  margin-top: 2px;
-  margin-right: 4px;
-}
