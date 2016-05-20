@@ -5,6 +5,10 @@
   <title>Title</title>
   <!--Bootstrap css CDN-->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+<!---mobile first---->
+  <meta name="apple-mobile-web-app-capable" content ="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content ="black">
+  <meta name="viewport" content ="initial-scale=1.25,user-scalable=no">
 
   <!--costum style sheet link-->
   <link href="css/style.css" rel="stylesheet"/>
@@ -12,31 +16,32 @@
 <body>
 <!--header-->
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
+  <div class="container-fluid">
+
 
       <!--back-->
-      <div class="navbar-text pull-left">
+      <p class="navbar-text pull-left">
         <a href="website-list.html" class="navbar-link ">
           <span class="glyphicon glyphicon-chevron-left ">
           </span>
         </a>
 
         <!--name of the page-->
-      </div>
+      </p>
+    <p class="navbar-header pull-left">
       <a class="navbar-brand thick" href="#">
         Edit Page
       </a>
-    </div>
+    </p>
 
     <!--OK-->
-    <div class="navbar-text pull-right">
+    <p class="navbar-text pull-right">
       <a href="page-list.html" class="navbar-link ">
           <span class="glyphicon glyphicon-ok ">
           </span>
       </a>
 
-    </div>
+    </p>
 
   </div>
 </nav>

@@ -3,10 +3,36 @@ input.form-control {
 }
 
 body {
-  padding-top: 58px;
+  padding-top: 60px;
   padding-bottom: 58px;
 }
+nav.navbar{
+  max-height: 32px;
+}
+span.glyphicon.glyphicon-chevron-left
+{
+margin-right:5px  ;
+}
 
+span.glyphicon.glyphicon-share-alt
+{
+  padding-left:15px  ;
+}
+
+span.glyphicon.glyphicon-user
+{
+  margin-right: 15px;
+}
+div.widget-tool
+{
+  position: absolute;
+  right: 15px;
+background-color:white;
+padding-left:5px;
+  padding-bottom :5px;
+
+
+}
 
 a.thick {
   font-weight: bold;
