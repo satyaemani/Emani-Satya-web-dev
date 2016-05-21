@@ -10,15 +10,16 @@
   <meta name="apple-mobile-web-app-capable" content ="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content ="black">
   <meta name="viewport" content ="initial-scale=1.25,user-scalable=no">
-
   <!--costum style sheet link-->
-  <link href="css/style.css" rel="stylesheet"/>
+  <link href="../css/style.css" rel="stylesheet"/>
 </head>
 <body>
 <!--header-->
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-    <!--back-->
+
+
+      <!--back-->
       <p class="navbar-text pull-left">
         <a href="widget-list.html" class="navbar-link ">
           <span class="glyphicon glyphicon-chevron-left ">
@@ -53,37 +54,21 @@
   <form>
     <div class="form-group">
       <label for="post name">Name</label>
-      <input type="text" class="form-control" id="post name">
+      <input type="text" class="form-control" id="post name" placeholder="heading name">
     </div>
     <!--Text-->
     <div class="form-group">
-      <label for="text">Text</label>
-      <input type="text" class="form-control"  id="text" >
-    </div>
-    <!--URL-->
-    <div class="form-group">
-      <label for="size">URL</label>
-      <input type="url" class="form-control"  id="size" >
-    </div>
+    <label for="text">text</label>
+    <input type="text" class="form-control"  id="text" placeholder="GIZMODO">
+  </div>
 
-    <!--Width-->
     <div class="form-group">
-      <label for="width">Width</label>
-      <input type="text" class="form-control"  id="width" >
+      <label for="size">Size</label>
+      <input type="number" class="form-control"  id="size" placeholder="1">
     </div>
-
-    <!--upload-->
-    <div class="form-group">
-      <label for="upload">Upload</label>
-      <input  type="file" class="form-control"  id="upload" >
-    </div>
-<div class="form-group">
-    <a class="btn btn-primary btn-block"
-       href="#">Upload</a>
-
     <a class="btn btn-danger btn-block"
        href="widget-list.html">Delete</a>
-</div>
+
   </form>
 </div>
 <!---footer-->
@@ -93,7 +78,7 @@
     <!--Link to Profile-->
     <div class="row navbar-text pull-right">
 
-      <a href="profile.html">
+      <a href="../user/profile.html">
         <span class="glyphicon glyphicon-user "></span>
       </a>
 

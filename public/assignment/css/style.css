@@ -11,13 +11,19 @@ nav.navbar{
 }
 span.glyphicon.glyphicon-chevron-left
 {
-margin-right:5px  ;
+margin-right:7px  ;
+  margin-left:-5px
 }
 
 span.glyphicon.glyphicon-share-alt
- {
-   padding-left:15px  ;
- }
+{
+  padding-left:15px  ;
+}
+
+span.glyphicon.glyphicon-pencil
+{
+  padding-right:7px  ;
+}
 
 span.glyphicon.glyphicon-eye-open
 {
