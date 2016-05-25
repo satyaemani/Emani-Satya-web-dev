@@ -10,22 +10,27 @@
   <meta name="apple-mobile-web-app-status-bar-style" content ="black">
   <meta name="viewport" content ="initial-scale=1.25,user-scalable=no">
 <!--CSS-->
-  <link href="../css/style.css" rel="stylesheet"/>
+  <link href="css/style.css" rel="stylesheet"/>
   <!--Angular-->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
 <!--Angular Routing-->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
   <!--app.js-->
   <script src="app.js"></script>
+
+  <!--configuration-->
+  <script src="config.js"></script>
     <title>WAM</title>
 
 </head>
 <body class="container">
-    <h1>Assignment Home Page</h1>
+<div ng-view>
+    <!--<h1>Assignment Home Page</h1>
     <p>
       <h3>
 <a href="views/user/login.view.client.html">Login page Assignment-1</a>
       </h3>
-</p>
+</p>-->
+  </div>
 </body>
 </html>
