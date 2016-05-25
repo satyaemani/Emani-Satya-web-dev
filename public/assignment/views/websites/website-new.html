@@ -21,32 +21,32 @@
 
 <!--header-->
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
+  <div class="container">
+
 
 
       <!--back-->
-      <p class="navbar-text pull-left">
-        <a href="page-list.html" class="navbar-link ">
+      <div class="navbar-text pull-left">
+        <a href="website-list.html" class="navbar-link ">
           <span class="glyphicon glyphicon-chevron-left ">
           </span>
         </a>
 
-      </p>
-      <!--name of the page-->
+      </div>
     <p class="navbar-header pull-left">
-
-    <a class="navbar-brand thick" href="#">
-        New Page
+      <!--name of the page-->
+      <a class="navbar-brand thick" href="#">
+        New Website
       </a>
     </p>
 
     <!--OK-->
-    <p class="navbar-text pull-right">
-      <a href="page-list.html" class="navbar-link ">
+    <div class="navbar-text pull-right">
+      <a href="website-list.html" class="navbar-link ">
           <span class="glyphicon glyphicon-ok ">
           </span>
       </a>
-    </p>
+    </div>
 
   </div>
 </nav>
@@ -55,17 +55,23 @@
 <!--FORM-->
 <div class="container">
 
-  <!--Name of the page-->
+<!--Name of the new application-->
   <form>
     <div class="form-group">
-      <label for="page name"> Name</label>
-      <input type="text" class="form-control" id="page name" placeholder="Page Name">
+      <label for="application name"> Name</label>
+      <input type="text"
+             class="form-control"
+             id="application name"
+             placeholder="Blogger">
     </div>
 
-    <!--Title-->
+    <!--Description of the  application-->
     <div class="form-group">
-      <label for="Title"> Title</label>
-      <input type="text" class="form-control"  id="Title" placeholder="Title"></textarea>
+      <label for="Description"> Description</label>
+      <textarea class="form-control"
+                rows="5"
+                id="Description"
+                placeholder="Description"></textarea>
     </div>
 
 
@@ -78,7 +84,7 @@
     <div class="row navbar-text pull-right">
 
       <!--Link to Profile-->
-      <a href="../user/profile.html">
+      <a href="../views/user/profile.html">
         <span class="glyphicon glyphicon-user "></span>
       </a>
 

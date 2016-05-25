@@ -22,23 +22,24 @@
 
       <!--back-->
       <p class="navbar-text pull-left">
-        <a href="website-list.html" class="navbar-link ">
+        <a href="widget-list.html" class="navbar-link ">
           <span class="glyphicon glyphicon-chevron-left ">
           </span>
         </a>
-        </p>
+      </p>
         <!--name of the page-->
+
+
     <p class="navbar-header pull-left">
 
-      <a class="navbar-brand thick" href="#">
-       Edit Website
+    <a class="navbar-brand thick" href="#">
+        Widget Edit
       </a>
     </p>
 
-
     <!--OK-->
     <p class="navbar-text pull-right">
-      <a href="website-list.html" class="navbar-link ">
+      <a href="widget-list.html" class="navbar-link ">
           <span class="glyphicon glyphicon-ok ">
           </span>
       </a>
@@ -55,24 +56,39 @@
   <!--Name of the new application-->
   <form>
     <div class="form-group">
-      <label for="application name"> Website Name</label>
+      <label for="post name">Name</label>
       <input type="text"
              class="form-control"
-             id="application name"
-             value="Blogger"
-             placeholder="Blogger">
+             id="post name"
+             placeholder="youtube video">
     </div>
-    <!--Description of the  application-->
+    <!--Text-->
     <div class="form-group">
-      <label for="Description">Website Description</label>
-      <textarea class="form-control"
-                rows="5" id="Description"
-                placeholder="Description">
-         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-      </textarea>
+      <label for="text">Text</label>
+      <input type="text"
+             class="form-control"
+             id="text"
+             placeholder="kung fu panda">
+    </div>
+    <!--URL-->
+    <div class="form-group">
+      <label for="size">URL</label>
+      <input type="url"
+             class="form-control"
+             id="size"
+             placeholder="https://www.youtube.com"
+      value="https://www.youtube.com/watch?v=PXi3Mv6KMzY">
+    </div>
+
+    <!--Width-->
+    <div class="form-group">
+      <label for="width">Width</label>
+      <input type="text"
+             class="form-control"
+             id="width" placeholder="100%">
     </div>
     <a class="btn btn-danger btn-block"
-       href="website-list.html">Delete</a>
+         href="widget-list.html">Delete</a>
 
   </form>
 </div>
@@ -83,20 +99,13 @@
     <!--Link to Profile-->
     <div class="row navbar-text pull-right">
 
-      <a href="../user/profile.html">
+      <a href="../views/user/profile.html">
         <span class="glyphicon glyphicon-user "></span>
       </a>
 
     </div>
 
-    <!--share-alt-->
-    <div class="row navbar-text ">
 
-      <a href="#">
-        <span class="glyphicon glyphicon-share-alt "></span>
-      </a>
-
-    </div>
 
   </div>
 </nav>

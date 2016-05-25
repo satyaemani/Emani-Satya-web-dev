@@ -5,7 +5,8 @@
   <title>Title</title>
   <!--Bootstrap css CDN-->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-<!---mobile first---->
+
+  <!---mobile first---->
   <meta name="apple-mobile-web-app-capable" content ="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content ="black">
   <meta name="viewport" content ="initial-scale=1.25,user-scalable=no">
@@ -17,26 +18,24 @@
 <!--header-->
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-
-
-      <!--back-->
+    <!--back-->
       <p class="navbar-text pull-left">
-        <a href="../pages/page-list.html" class="navbar-link ">
+        <a href="widget-list.html" class="navbar-link ">
           <span class="glyphicon glyphicon-chevron-left ">
           </span>
         </a>
-
-        <!--name of the page-->
       </p>
+        <!--name of the page-->
+
     <p class="navbar-header pull-left">
       <a class="navbar-brand thick" href="#">
-        Edit Page
+        Widget Edit
       </a>
     </p>
 
     <!--OK-->
     <p class="navbar-text pull-right">
-      <a href="page-list.html" class="navbar-link ">
+      <a href="widget-list.html" class="navbar-link ">
           <span class="glyphicon glyphicon-ok ">
           </span>
       </a>
@@ -51,19 +50,41 @@
 <div class="container">
 
   <!--Name of the new application-->
+  <!--Name-->
   <form>
     <div class="form-group">
       <label for="post name">Name</label>
-      <input type="text" class="form-control" id="post name" placeholder="Blog Post" value="Web development">
+      <input type="text" class="form-control" id="post name"  placeholder="Wall">
     </div>
-    <!--Title of the  application-->
+    <!--Text-->
     <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" class="form-control"  id="title" placeholder="Page Title" value="My post">
+      <label for="text">Text</label>
+      <input type="text" class="form-control"  id="text"  placeholder="text for the wall">
     </div>
-    <a class="btn btn-danger btn-block"
-       href="page-list.html">Delete</a>
+    <!--URL-->
+    <div class="form-group">
+      <label for="size">URL</label>
+      <input type="url" class="form-control"  id="size"  value="http://www.gettyimages.pt" placeholder="http://www.gettyimages.pt"/>
+    </div>
 
+    <!--Width-->
+    <div class="form-group">
+      <label for="width">Width</label>
+      <input type="text" class="form-control"  id="width" value="30%" placeholder="30%" >
+    </div>
+
+    <!--upload-->
+    <div class="form-group">
+      <label for="upload">Upload</label>
+      <input  type="file" class="form-control"  id="upload" >
+    </div>
+<div class="form-group">
+    <a class="btn btn-primary btn-block"
+       href="#">Upload</a>
+
+    <a class="btn btn-danger btn-block"
+       href="widget-list.html">Delete</a>
+</div>
   </form>
 </div>
 <!---footer-->
@@ -73,7 +94,7 @@
     <!--Link to Profile-->
     <div class="row navbar-text pull-right">
 
-      <a href="../user/profile.html">
+      <a href="../views/user/profile.html">
         <span class="glyphicon glyphicon-user "></span>
       </a>
 

@@ -5,7 +5,6 @@
   <title>Title</title>
   <!--Bootstrap css CDN-->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-
   <!---mobile first---->
   <meta name="apple-mobile-web-app-capable" content ="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content ="black">
@@ -16,22 +15,30 @@
 </head>
 
 
+<!------------------------------------------------BODY------------------------------------------------>
 <body>
 <!--header-->
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
 
+    <!--back-->
+    <p class="navbar-text pull-left">
+      <a href="../websites/website-list.html" class="navbar-link ">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+      </a>
+      </p>
     <!--name of the page-->
-    <p class="navbar-header  pull-left ">
+    <p class="navbar-header pull-left">
       <a class="navbar-brand thick"
          href="#">
-        Websites
+        Pages
       </a>
     </p>
 
-    <!--Add new Website-->
-    <p class="navbar-text pull-right ">
-      <a href="website-new.html"
+    <!--Add new page-->
+    <p class="navbar-text pull-right">
+      <a href="page-new.html"
          class="navbar-link ">
           <span class="glyphicon glyphicon-plus ">
           </span>
@@ -45,77 +52,79 @@
 
 
 <!--LIST-->
+
 <div class="container">
 
   <!--Name-->
+  <p>
+    <a href="../widgets/widget-list.html">
+      Blog Post
+    </a>
 
-<p>
-  <a href="../pages/page-list.html">
-    Blogging App
+    <!--EDIT-->
+    <a href="page-edit.html">
+      <span class="glyphicon glyphicon-pencil pull-right "></span>
+    </a>
+  </p>
+
+  <p>
+    <!--Name-->
+    <a href="../widgets/widget-list.html">
+     Blogs
+    </a>
+
+    <!--EDIT-->
+    <a href="page-edit.html">
+      <span class="glyphicon glyphicon-pencil pull-right "></span>
+    </a>
+  </p>
+
+
+  <p>
+    <!--Name-->
+    <a href="../widgets/widget-list.html">
+      Home
+    </a>
+
+    <!--EDIT-->
+    <a href="page-edit.html">
+      <span class="glyphicon glyphicon-pencil pull-right"></span>
+    </a>
+  </p>
+
+  <p>
+    <!--Name-->
+    <a href="../widgets/widget-list.html">
+      About
+    </a>
+
+    <!--EDIT-->
+    <a href="page-edit.html">
+      <span class="glyphicon glyphicon-pencil pull-right "></span>
+    </a>
+  </p>
+
+
+  <p>
+    <!--Name-->
+  <a href="../widgets/widget-list.html">
+ Contact us
   </a>
 
-  <!--NEXT-->
-  <a href="../pages/page-list.html">
-    <span class="glyphicon glyphicon-play pull-right "></span>
-  </a>
   <!--EDIT-->
-  <a href="website-edit.html">
+  <a href="page-edit.html">
     <span class="glyphicon glyphicon-pencil pull-right "></span>
   </a>
-</p>
-
-  <p>
-    <!--Name-->
-    <a href="../pages/page-list.html">
-      Address Book App
-    </a>
-    <!--NEXT-->
-    <a href="../pages/page-list.html">
-      <span class="glyphicon glyphicon-play pull-right "></span>
-    </a>
-    <!--EDIT-->
-    <a href="website-edit.html">
-      <span class="glyphicon glyphicon-pencil pull-right "></span>
-    </a>
   </p>
+  </div>
 
-  <!--Name-->
-  <p>
-    <a href="../pages/page-list.html">
-      Script Testing App
-    </a>
-    <!--NEXT-->
-    <a href="../pages/page-list.html">
-      <span class="glyphicon glyphicon-play pull-right "></span>
-    </a>
-    <!--EDIT-->
-    <a href="website-edit.html">
-      <span class="glyphicon glyphicon-pencil pull-right "></span>
-    </a>
-  </p>
-
-  <p>
-    <!--Name-->
-    <a href="../pages/page-list.html">
-      Blogger
-    </a>
-    <!--NEXT-->
-    <a href="../pages/page-list.html">
-      <span class="glyphicon glyphicon-play pull-right "></span>
-    </a>
-    <!--EDIT-->
-    <a href="website-edit.html">
-      <span class="glyphicon glyphicon-pencil pull-right "></span>
-    </a>
-  </p>
-</div>
 
 <!--footer-->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container">
     <div class="row navbar-text pull-right">
-        <!--Profile-->
-      <a href="../user/profile.html">
+      <!--Profile-->
+      <a href="../views/user/profile.html">
         <span class="glyphicon glyphicon-user "></span>
       </a>
 

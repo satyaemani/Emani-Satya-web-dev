@@ -5,12 +5,10 @@
   <title>Title</title>
   <!--Bootstrap css CDN-->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-
-  <!---mobile first---->
+<!---mobile first---->
   <meta name="apple-mobile-web-app-capable" content ="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content ="black">
   <meta name="viewport" content ="initial-scale=1.25,user-scalable=no">
-
 
   <!--costum style sheet link-->
   <link href="../css/style.css" rel="stylesheet"/>
@@ -20,26 +18,25 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
 
+
       <!--back-->
       <p class="navbar-text pull-left">
-        <a href="widget-list.html" class="navbar-link ">
+        <a href="t.html" class="navbar-link ">
           <span class="glyphicon glyphicon-chevron-left ">
           </span>
         </a>
-      </p>
+
         <!--name of the page-->
-
-
+      </p>
     <p class="navbar-header pull-left">
-
-    <a class="navbar-brand thick" href="#">
-        Widget Edit
+      <a class="navbar-brand thick" href="#">
+        Edit Page
       </a>
     </p>
 
     <!--OK-->
     <p class="navbar-text pull-right">
-      <a href="widget-list.html" class="navbar-link ">
+      <a href="page-list.html" class="navbar-link ">
           <span class="glyphicon glyphicon-ok ">
           </span>
       </a>
@@ -57,38 +54,15 @@
   <form>
     <div class="form-group">
       <label for="post name">Name</label>
-      <input type="text"
-             class="form-control"
-             id="post name"
-             placeholder="youtube video">
+      <input type="text" class="form-control" id="post name" placeholder="Blog Post" value="Web development">
     </div>
-    <!--Text-->
+    <!--Title of the  application-->
     <div class="form-group">
-      <label for="text">Text</label>
-      <input type="text"
-             class="form-control"
-             id="text"
-             placeholder="kung fu panda">
-    </div>
-    <!--URL-->
-    <div class="form-group">
-      <label for="size">URL</label>
-      <input type="url"
-             class="form-control"
-             id="size"
-             placeholder="https://www.youtube.com"
-      value="https://www.youtube.com/watch?v=PXi3Mv6KMzY">
-    </div>
-
-    <!--Width-->
-    <div class="form-group">
-      <label for="width">Width</label>
-      <input type="text"
-             class="form-control"
-             id="width" placeholder="100%">
+      <label for="title">Title</label>
+      <input type="text" class="form-control"  id="title" placeholder="Page Title" value="My post">
     </div>
     <a class="btn btn-danger btn-block"
-         href="widget-list.html">Delete</a>
+       href="page-list.html">Delete</a>
 
   </form>
 </div>
@@ -99,7 +73,7 @@
     <!--Link to Profile-->
     <div class="row navbar-text pull-right">
 
-      <a href="../user/profile.html">
+      <a href="../views/user/profile.html">
         <span class="glyphicon glyphicon-user "></span>
       </a>
 
