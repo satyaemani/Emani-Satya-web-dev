@@ -22,6 +22,18 @@
         controller:"ProfileController",
         controllerAs:"model"
       })
+      .when("/website-list",{
+        templateUrl:"views/websites/website-list.view.client.html"
+      })
+      .when("/website-new",{
+        templateUrl:"views/websites/website-new.view.client.html"
+      })
+      .when("/website-edit",{
+        templateUrl:"views/websites/website-edit.view.client.html"
+      })
+      .when("/page-list",{
+        templateUrl:"views/pages/page-list.view.client.html"
+      })
       .otherwise({
         redirectTo:"/login"
       });

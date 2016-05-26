@@ -30,21 +30,26 @@
       </a>
     </p>
       <p class="navbar-text pull-right">
-        <a href="#" class="navbar-link ">
+        <a ng-click="model.updateUser(model.user)" class="navbar-link ">
           <span class="glyphicon glyphicon-ok ">
           </span>
         </a>
         </p>
 
-
   </div>
 </nav>
+
+
+<div ng-show="model.success" class="alert alert-success">
+  {{model.success}}
+</div>
 
 
 <div class="container">
 
 
   <form>
+    <!--username-->
     <div class="form-group">
       <label for="username">Username</label>
       <input ng-model="model.user.username" type="text"
@@ -52,6 +57,7 @@
              id="username"
              placeholder="Username">
     </div>
+    <!--email id-->
     <div class="form-group">
       <label for="email">Email address</label>
       <input type="email"
@@ -59,6 +65,8 @@
              id="email"
              placeholder="alice@wonderland.com">
     </div>
+
+    <!--first-name-->
     <div class="form-group">
       <label for="first-name">First Name</label>
       <input ng-model="model.user.firstName" type="text"
@@ -76,7 +84,7 @@
   </form>
 
   <a class="btn btn-primary btn-block"
-     href="#/websites">Websites</a>
+     href="#/website-list">Websites</a>
   <a class="btn btn-danger  btn-block"
      href="#/login">Logout</a>
 </div>
