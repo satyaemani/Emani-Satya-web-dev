@@ -15,7 +15,9 @@
         templateUrl:"views/home.html"
       })
       .when("/register",{
-        templateUrl:"views/user/register.view.client.html"
+        templateUrl:"views/user/register.view.client.html",
+        controller:"RegisterController",
+        controllerAs:"model"
       })
       .when("/profile/:id",{
         templateUrl:"views/user/profile.view.client.html",
