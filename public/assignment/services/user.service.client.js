@@ -2,7 +2,7 @@
   function(){
     angular
       .module("WebAppMaker")
-      .factory("UserService",UserService)
+      .factory("UserService",UserService);
 
 
     var users =
@@ -11,7 +11,7 @@
         {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley"},
         {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia"},
         {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
-      ]
+      ];
 
 
     function UserService() {
@@ -20,12 +20,13 @@
         findUserByUsernameAndPassword: findUserByUsernameAndPassword,
         findUserByUsername:findUserByUsername,
         findUserById:findUserById,
-        updateUser: updateUser
+        updateUser: updateUser,
+        deleteUser:deleteUser
 
       };
       return api;
 
-
+      function deleteUser(userId){}
       function createUser(username,password,confPassword)
       {
 
@@ -91,6 +92,7 @@
         return null;
 
       }
+
 
       function findUserByUsernameAndPassword(username, password) {
 

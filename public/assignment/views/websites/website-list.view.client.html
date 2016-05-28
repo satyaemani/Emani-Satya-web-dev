@@ -13,7 +13,7 @@
 
     <!--Add new Website-->
     <p class="navbar-text pull-right ">
-      <a href="#/website-new"
+      <a href="#/user/{{model.userId}}/website/new"
          class="navbar-link ">
           <span class="glyphicon glyphicon-plus ">
           </span>
@@ -27,13 +27,15 @@
 
 
 <!--LIST-->
+
 <div class="container">
+
 
   <!--Name-->
 
-<p>
+<p ng-repeat="website in model.websites">
   <a href="#/page-list">
-    Blogging App
+    {{website.name}}
   </a>
 
   <!--NEXT-->
@@ -41,58 +43,12 @@
     <span class="glyphicon glyphicon-play pull-right "></span>
   </a>
   <!--EDIT-->
-  <a href="#/website-edit">
+  <a href="#/user/{{website.developerId}}/website/{{website._id}}">
     <span class="glyphicon glyphicon-pencil pull-right "></span>
   </a>
 </p>
 
-  <p>
-    <!--Name-->
-    <a href="../views/pages/page-list.html">
-      Address Book App
-    </a>
-    <!--NEXT-->
-    <a href="../views/pages/page-list.html">
-      <span class="glyphicon glyphicon-play pull-right "></span>
-    </a>
-    <!--EDIT-->
-    <a href="#/website-edit">
-      <span class="glyphicon glyphicon-pencil pull-right "></span>
-    </a>
-  </p>
-
-  <!--Name-->
-  <p>
-    <a href="../views/pages/page-list.html">
-      Script Testing App
-    </a>
-    <!--NEXT-->
-    <a href="../views/pages/page-list.html">
-      <span class="glyphicon glyphicon-play pull-right "></span>
-    </a>
-    <!--EDIT-->
-    <a href="#/website-edit">
-      <span class="glyphicon glyphicon-pencil pull-right "></span>
-    </a>
-  </p>
-
-  <p>
-    <!--Name-->
-    <a href="../views/pages/page-list.html">
-      Blogger
-    </a>
-    <!--NEXT-->
-    <a href="../views/pages/page-list.html">
-      <span class="glyphicon glyphicon-play pull-right "></span>
-    </a>
-    <!--EDIT-->
-    <a href="#/website-edit">
-      <span class="glyphicon glyphicon-pencil pull-right "></span>
-    </a>
-  </p>
-</div>
-
-<!--footer-->
+  <!--footer-->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container">
     <div class="row navbar-text pull-right">

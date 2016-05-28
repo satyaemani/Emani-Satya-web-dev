@@ -40,19 +40,19 @@
 </nav>
 
 
-<div ng-show="model.success" class="alert alert-success">
-  {{model.success}}
-</div>
 
-<div ng-show="model.error" class="alert alert-danger">
-  {{model.error}}
-</div>
 
 
 
 
 <div class="container">
+  <div ng-show="model.success" class="alert alert-success">
+    {{model.success}}
+  </div>
 
+  <div ng-show="model.error" class="alert alert-danger">
+    {{model.error}}
+  </div>
 
   <form>
     <!--username-->
@@ -90,7 +90,7 @@
   </form>
 
   <a class="btn btn-primary btn-block"
-     href="#/website-list">Websites</a>
+     href="#/user/{{model.user._id}}/website">Websites</a>
   <a class="btn btn-danger  btn-block"
      href="#/login">Logout</a>
 </div>

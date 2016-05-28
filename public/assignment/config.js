@@ -24,8 +24,20 @@
         controller:"ProfileController",
         controllerAs:"model"
       })
-      .when("/website-list",{
-        templateUrl:"views/websites/website-list.view.client.html"
+      .when("/user/:userId/website",{
+        templateUrl:"views/websites/website-list.view.client.html",
+        controller:"WebsiteListController",
+        controllerAs:"model"
+      })
+      .when("/user/:userId/website/new",{
+        templateUrl:"views/websites/website-new.view.client.html",
+        controller:"WebsiteNewController",
+        controllerAs:"model"
+      })
+      .when("/user/:userId/website/:websiteId",{
+        templateUrl:"views/websites/website-edit.view.client.html",
+       controller:"WebsiteEditController",
+        controllerAs:"model"
       })
       .when("/website-new",{
         templateUrl:"views/websites/website-new.view.client.html"
