@@ -8,6 +8,7 @@
     vm.pageId = $routeParams.pageId;
     var pageId = vm.pageId;
     vm.deletePage= deletePage;
+    vm.updatePage = updatePage;
     vm.websiteId=$routeParams.websiteId;
     vm.userId = $routeParams.userId;
     //console.log(vm.pageId);
@@ -21,6 +22,19 @@
     init();
 
 
+    function updatePage(newPage)
+    {
+      console.log("clicked ");
+      var result = PageService.updatePage(pageId,newPage);
+
+      if(result)
+      {
+        vm.success="Updated";
+      }
+
+      else
+        vm.notSuccess="not updated";
+    }
     function deletePage(pageId){
       //console.log(websiteId);
       var result = PageService.deletePage(pageId);

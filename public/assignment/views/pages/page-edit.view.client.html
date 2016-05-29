@@ -20,8 +20,8 @@
 
     <!--OK-->
     <p class="navbar-text pull-right">
-      <a href="page-list.view.client.html" class="navbar-link ">
-          <span class="glyphicon glyphicon-ok ">
+      <a ng-click="model.updatePage(model.page)" class="navbar-link ">
+          <span class="glyphicon glyphicon-ok">
           </span>
       </a>
 
@@ -33,6 +33,18 @@
 
 <!--FORM-->
 <div class="container">
+
+  <div ng-show="model.success" class="alert alert-success">
+    {{model.success}}
+  </div>
+
+  <div ng-show="model.error" class="alert alert-danger">
+    {{model.error}}
+  </div>
+
+  <div ng-show="model.notSuccess" class="alert alert-danger">
+    {{model.notSuccess}}
+  </div>
 
   <!--Name of the new application-->
   <form>

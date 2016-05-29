@@ -15,9 +15,28 @@
       findPagesForWebsiteId: findPagesForWebsiteId,
       createPage:createPage,
       findPageById:findPageById,
-      deletePage:deletePage
+      deletePage:deletePage,
+      updatePage:updatePage
     };
     return api;
+
+
+
+    function updatePage(pageId,newPage)
+    {
+      for(var i in pages)
+      {
+        if(pages[i]._id===pageId)
+        {
+          pages[i].name = newPage.name;
+          pages[i].title = newPage.description;
+          return true;
+        }
+
+      }
+      return false;
+
+    }
 
     function deletePage(pageId)
     {
