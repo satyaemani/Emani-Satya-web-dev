@@ -39,14 +39,20 @@
        controller:"WebsiteEditController",
         controllerAs:"model"
       })
-      .when("/website-new",{
-        templateUrl:"views/websites/website-new.view.client.html"
+      .when("/user/:userId/website/:websiteId/page",{
+        templateUrl:"views/pages/page-list.view.client.html",
+        controller:"PageListController",
+        controllerAs:"model"
       })
-      .when("/website-edit",{
-        templateUrl:"views/websites/website-edit.view.client.html"
+      .when("/user/:userId/website/:websiteId/page/new",{
+        templateUrl:"views/pages/page-new.view.client.html",
+        controller:"PageNewController",
+        controllerAs:"model"
       })
-      .when("/page-list",{
-        templateUrl:"views/pages/page-list.view.client.html"
+      .when("/user/:userId/website/:websiteId/page/:pageId",{
+        templateUrl:"views/pages/page-edit.view.client.html",
+        controller:"PageEditController",
+        controllerAs:"model"
       })
       .otherwise({
         redirectTo:"/login"

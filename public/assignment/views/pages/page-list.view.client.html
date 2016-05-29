@@ -5,7 +5,7 @@
 
     <!--back-->
     <p class="navbar-text pull-left">
-      <a href="#/website-list" class="navbar-link ">
+      <a href="#/user/{{model.userId}}/website" class="navbar-link ">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
       </a>
@@ -20,7 +20,7 @@
 
     <!--Add new page-->
     <p class="navbar-text pull-right">
-      <a href="page-new.html"
+      <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new	"
          class="navbar-link ">
           <span class="glyphicon glyphicon-plus ">
           </span>
@@ -37,68 +37,20 @@
 
 <div class="container">
 
-  <!--Name-->
-  <p>
+
+  <p ng-repeat="page in model.pages">
+    <!--Name-->
     <a href="../widgets/widget-list.html">
-      Blog Post
+     {{page.name}}
     </a>
 
     <!--EDIT-->
-    <a href="page-edit.html">
+    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
       <span class="glyphicon glyphicon-pencil pull-right "></span>
     </a>
   </p>
 
-  <p>
-    <!--Name-->
-    <a href="../widgets/widget-list.html">
-     Blogs
-    </a>
-
-    <!--EDIT-->
-    <a href="page-edit.html">
-      <span class="glyphicon glyphicon-pencil pull-right "></span>
-    </a>
-  </p>
-
-
-  <p>
-    <!--Name-->
-    <a href="../widgets/widget-list.html">
-      Home
-    </a>
-
-    <!--EDIT-->
-    <a href="page-edit.html">
-      <span class="glyphicon glyphicon-pencil pull-right"></span>
-    </a>
-  </p>
-
-  <p>
-    <!--Name-->
-    <a href="../widgets/widget-list.html">
-      About
-    </a>
-
-    <!--EDIT-->
-    <a href="page-edit.html">
-      <span class="glyphicon glyphicon-pencil pull-right "></span>
-    </a>
-  </p>
-
-
-  <p>
-    <!--Name-->
-  <a href="../widgets/widget-list.html">
- Contact us
-  </a>
-
-  <!--EDIT-->
-  <a href="page-edit.html">
-    <span class="glyphicon glyphicon-pencil pull-right "></span>
-  </a>
-  </p>
-  </div>
+</div>
 
 
 <!--footer-->

@@ -5,7 +5,7 @@
 
       <!--back-->
       <p class="navbar-text pull-left">
-        <a href="#/website-list" class="navbar-link ">
+        <a href="#/user/{{model.developerId}}/website" class="navbar-link ">
           <span class="glyphicon glyphicon-chevron-left ">
           </span>
         </a>
@@ -21,7 +21,7 @@
 
     <!--OK-->
     <p class="navbar-text pull-right">
-      <a href="#" class="navbar-link ">
+      <a ng-click="model.updateWebsite(model.website)" class="navbar-link ">
           <span class="glyphicon glyphicon-ok ">
           </span>
       </a>
@@ -35,27 +35,37 @@
 <!--FORM-->
 <div class="container">
 
+
+  <div ng-show="model.success" class="alert alert-success">
+    {{model.success}}
+  </div>
+
+  <div ng-show="model.error" class="alert alert-danger">
+    {{model.error}}
+  </div>
+
+  <div ng-show="model.notSuccess" class="alert alert-danger">
+    {{model.notSuccess}}
+  </div>
+
   <!--Name of the new application-->
   <form>
     <div class="form-group">
       <label for="application name"> Website Name</label>
-      <input type="text"
+      <input ng-model="model.website.name" type="text"
              class="form-control"
              id="application name"
-             value="Blogger"
              placeholder="Blogger">
     </div>
     <!--Description of the  application-->
     <div class="form-group">
       <label for="Description">Website Description</label>
-      <textarea class="form-control"
+      <textarea ng-model="model.website.description" class="form-control"
                 rows="5" id="Description"
-                placeholder="Description">
-         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-      </textarea>
+                placeholder="Description"></textarea>
     </div>
     <a class="btn btn-danger btn-block"
-       ng-click="model.deleteWebsite()">Delete</a>
+       ng-click="model.deleteWebsite(model.websiteId)">Delete</a>
 
   </form>
 </div>

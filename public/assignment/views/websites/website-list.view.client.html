@@ -34,7 +34,7 @@
   <!--Name-->
 
 <p ng-repeat="website in model.websites">
-  <a href="#/page-list">
+  <a href="#/user/{{website.developerId}}/website/{{website._id}}/page	">
     {{website.name}}
   </a>
 

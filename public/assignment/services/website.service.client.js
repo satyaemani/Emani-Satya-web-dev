@@ -16,39 +16,87 @@
     var api = {
       createWebsite:createWebsite,
       findWebsitesForUserId: findWebsitesForUserId,
-      deleteWebsite: deleteWebsite
+      deleteWebsite: deleteWebsite,
+      findWebsiteById:findWebsiteById,
+      updateWebsite : updateWebsite
 
     };
     return api;
 
-    function deleteWebsite(websiteId)
+
+    function updateWebsite(websiteId,website)
     {
       for(var i in websites)
       {
-        if(websites[i._id === websiteId])
-        websites[i].splice(i,1);
-        return websites;
+        if(websites[i]._id===websiteId)
+        {
+          websites[i].name = website.name;
+          websites[i].description = website.description;
+          return true;
+        }
+
       }
+      return false;
+
+    }
+
+
+    function  findWebsiteById(id)
+    {
+      //var index = -1;
+      for(var i in websites){
+        if(websites[i]._id === id)
+        {
+          return websites[i];
+
+        }
+      }
+      return null;
+    }
+
+    function deleteWebsite(websiteId)
+    {
+
+
+      for(var i in websites)
+      {
+        console.log(websiteId);
+        console.log(websites[i]._id);
+        if(websites[i]._id ===websiteId) {
+
+          websites.splice(i,1);
+          return true;
+        }
+      }
+      return false;
 
     }
 
       function createWebsite(name,description,developerId){
-      websites.push({_id:(new Date).getTime()+" ",
-                      name:name,
-                      developerId:developerId});
-
-        return websites[websites.length-1];
-        }
+      //websites.push({_id:(new Date).getTime()+" ",
+      //                name:name,
+      //                developerId:developerId});
+      //  return websites[websites.length-1];
+      //
+        var newWebsite = {
+          _id: (new Date()).getTime()+"",
+          name: name,
+          description: "",
+          developerId: developerId
+        };
+        websites.push(newWebsite);
+        return newWebsite;
+         }
 
 
     function findWebsitesForUserId(userId) {
-      var resultSet = [];
-      for(var i in websites) {
-        if(websites[i].developerId === userId) {
-          resultSet.push(websites[i]);
+        var resultSet = [];
+        for(var i in websites) {
+          if(websites[i].developerId === userId) {
+            resultSet.push(websites[i]);
+          }
         }
-      }
-      return resultSet;
+        return resultSet;
     }
   }
 })();

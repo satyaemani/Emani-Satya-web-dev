@@ -8,10 +8,10 @@
     vm.developerId = $routeParams.userId;
     var developerId =  vm.developerId;
 
-    function init() {
-      vm.websites = WebsiteService.findWebsitesForUserId(vm.developerId);
-    }
-    init();
+    //function init() {
+    //  vm.websites = WebsiteService.findWebsitesForUserId(vm.developerId);
+    //}
+    //init();
     vm.createWebsite = createWebsite;
 
     function createWebsite(name,description){
@@ -20,11 +20,11 @@
 
       console.log(website);
       if(website){
-        vm.success="New Website created";
-      }
-      else
-      vm.error="Sorry website not created!!";
+      vm.success="New Website created";
     }
+    else
+      vm.error="Sorry website not created!!";
+  }
 
 
 
