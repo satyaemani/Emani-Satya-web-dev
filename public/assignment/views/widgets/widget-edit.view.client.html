@@ -1,0 +1,22 @@
+
+<!--DYNAMIC RENDERING-->
+
+
+<div ng-switch="model.widget.widgetType">
+  <div ng-switch-when="HEADER">
+    <ng-include src="'views/widgets/widget-heading.view.client.html'"/>
+  </div>
+  <div ng-switch-when="IMAGE">
+    <ng-include src="'views/widgets/widget-image.view.client.html'"/>
+  </div>
+  <div ng-switch-when="YOUTUBE">
+    <ng-include src="'views/widgets/widget-youtube.view.client.html'"/>
+  </div>
+</div>
+
+
+
+
+
+
+
