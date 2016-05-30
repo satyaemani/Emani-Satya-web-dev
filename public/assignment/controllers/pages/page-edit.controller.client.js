@@ -11,7 +11,7 @@
     vm.updatePage = updatePage;
     vm.websiteId=$routeParams.websiteId;
     vm.userId = $routeParams.userId;
-    //console.log(vm.pageId);
+    console.log(vm.userId);
     //console.log(pageId);
     function init() {
 

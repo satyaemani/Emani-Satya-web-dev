@@ -14,13 +14,14 @@
 
     function init() {
       vm.widgets = WidgetService.findWidgetsForPageId(pageId);
-      console.log(vm.widgets.length);
+      //console.log(vm.widgets.length);
 
     }
 
     init();
 
     vm.userId = $routeParams.userId;
+    vm.pageId = $routeParams.pageId;
     vm.websiteId = $routeParams.websiteId;
 
     function getSafeHtml(widget)

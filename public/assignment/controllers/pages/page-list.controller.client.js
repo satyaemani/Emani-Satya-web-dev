@@ -10,7 +10,6 @@
 
     function init() {
       vm.pages =PageService.findPagesForWebsiteId(vm.websiteId);
-
     }
     init();
 

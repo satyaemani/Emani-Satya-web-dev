@@ -3,7 +3,7 @@
     .module("WebAppMaker")
     .controller("WebsiteNewController", WebsiteNewController);
 
-  function WebsiteNewController($routeParams, WebsiteService) {
+  function WebsiteNewController($location,$routeParams, WebsiteService) {
     var vm = this;
     vm.developerId = $routeParams.userId;
     var developerId =  vm.developerId;
@@ -20,7 +20,7 @@
 
       console.log(website);
       if(website){
-      vm.success="New Website created";
+      $location.url("/user/"+vm.developerId+"/website");
     }
     else
       vm.error="Sorry website not created!!";

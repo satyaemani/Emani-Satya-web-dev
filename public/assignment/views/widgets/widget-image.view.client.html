@@ -4,7 +4,7 @@
   <div class="container-fluid">
     <!--back-->
       <p class="navbar-text pull-left">
-        <a href="widget-list.view.client.html" class="navbar-link ">
+        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link ">
           <span class="glyphicon glyphicon-chevron-left ">
           </span>
         </a>
@@ -19,7 +19,7 @@
 
     <!--OK-->
     <p class="navbar-text pull-right">
-      <a href="widget-list.view.client.html" class="navbar-link ">
+      <a ng-click="model.updateWidget(model.widget)" class="navbar-link ">
           <span class="glyphicon glyphicon-ok ">
           </span>
       </a>
@@ -32,32 +32,50 @@
 
 <!--FORM-->
 <div class="container">
-
+  <div ng-show="model.error" class="alert alert-danger">
+    {{model.error}}
+  </div>
   <!--Name of the new application-->
   <!--Name-->
   <form>
     <div class="form-group">
       <label for="post name">Name</label>
-      <input type="text" class="form-control" id="post name"  placeholder="Wall">
+      <input ng-model="model.widget.name"
+        type="text"
+        class="form-control"
+        id="post name"
+        placeholder="Wall">
     </div>
     <!--Text-->
     <div class="form-group">
       <label for="text">Text</label>
-      <input type="text" class="form-control"  id="text"  placeholder="text for the wall">
+      <input ng-model="model.widget.text"
+        type="text"
+        class="form-control"
+        id="text"
+        placeholder="text for the wall">
     </div>
     <!--URL-->
     <div class="form-group">
       <label for="size">URL</label>
-      <input type="url" class="form-control"  id="size"  value="http://www.gettyimages.pt" placeholder="http://www.gettyimages.pt"/>
+      <input ng-model="model.widget.url"
+        type="url"
+        class="form-control"
+        id="size"
+         placeholder="http://www.gettyimages.pt"/>
     </div>
 
-    <!--Width-->
+    <!-------------------------Width------------------------------->
     <div class="form-group">
       <label for="width">Width</label>
-      <input type="text" class="form-control"  id="width" value="30%" placeholder="30%" >
+      <input ng-model="model.widget.width"
+        type="text"
+        class="form-control"
+        id="width"
+        placeholder="30%" >
     </div>
 
-    <!--upload-->
+    <!-------------------------upload----------------------------------->
     <div class="form-group">
       <label for="upload">Upload</label>
       <input  type="file" class="form-control"  id="upload" >
@@ -66,11 +84,12 @@
     <a class="btn btn-primary btn-block"
        href="#">Upload</a>
 
-    <a class="btn btn-danger btn-block"
-       href="widget-list.view.client.html">Delete</a>
+    <a ng-click="model.deleteWidget(model.widgetId)"
+       class="btn btn-danger btn-block">Delete</a>
 </div>
   </form>
 </div>
+
 <!---footer-->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container">
@@ -78,13 +97,11 @@
     <!--Link to Profile-->
     <div class="row navbar-text pull-right">
 
-      <a href="../views/user/profile.html">
+      <a href="#/user/{{model.userId}}">
         <span class="glyphicon glyphicon-user "></span>
       </a>
 
     </div>
-
-
 
   </div>
 </nav>

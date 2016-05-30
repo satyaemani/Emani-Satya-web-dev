@@ -3,7 +3,7 @@
     .module("WebAppMaker")
     .controller("PageNewController",PageNewController);
 
-  function PageNewController($routeParams,PageService) {
+  function PageNewController($location,$routeParams,PageService) {
     var vm = this;
     vm.websiteId = $routeParams.websiteId;
     var websiteId =  vm.websiteId;
@@ -17,7 +17,7 @@
 
       console.log(page);
       if(page){
-        vm.success="New page created";
+        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
       }
       else
         vm.error="Sorry page not created!!";

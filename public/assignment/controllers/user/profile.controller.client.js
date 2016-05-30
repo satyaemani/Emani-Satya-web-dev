@@ -12,7 +12,7 @@
     vm.updateUser = updateUser;
 
 
-    var id = $routeParams.id;
+    var id = $routeParams.userId;
 
     function init()
     {

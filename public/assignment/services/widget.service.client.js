@@ -4,7 +4,7 @@
     angular
       .module("WebAppMaker")
       .factory("WidgetService",WidgetService)
-     var widgets= [
+    var widgets= [
       { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
       { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
       { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
@@ -14,17 +14,31 @@
       { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
         "url": "https://youtu.be/AM2Ivdi9c4E" },
       { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
-      ];
+    ];
 
     function WidgetService()
     {
       var api={
         findWidgetsForPageId:findWidgetsForPageId,
-          createWidget:createWidget,
+        createWidget:createWidget,
         findWidgetById:findWidgetById,
-        updateWidget: updateWidget
+        updateWidget: updateWidget,
+        deleteWidget: deleteWidget
       }
       return api;
+
+      function deleteWidget(id)
+      {
+        for(var i in widgets)
+        {
+          if(id===widgets[i]._id) {
+            widgets.splice(i, 1);
+            return true;
+          }
+        }
+        return false;
+
+      }
 
       function updateWidget(widget,id) {
         for (var i in widgets) {
@@ -37,6 +51,17 @@
                 widgets[i].size = widget.size;
                 widgets[i].text = widget.text;
                 return true
+                break;
+
+              case "IMAGE":
+                widgets[i].width = widget.width;
+                widgets[i].url = widget.url;
+                return true;
+                break;
+              case "YOUTUBE":
+                widgets[i].width = widget.width;
+                widgets[i].url = widget.url;
+                return true;
                 break;
 
 
@@ -65,7 +90,7 @@
           _id: (new Date()).getTime()+"",
           widgetType: wType,
           pageId: pageId,
-          }
+        }
         widgets.push(newWidget);
         return newWidget;
       }

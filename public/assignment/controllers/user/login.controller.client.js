@@ -13,14 +13,14 @@
       //if a mathces then navigate to that url
       if(user)
       {
-        $location.url("/profile/" + user._id);
+        $location.url("/user/"+user._id);
       }
 
 
     //or else print out error message
       else
       {
-        vm.error = "User Not Found";
+        vm.error = "Incorrect Username or Password";
       }
 
     }

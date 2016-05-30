@@ -23,7 +23,7 @@
 
         if(createUser)
         {
-          $location.url("/profile/"+createUser._id);
+          $location.url("/user/"+createUser._id);
         }
         else
 
