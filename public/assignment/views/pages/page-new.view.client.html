@@ -15,14 +15,14 @@
       <!--name of the page-->
     <p class="navbar-header pull-left">
 
-    <a class="navbar-brand thick" href="#">
+    <a class="navbar-brand thick" >
         New Page
       </a>
     </p>
 
     <!--OK-->
     <p class="navbar-text pull-right">
-      <a ng-click="model.createPage(pageName,title)" class="navbar-link ">
+      <a ng-click="model.createPage(model.page)" class="navbar-link ">
           <span class="glyphicon glyphicon-ok">
           </span>
       </a>
@@ -46,13 +46,13 @@
   <form>
     <div class="form-group">
       <label for="page name"> Name</label>
-      <input  ng-model="pageName" type="text" class="form-control" id="page name" placeholder="Page Name">
+      <input  ng-model="model.page.pageName" type="text" class="form-control" id="page name" placeholder="Page Name">
     </div>
 
     <!--Title-->
     <div class="form-group">
       <label for="Title"> Title</label>
-      <input ng-model="title" type="text" class="form-control"  id="Title" placeholder="Title"></textarea>
+      <input ng-model="model.page.title" type="text" class="form-control"  id="Title" placeholder="Title"></textarea>
     </div>
 
 

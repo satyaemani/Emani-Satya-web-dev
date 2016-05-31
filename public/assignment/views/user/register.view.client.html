@@ -6,16 +6,16 @@
   </div>
 
   <h1>Register</h1>
-  <input ng-model="username" type="text"
+  <input ng-model="model.user.username" type="text"
          class="form-control"
          placeholder="username"/>
-  <input ng-model="password" type="password"
+  <input ng-model="model.user.password" type="password"
          class="form-control"
          placeholder="password"/>
-  <input ng-model="confPassword" type="password"
+  <input ng-model="model.user.confPassword" type="password"
          class="form-control"
          placeholder="verify password"/>
-  <a ng-click="model.register(username,password,confPassword) "class="btn btn-primary btn-block" >Register</a>
+  <a ng-click="model.register(model.user) "class="btn btn-primary btn-block" >Register</a>
   <a class="btn btn-danger  btn-block"
      href="#/login">Cancel</a>
 </div>

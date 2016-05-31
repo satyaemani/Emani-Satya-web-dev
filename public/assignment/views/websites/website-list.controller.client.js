@@ -12,5 +12,6 @@
 
     }
     init();
+    console.log(vm.websites);
   }
 })();

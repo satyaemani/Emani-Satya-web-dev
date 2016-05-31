@@ -25,7 +25,8 @@ var websiteId = vm.websiteId;
 
       if(result)
       {
-        vm.success="Updated";
+        $location.url("/user/"+vm.developerId+"/website");
+
       }
 
       else

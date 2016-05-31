@@ -27,15 +27,15 @@
       return api;
 
       function deleteUser(userId){}
-      function createUser(username,password,confPassword)
+      function createUser(user)
       {
 
         //console.log(username,password,confPassword);
-        if(password===confPassword)
+        if(user.password===user.confPassword)
         {
           users.push({_id: (new Date).getTime()+" ",
-                 username:username,
-                  password:password,
+                 username:user.username,
+                  password:user.password,
                   firstName:"",
                   LastName:""});
          //console.log(users);

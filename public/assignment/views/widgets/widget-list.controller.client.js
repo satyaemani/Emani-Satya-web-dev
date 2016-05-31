@@ -14,8 +14,9 @@
 
     function init() {
       vm.widgets = WidgetService.findWidgetsForPageId(pageId);
-      //console.log(vm.widgets.length);
+      console.log(vm.widgets.length);
 
+     console.log(vm.widgets);
     }
 
     init();

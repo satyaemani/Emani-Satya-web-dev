@@ -25,7 +25,7 @@
     <p class="navbar-header pull-left">
       <a
         class="navbar-brand thick"
-         href="#">
+         >
         Profile
       </a>
     </p>
@@ -38,11 +38,6 @@
 
   </div>
 </nav>
-
-
-
-
-
 
 
 <div class="container">
@@ -67,7 +62,8 @@
     <!--email id-->
     <div class="form-group">
       <label for="email">Email address</label>
-      <input type="email"
+      <input ng-model="model.user.email"
+        type="email"
              class="form-control"
              id="email"
              placeholder="alice@wonderland.com">

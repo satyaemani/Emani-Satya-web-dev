@@ -14,11 +14,11 @@
     //init();
     vm.createWebsite = createWebsite;
 
-    function createWebsite(name,description){
-    console.log(developerId);
-      var website=WebsiteService.createWebsite(name,description,developerId);
+    function createWebsite(website){
+   // console.log(developerId);
+      var website=WebsiteService.createWebsite(website,developerId);
 
-      console.log(website);
+     // console.log(website);
       if(website){
       $location.url("/user/"+vm.developerId+"/website");
     }

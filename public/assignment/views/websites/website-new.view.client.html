@@ -16,14 +16,14 @@
       </div>
     <p class="navbar-header pull-left">
       <!--name of the page-->
-      <a class="navbar-brand thick" href="#">
+      <a class="navbar-brand thick" >
         New Website
       </a>
     </p>
 
     <!--OK-->
     <div class="navbar-text pull-right">
-      <a ng-click="model.createWebsite(applicationName,description)" class="navbar-link ">
+      <a ng-click="model.createWebsite(model.website)" class="navbar-link ">
           <span class="glyphicon glyphicon-ok ">
           </span>
       </a>
@@ -48,7 +48,7 @@
   <form>
     <div class="form-group">
       <label for="application name"> Name</label>
-      <input ng-model="applicationName" type="text"
+      <input ng-model="model.website.applicationName" type="text"
              class="form-control"
              id="application name"
              placeholder="Blogger">
@@ -57,7 +57,7 @@
     <!--Description of the  application-->
     <div class="form-group">
       <label for="Description"> Description</label>
-      <textarea ng-model="description" class="form-control"
+      <textarea ng-model="model.website.description" class="form-control"
                 rows="5"
                 id="Description"
                 placeholder="Description"></textarea>

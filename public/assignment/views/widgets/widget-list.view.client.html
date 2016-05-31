@@ -15,7 +15,7 @@
     <!--name of the page-->
     <p class="navbar-header pull-left">
       <a class="navbar-brand thick"
-         href="#">
+         >
         Widgets
       </a>
     </p>
@@ -38,7 +38,7 @@
 <!--LIST-->
 
 <!--Header-->
-<div class="container">
+<div class="container-fluid">
 
   <div ng-repeat="widget in model.widgets" >
     <div class="widget-tool">
@@ -54,6 +54,7 @@
 
 
     </div>
+<!---widget---->
     <div ng-switch="widget.widgetType">
       <div ng-switch-when="HEADER" ng-switch="widget.size">
         <h1 ng-switch-when="1">{{widget.text}}</h1>
@@ -76,6 +77,7 @@
         <iframe width="{{widget.width}}" ng-src="{{model.getSafeUrl(widget)}}" frameborder="0" allowfullscreen></iframe>
       </div>
 
+
       </div>
   </div>
 </div>
@@ -88,7 +90,7 @@
 
       <!--PLAY-->
     <p class="navbar-text pull-left">
-      <a href="#">
+      <a >
         <span class="glyphicon glyphicon-play "></span>
       </a>
       </p>
@@ -97,7 +99,7 @@
 
      <!---EYE--->
     <p class="navbar-text pull-left">
-      <a href="#">
+      <a >
         <span class="glyphicon glyphicon-eye-open "></span>
       </a>
   </p>

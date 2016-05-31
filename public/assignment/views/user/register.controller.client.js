@@ -7,11 +7,15 @@
   function RegisterController($location,UserService) {
     var vm = this;
 
-    vm.register = function (username,password,confPassword) {
+    vm.register = register;
 
-      var user = UserService.findUserByUsername(username);
+    function register(user) {
+
+      var person = UserService.findUserByUsername(user.username);
       //if a match occurs then say that the username already exists
-      if(user)
+      //console.log(person);
+
+      if(person)
       {
         vm.error = "Username already exists";
       }
@@ -19,7 +23,7 @@
       //or else update the array
       else
       {
-        var createUser= UserService.createUser(username,password,confPassword);
+        var createUser= UserService.createUser(user);
 
         if(createUser)
         {

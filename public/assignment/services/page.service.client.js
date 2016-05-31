@@ -69,12 +69,12 @@
       return null;
     }
 
-    function createPage(name,title,websiteId)
+    function createPage(page,websiteId)
     {
       var newPage = {
         _id: (new Date()).getTime()+"",
-        name: name,
-        title: "",
+        name: page.pageName,
+        title: page.title,
         websiteId: websiteId
       };
       pages.push(newPage);
