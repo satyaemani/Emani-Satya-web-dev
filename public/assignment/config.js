@@ -12,7 +12,8 @@
         controllerAs:"model"
      })
       .when("/",{
-        templateUrl:"views/home.html"
+        
+        redirectTo:"/login"
       })
       .when("/register",{
         templateUrl:"views/user/register.view.client.html",
