@@ -29,17 +29,17 @@
       function deleteUser(userId){}
       function createUser(user)
       {
-
         //console.log(username,password,confPassword);
         if(user.password===user.confPassword)
         {
-          users.push({_id: (new Date).getTime()+" ",
-                 username:user.username,
-                  password:user.password,
-                  firstName:"",
-                  LastName:""});
-         //console.log(users);
-          return users[users.length-1];
+          var newUser={_id: (new Date).getTime()+"",
+            username:user.username,
+            password:user.password}
+            //firstName:"",
+            //LastName:""};
+          users.push(newUser);
+
+          return newUser;
         }
         else
           return null;
@@ -68,14 +68,20 @@
       // it back to the controller
       function  findUserById(id)
       {
-        var index = -1;
+        var userId = id;
+//console.log(users);
         for(var i in users){
-          if(users[i]._id === id)
+          //console.log("in array"+users[i]._id);
+          //console.log("from controller"+userId);
+          if(users[i]._id ===userId)
           {
+            //console.log("in if");
             return users[i];
-            index=i;
+
           }
+
         }
+       // console.log("not in if");
         return null;
       }
 
