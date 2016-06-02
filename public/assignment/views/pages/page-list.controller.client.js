@@ -7,9 +7,13 @@
     var vm = this;
     vm.websiteId = $routeParams.websiteId;
     vm.userId = $routeParams.userId;
-
+    console.log(  vm.websiteId );
     function init() {
-      vm.pages =PageService.findPagesForWebsiteId(vm.websiteId);
+      PageService.findPagesForWebsiteId(vm.websiteId)
+        .then(function(response){
+
+          vm.pages = response.data;
+        });
     }
     init();
 

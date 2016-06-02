@@ -13,8 +13,8 @@
 
 
 
-    var userId = $routeParams.userId;
-
+    vm.userId = $routeParams.userId;
+    var userId = vm.userId;
 
 
     function init()

@@ -9,94 +9,47 @@
     { "_id": "543", "name": "Post 3", "websiteId": "456" }
   ];
 
-  function PageService() {
+  function PageService($http) {
 
     var api = {
       findPagesForWebsiteId: findPagesForWebsiteId,
-      createPage:createPage,
-      findPageById:findPageById,
-      deletePage:deletePage,
-      updatePage:updatePage
+      createPage: createPage,
+      findPageById: findPageById,
+      deletePage: deletePage,
+      updatePage: updatePage
     };
     return api;
 
 
-
-    function updatePage(pageId,newPage)
-    {
-      for(var i in pages)
-      {
-        if(pages[i]._id===pageId)
-        {
-          pages[i].name = newPage.name;
-          pages[i].title = newPage.description;
-          return true;
-        }
-
-      }
-      return false;
+    function updatePage(pageId, newPage) {
+      var url ="/api/page/"+pageId;
+     return $http.put(url,newPage);
 
     }
 
-    function deletePage(pageId)
-    {
-
-
-      for(var i in pages)
-      {
-        //console.log(websiteId);
-        //console.log(websites[i]._id);
-        if(pages[i]._id ===pageId) {
-
-          pages.splice(i,1);
-          return true;
-        }
-      }
-      return false;
+    function deletePage(pageId) {
+  var url= "/api/page/"+pageId;
+      return $http.delete(url);
 
     }
 
-    function  findPageById(id)
-    {
-
-      for(var i in pages){
-        if(pages[i]._id === id)
-        {
-          return pages[i];
-
-        }
-      }
-      return null;
+    function findPageById(pageId) {
+  var url ="/api/page/"+pageId;
+      return $http.get(url);
     }
 
-    function createPage(page,websiteId)
-    {
-      var newPage = {
-        _id: (new Date()).getTime()+"",
-        name: page.pageName,
-        title: page.title,
-        websiteId: websiteId
-      };
-      pages.push(newPage);
-      return newPage;
+    function createPage(page, websiteId) {
+      var url ="/api/website/"+websiteId+"/page";
+      return $http.post(url,page);
 
     }
 
-    function findPagesForWebsiteId(id)
-    {
-      var resultSet = [];
-      for(var i in pages) {
-        if(pages[i].websiteId === id) {
-          resultSet.push(pages[i]);
-        }
-      }
-      return resultSet;
+    function findPagesForWebsiteId(websiteId) {
+      var url = "/api/website/" + websiteId + "/page";
+      console.log(url);
+      return $http.get(url);
     }
-
 
 
   }
-
-
-
 })();

@@ -12,7 +12,11 @@ var websiteId = vm.websiteId;
 
 
     function init() {
-      vm.website = WebsiteService.findWebsiteById(vm.websiteId);
+      WebsiteService.findWebsiteById(vm.websiteId)
+        .then(function(response)
+        {
+          vm.website = response.data;
+        })
     }
        init();
 
@@ -21,28 +25,36 @@ var websiteId = vm.websiteId;
 
     function updateWebsite(website)
     {
-      var result = WebsiteService.updateWebsite(websiteId,website);
+     WebsiteService.updateWebsite(websiteId,website)
+       .then(function(response) {
 
-      if(result)
-      {
-        $location.url("/user/"+vm.developerId+"/website");
 
-      }
+         $location.url("/user/" + vm.developerId + "/website");
 
-      else
-      vm.notSuccess="not updated";
+       },
+         function(response){
+
+
+           vm.notSuccess="not updated";
+       })
+
+
     }
 
     function deleteWebsite(websiteId){
-      //console.log(websiteId);
-      var result = WebsiteService.deleteWebsite(websiteId);
+     WebsiteService.deleteWebsite(websiteId)
+       .then(function(response)
+       {
+         var result =response.data;
+        // console.log(result);
+         if(result){
+           $location.url("/user/"+vm.developerId+"/website");
+         }
+         else
+           vm.error="Sorry cannot delete!!";
+       })
 
-      console.log(result);
-      if(result){
-       $location.url("/user/"+vm.developerId+"/website");
-      }
-      else
-        vm.error="Sorry cannot delete!!";
+
     }
 
 

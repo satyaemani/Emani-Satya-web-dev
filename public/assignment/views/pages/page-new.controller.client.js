@@ -12,15 +12,19 @@
     vm.createPage = createPage;
 
     function createPage(page){
-      console.log(websiteId);
-      var page=PageService.createPage(page,websiteId);
+      PageService.createPage(page,websiteId)
+        .then(function(response)
+        {
+          var page= response.data;
 
-      console.log(page);
-      if(page){
-        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
-      }
-      else
-        vm.error="Sorry page not created!!";
+          if(page){
+            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+          }
+          else
+            vm.error="Sorry page not created!!";
+        })
+
+
     }
 
 

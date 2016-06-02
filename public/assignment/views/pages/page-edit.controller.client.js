@@ -11,12 +11,15 @@
     vm.updatePage = updatePage;
     vm.websiteId=$routeParams.websiteId;
     vm.userId = $routeParams.userId;
-    console.log(vm.userId);
+
     //console.log(pageId);
     function init() {
 
-      //console.log(vm.websiteId);
-      vm.page =PageService.findPageById(vm.pageId);
+
+      PageService.findPageById(vm.pageId)
+        .then(function(response){
+          vm.page =response.data;
+        })
 
     }
     init();
@@ -24,27 +27,33 @@
 
     function updatePage(newPage)
     {
-      console.log("clicked ");
-      var result = PageService.updatePage(pageId,newPage);
 
-      if(result)
-      {
-        vm.success="Updated";
-      }
+     PageService.updatePage(pageId,newPage)
+       .then(function(response) {
+           $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+       },
 
-      else
-        vm.notSuccess="not updated";
+         function(response){
+           vm.notSuccess="not updated";
+
+       })
+
+
     }
     function deletePage(pageId){
       //console.log(websiteId);
-      var result = PageService.deletePage(pageId);
+       PageService.deletePage(pageId)
+         .then(function(response)
+         {
+           $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+           },
+           function(){
 
-      console.log(result);
-      if(result){
-        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
-      }
-      else
-        vm.error="Sorry cannot delete!!";
+             vm.error="Sorry cannot delete!!";
+         })
+
+
+
     }
 
   }

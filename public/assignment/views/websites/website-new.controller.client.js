@@ -6,27 +6,22 @@
   function WebsiteNewController($location,$routeParams, WebsiteService) {
     var vm = this;
     vm.developerId = $routeParams.userId;
+
     var developerId =  vm.developerId;
 
-    //function init() {
-    //  vm.websites = WebsiteService.findWebsitesForUserId(vm.developerId);
-    //}
-    //init();
     vm.createWebsite = createWebsite;
 
     function createWebsite(website){
    // console.log(developerId);
-      var website=WebsiteService.createWebsite(website,developerId);
-
-     // console.log(website);
-      if(website){
-      $location.url("/user/"+vm.developerId+"/website");
-    }
-    else
-      vm.error="Sorry website not created!!";
+      WebsiteService.createWebsite(website,developerId)
+        .then(function(response){
+          var website = response.data;
+          if(website){
+            $location.url("/user/"+vm.developerId+"/website");
+          }
+          else
+            vm.error="Sorry website not created!!";
+        })
   }
-
-
-
   }
 })();
