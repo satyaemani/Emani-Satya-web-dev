@@ -1,19 +1,60 @@
 module.exports=function(app){
 
-
-
   var users=[
     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
     {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
     {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
   ];
-
-  app.get("/api/user",getUsers);
   app.get("/api/user/:userId",findUserById);
+  app.get("/api/user",getUsers);
+  app.post("/api/user",createUser);
+  app.put("/api/user/:userId",updateUser);
+
+
+
+  function updateUser(req,res) {
+
+    var userId = req.params.userId;
+    var newUser = req.body;
+    for (var i in users) {
+      if (users[i]._id === userId) {
+
+        users[i].firstName = newUser.firstName;
+        users[i].lastName = newUser.lastName;
+        res.send(200);
+        return;
+      }
+    }
+    res.send(400);
+  }
+
+
+
+  function createUser(req,res){
+    var user = req.body;
+
+    if(user.password===user.confPassword)
+    {
+      var newUser={_id:(new Date).getTime()+"",
+        username:user.username,
+        password:user.password}
+        //firstName:"",
+        //LastName:""};
+      users.push(newUser);
+      console.log(newUser._id);
+    res.send(newUser);
+      return;
+    }
+    else
+      res.send({});
+  }
+
+
 
 function findUserById(req,res)
   {
+
     var userId = req.params.userId;
 
     for(var i in users){
@@ -82,5 +123,9 @@ function findUserByUsernameAndPassword(username, password,res) {
   res.send({});
 
 }
+
+
+
+
 }
 

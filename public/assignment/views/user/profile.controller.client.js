@@ -12,17 +12,19 @@
     vm.updateUser = updateUser;
 
 
-    var userId = $routeParams.userId;
 
-    vm.userId = $routeParams.userId;
+    var userId = $routeParams.userId;
 
 
 
     function init()
     {
-     // console.log(vm.userId);
-      vm.user = UserService.findUserById(vm.userId);
-      //console.log(vm.user);
+
+       UserService.findUserById(userId)
+         .then(function(response){
+            vm.user = response.data;
+         })
+
     }
     init();
 
@@ -30,16 +32,17 @@
     function updateUser(newUser)
      {
 
-      var valid= UserService.updateUser(userId,newUser);
+       UserService.updateUser(userId,newUser)
+         .then(function(response) {
+
+           vm.success = "Updated";
+         },
+       function(response) {
+       vm.error = "not updated";
+
+     })
        //console.log(valid);
-       if(valid)
-       {
-         vm.success="Updated";
-       }
-       else
-       {
-         vm.error="not updated";
-       }
+
      }
 
   }

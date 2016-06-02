@@ -8,20 +8,27 @@
     var vm = this;
 
     vm.login = function (username,password) {
-  var user = UserService.findUserByUsernameAndPassword(username,password);
+   UserService.findUserByUsernameAndPassword(username,password)
+     .then(function(response){
+       console.log(response);
+       var user = response.data;
 
-      //if a mathces then navigate to that url
-      if(user)
-      {
-        $location.url("/user/"+user._id);
-      }
+       //if a mathces then navigate to that url
+       if(user)
+       {
+         $location.url("/user/"+user._id);
+       }
 
 
-    //or else print out error message
-      else
-      {
-        vm.error = "Incorrect Username or Password";
-      }
+       //or else print out error message
+       else
+       {
+         vm.error = "Incorrect Username or Password";
+       }
+
+     })
+
+
 
     }
 
