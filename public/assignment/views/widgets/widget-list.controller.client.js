@@ -7,16 +7,18 @@
     var vm = this;
     vm.pageId = $routeParams.pageId;
     var pageId = vm.pageId;
-    console.log($routeParams.pageId);
+
 
     vm.getSafeHtml=getSafeHtml;
     vm.getSafeUrl=getSafeUrl;
 
     function init() {
-      vm.widgets = WidgetService.findWidgetsForPageId(pageId);
-      console.log(vm.widgets.length);
-
-     console.log(vm.widgets);
+      WidgetService.findWidgetsForPageId(pageId)
+        .then(function(response)
+        {
+          console.log(response.data);
+          vm.widgets = response.data;
+        })
     }
 
     init();

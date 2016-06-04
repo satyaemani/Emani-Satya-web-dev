@@ -18,32 +18,71 @@
     var wImageType = "IMAGE";
     var wYoutubeType = "YOUTUBE";
 
+
+    //---------------------create header----------------------------------
     function createHeaderWidget(pageId) {
-      var newWidget = WidgetService.createWidget(pageId, wHeaderType);
-
-      if (newWidget) {
-        console.log(newWidget._id);
-        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/"+newWidget._id);
+      var newWidget={
+        _id: (new Date()).getTime()+"",
+        widgetType: wHeaderType,
+        pageId: pageId,
       }
-      else
-        vm.error = "cannot add a new widget";
-
+      WidgetService.createWidget(pageId,newWidget)
+        .then(function(response){
+          var newWidget =response.data;
+          if (newWidget) {
+            console.log(newWidget);
+            console.log(newWidget._id);
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/"+newWidget._id);
+          }
+          else
+            vm.error = "cannot add a new widget";
+        })
     }
 
+//-----------------------------------------create Image-----------------------------
 
     function createImageWidget(pageId) {
-      var newWidget = WidgetService.createWidget(pageId, wImageType);
-      if (newWidget) {
-        console.log(newWidget._id);
-        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
-      }
-      else
-        vm.error = "cannot add a new widget";
 
+      var newWidget={
+        _id: (new Date()).getTime()+"",
+        widgetType: wImageType,
+        pageId: pageId,
+      }
+       WidgetService.createWidget(pageId,newWidget)
+         .then(function(response){
+           var newWidget =response.data;
+
+           if (newWidget) {
+             console.log(newWidget._id);
+             $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+           }
+           else
+             vm.error = "cannot add a new widget";
+         })
     }
 
+    //---------------------------create Youtube-----------------------------
+
     function createYoutubeWidget(pageId) {
-      var newWidget = WidgetService.createWidget(pageId, wYoutubeType);
+      var newWidget={
+        _id: (new Date()).getTime()+"",
+        widgetType: wYoutubeType,
+        pageId: pageId,
+      }
+
+      WidgetService.createWidget(pageId,newWidget)
+        .then(function(response)
+        {
+          var newWidget = response.data;
+
+          if (newWidget) {
+            console.log(newWidget._id);
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+          }
+          else
+            vm.error = "cannot add a new widget";
+
+        })
       if (newWidget) {
         console.log(newWidget._id);
         $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);

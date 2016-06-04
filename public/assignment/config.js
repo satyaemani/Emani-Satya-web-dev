@@ -12,7 +12,7 @@
         controllerAs:"model"
      })
       .when("/",{
-        
+
         redirectTo:"/login"
       })
       .when("/register",{
@@ -68,6 +68,11 @@
       .when("/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId",{
         templateUrl:"views/widgets/widget-edit.view.client.html",
         controller:"EditWidgetController",
+        controllerAs:"model"
+      })
+      .when("/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId/flickr",{
+        templateUrl:"views/widgets/widget-flickr-search.view.client.html",
+        controller:"FlickrImageSearchController",
         controllerAs:"model"
       })
       .otherwise({

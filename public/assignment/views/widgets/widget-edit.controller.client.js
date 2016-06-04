@@ -13,7 +13,11 @@
     vm.websiteId = $routeParams.websiteId;
     function init()
     {
-      vm.widget = WidgetService.findWidgetById(vm.widgetId);
+      WidgetService.findWidgetById(vm.widgetId)
+        .then(function(response)
+        {
+          vm.widget = response.data;
+        })
     }
     init();
 
@@ -22,25 +26,24 @@
 
     function deleteWidget(widgetId)
     {
-      var result = WidgetService.deleteWidget(widgetId);
-      if(result)
-      {
-        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
-      }
-      else
-        vm.error="unable to delete";
+     WidgetService.deleteWidget(widgetId)
+       .then(function(response) {
+         $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+       },
+       function(response)
+       {
+         vm.error="unable to delete";
+       })
 
     }
-    function updateWidget(widget)
-    {
-      var result = WidgetService.updateWidget(widget,widgetId);
-
-      if(result)
-      {
-      $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
-      }
-      else
-      vm.error="unable to update";
+    function updateWidget(widget) {
+      WidgetService.updateWidget(widget, widgetId)
+        .then(function (response) {
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+          },
+          function (response) {
+            vm.error = "unable to update";
+          })
 
     }
 
