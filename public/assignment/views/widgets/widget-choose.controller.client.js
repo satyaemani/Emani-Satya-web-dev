@@ -53,7 +53,7 @@
            var newWidget =response.data;
 
            if (newWidget) {
-             console.log(newWidget._id);
+
              $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
            }
            else
