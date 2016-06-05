@@ -1,7 +1,7 @@
 module.exports=function(app) {
 
   var multer = require('multer'); // npm install multer --save
-  var upload = multer({ dest: __dirname+'/../../public/uploads' });
+  var upload = multer({ dest: __dirname+'/../../uploads' });
 var widgets = [
   { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
   { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
@@ -19,12 +19,15 @@ var widgets = [
   app.get("/api/widget/:widgetId",findWidgetById);
   app.put("/api/widget/:widgetId",updateWidget);
   app.delete("/api/widget/:widgetId",deleteWidget);
-  app.post ("/api/upload", upload.single('myFile'), uploadImage);
+  app.post("/api/upload", upload.single('myFile'), uploadImage);
 
 
 
   function uploadImage(req, res) {
     var widgetId      = req.body.widgetId;
+    var pageId      = req.body.pageId;
+    var userId      = req.body.userId;
+    var websiteId      = req.body.websiteId;
     var width         = req.body.width;
     var myFile        = req.file;
     var originalname  = myFile.originalname; // file name on user's computer
@@ -33,6 +36,16 @@ var widgets = [
     var destination   = myFile.destination;  // folder where file is saved to
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
+
+    for(var i in widgets)
+    {
+      if(widgets[i]._id===widgetId)
+      {
+        widgets[i].url="/uploads/"+filename;
+      }
+    }
+
+    res.redirect("/assignment/#/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId);
   }
 
   //-------------------------delete widget--------------------
