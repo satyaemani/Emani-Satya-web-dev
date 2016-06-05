@@ -10,11 +10,11 @@
     vm.login = function (username,password) {
    UserService.findUserByUsernameAndPassword(username,password)
      .then(function(response){
-       console.log(response);
+
        var user = response.data;
 
        //if a mathces then navigate to that url
-       if(user)
+       if(user._id)
        {
          $location.url("/user/"+user._id);
        }

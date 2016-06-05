@@ -13,10 +13,9 @@
 
        UserService.findUserByUsername(user.username)
          .then(function(response){
-           var person = response;
+           var person = response.data;
 
 
-           console.log(person);
            if(person._id)
            {
              vm.error = "Username already exists";
@@ -25,15 +24,12 @@
            //or else update the array
            else
            {
-             console.log(user);
+
              UserService.createUser(user)
                .then(
                  function (response) {
                  var createUser=response.data;
-                   console.log(createUser);
-                console.log(createUser._id);
-
-                 if(createUser)
+                 if(createUser._id)
                  {
                    $location.url("/user/"+createUser._id);
                  }

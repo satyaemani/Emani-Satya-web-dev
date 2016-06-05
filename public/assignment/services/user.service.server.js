@@ -10,7 +10,21 @@ module.exports=function(app){
   app.get("/api/user",getUsers);
   app.post("/api/user",createUser);
   app.put("/api/user/:userId",updateUser);
+  app.delete("/api/user/:userId",deleteUser);
 
+  function deleteUser(req,res)
+  {
+    var userId = req.params.userId;
+    for (var i in users) {
+      if (users[i]._id === userId)
+      {
+        users.splice(i,1);
+        res.send(200);
+        return;
+      }
+    }
+    res.send(400);
+  }
 
 
   function updateUser(req,res) {
@@ -33,6 +47,8 @@ module.exports=function(app){
 
   function createUser(req,res){
     var user = req.body;
+
+
 
     if(user.password===user.confPassword)
     {
@@ -98,6 +114,8 @@ function findUserByUsername(username,res) {
   //checking for all the users with the given username and sending
   // it back to the controller
   for (var i in users) {
+    console.log(users[i].username );
+    console.log(username);
     if (users[i].username === username) {
       res.send(users[i]);
       return;

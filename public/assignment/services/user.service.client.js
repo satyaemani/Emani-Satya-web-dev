@@ -17,7 +17,12 @@
       };
       return api;
 
-      function deleteUser(userId){}
+      function deleteUser(userId)
+      {
+        var url = "/api/user/"+userId;
+        return $http.delete(url);
+
+      }
 
 
 

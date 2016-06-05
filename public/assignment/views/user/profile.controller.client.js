@@ -6,10 +6,11 @@
 
 
 
-  function ProfileController($routeParams,UserService) {
+  function ProfileController($location,$routeParams,UserService) {
 
     var vm = this;
     vm.updateUser = updateUser;
+    vm.deleteUser = deleteUser;
 
 
 
@@ -28,6 +29,20 @@
     }
     init();
 
+    function deleteUser()
+    {
+      UserService.deleteUser(userId)
+        .then(function(response) {
+
+            $location.url("/login");
+          },
+          function(response) {
+            vm.error = "not deleted";
+
+          })
+
+    }
+
 
     function updateUser(newUser)
      {
@@ -41,7 +56,6 @@
        vm.error = "not updated";
 
      })
-       //console.log(valid);
 
      }
 

@@ -30,6 +30,13 @@ var widgets = [
     var websiteId      = req.body.websiteId;
     var width         = req.body.width;
     var myFile        = req.file;
+
+    if(myFile == null)
+    {
+      res.redirect("/assignment/#/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId);
+      return;
+    }
+
     var originalname  = myFile.originalname; // file name on user's computer
     var filename      = myFile.filename;     // new file name in upload folder
     var path          = myFile.path;         // full path of uploaded file
