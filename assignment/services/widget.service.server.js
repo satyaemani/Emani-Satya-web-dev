@@ -1,7 +1,7 @@
 module.exports=function(app) {
 
   var multer = require('multer'); // npm install multer --save
-  var upload = multer({ dest: __dirname+'/../../uploads' });
+  var upload = multer({ dest: __dirname+'/../../public/uploads' });
 var widgets = [
   { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
   { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
