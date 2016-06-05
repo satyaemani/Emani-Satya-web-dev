@@ -36,6 +36,7 @@ module.exports=function(app){
 
         users[i].firstName = newUser.firstName;
         users[i].lastName = newUser.lastName;
+        users[i].email = newUser.email;
         res.send(200);
         return;
       }
