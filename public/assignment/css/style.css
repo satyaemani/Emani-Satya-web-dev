@@ -6,6 +6,12 @@ body {
   padding-top: 60px;
   padding-bottom: 77px;
 }
+
+a
+{
+ cursor: hand;
+}
+ 
 nav.navbar{
   max-height: 32px;
 }
