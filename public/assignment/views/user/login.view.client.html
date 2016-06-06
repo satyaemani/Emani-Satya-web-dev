@@ -1,8 +1,8 @@
 
 <div class="container">
-<div ng-show="model.error" class="alert alert-danger">
+  <div ng-show="model.error" class="alert alert-danger">
     {{model.error}}
-   </div>
+  </div>
   <h1>Login</h1>
   <input ng-model="username" type="text"
          class="form-control"
@@ -11,7 +11,7 @@
          class="form-control"
          placeholder="password"/>
   <a ng-click="model.login(username,password)" class="btn btn-primary  btn-block"
-    >Login</a>
+  >Login</a>
   <a class="btn btn-success btn-block"
      href="#/register">Register</a>
 </div>

@@ -13,11 +13,54 @@
   <script   src="https://code.jquery.com/jquery-2.2.4.min.js"
             integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
             crossorigin="anonymous"></script>
-  <script src="app.js"></script>
-</head>
-<body>
-    <h1>Project Home Page</h1>
-<a href="home.html"><h2>Home page </h2></a>
 
+
+  <!--&lt;!&ndash;&#45;&#45;jquery css&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+  <!--<link href="../css/jquery-ui.css" rel="stylesheet">-->
+
+  <!--&lt;!&ndash;&#45;&#45;jquery-&ndash;&gt;-->
+
+  <!--<script src="../js/jquery.js" ></script>-->
+
+  <!--&lt;!&ndash;-jquery uI&#45;&#45;&ndash;&gt;-->
+  <!--<script src = "../js/jquery-ui.js"></script>-->
+
+  <!--CSS-->
+  <link href="css/style.css" rel="stylesheet"/>
+  <!--Angular-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+  <!--Angular Routing-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+  <!--app.js-->
+  <script src="app.js"></script>
+
+  <!--configuration-->
+  <script src="config.js"></script>
+
+  <!--&lt;!&ndash;&#45;&#45;SERVICES-&#45;&#45;&ndash;&gt;-->
+  <!--&lt;!&ndash;user service&ndash;&gt;-->
+  <!--<script src="services/user.service.client.js"></script>-->
+
+  <!--&lt;!&ndash;-CONTROLLERS&ndash;&gt;-->
+
+  <!--&lt;!&ndash;Login Controller&ndash;&gt;-->
+  <!--<script src="views/user/login.controller.client.js"></script>-->
+  <!--&lt;!&ndash;Register Controller&ndash;&gt;-->
+  <!--<script src="views/user/register.controller.client.js"></script>-->
+
+  <!--&lt;!&ndash;Profile Controller&ndash;&gt;-->
+  <!--<script src="views/user/profile.controller.client.js"></script>-->
+
+
+
+</head>
+
+
+<!--body-->
+<body class="container">
+<div ng-view>
+    <h1>Project Home Page</h1>
+<a href="views/home.view.client.html"><h2>Home page </h2></a>
+</div>
 </body>
 </html>
