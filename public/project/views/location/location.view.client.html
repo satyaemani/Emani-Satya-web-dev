@@ -1,0 +1,32 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <p class="navbar-header pull-left">
+      <a href="#/home" class="navbar-brand thick">
+        <span class="glyphicon glyphicon-home"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+<!--------------------------------------->
+
+<h1>Find Restaurants </h1>
+<p>
+<div class="input-group">
+  <input ng-model="model.searchRestaurant" type="text" class="form-control" placeholder="Location">
+    <span class="input-group-btn">
+        <a ng-click="model.findRestaurantsByLocation(model.searchRestaurant)" class="btn btn-default" type="button">
+          <span class="glyphicon glyphicon-search"></span>
+
+        </a>
+    </span>
+</div>
+
+<p>
+<div ng-repeat="restaurant in model.restaurants">
+  <a href="">{{restaurant}}</a>
+  </div>
+</p>
+
+</p>

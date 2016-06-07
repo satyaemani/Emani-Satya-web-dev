@@ -10,8 +10,10 @@ body {
 a
 {
  cursor: hand;
+  color:#ffffff;
+  text-decoration:none;
 }
- 
+
 nav.navbar{
   max-height: 32px;
 }

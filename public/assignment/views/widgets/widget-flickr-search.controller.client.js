@@ -43,9 +43,9 @@ var vm =this;
         .selectPhoto( widgetId,newWidget)
         .then(function(response)
         {
-          console.log("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/"+vm.widgetId);
+
           $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/"+vm.widgetId);
-          //$location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+
         },
         function(response)
         {

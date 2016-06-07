@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="RestaurantReservation">
 <head>
     <meta charset="UTF-8">
     <title>Project Home Page</title>
@@ -37,19 +37,24 @@
   <!--configuration-->
   <script src="config.js"></script>
 
-  <!--&lt;!&ndash;&#45;&#45;SERVICES-&#45;&#45;&ndash;&gt;-->
-  <!--&lt;!&ndash;user service&ndash;&gt;-->
-  <!--<script src="services/user.service.client.js"></script>-->
+  <!----SERVICES----->
+  <!--user service-->
+  <script src="services/user.service.client.js"></script>
+  <!--location service-->
+  <script src="services/location.service.client.js"></script>
 
-  <!--&lt;!&ndash;-CONTROLLERS&ndash;&gt;-->
+  <!---CONTROLLERS-->
 
-  <!--&lt;!&ndash;Login Controller&ndash;&gt;-->
-  <!--<script src="views/user/login.controller.client.js"></script>-->
-  <!--&lt;!&ndash;Register Controller&ndash;&gt;-->
-  <!--<script src="views/user/register.controller.client.js"></script>-->
+  <!--Login Controller-->
+  <script src="views/user/login.controller.client.js"></script>
+  <!--Register Controller-->
+  <script src="views/user/register.controller.client.js"></script>
+  <!--Profile Controller-->
+  <script src="views/user/profile.controller.client.js"></script>
 
-  <!--&lt;!&ndash;Profile Controller&ndash;&gt;-->
-  <!--<script src="views/user/profile.controller.client.js"></script>-->
+  <!--Location Controller-->
+  <script src="views/location/location.controller.client.js"></script>
+
 
 
 
@@ -59,8 +64,8 @@
 <!--body-->
 <body class="container">
 <div ng-view>
-    <h1>Project Home Page</h1>
-<a href="views/home.view.client.html"><h2>Home page </h2></a>
+
+
 </div>
 </body>
 </html>
