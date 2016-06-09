@@ -10,9 +10,8 @@
     var developerId =  vm.developerId;
 
     vm.createWebsite = createWebsite;
-
     function createWebsite(website){
-   // console.log(developerId);
+      console.log(website);
       WebsiteService.createWebsite(website,developerId)
         .then(function(response){
           var website = response.data;

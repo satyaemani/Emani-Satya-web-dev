@@ -27,7 +27,6 @@
 
     function selectPhoto(widgetId,newWidget)
     {
-      console.log("in flickr service");
       var url = "/api/widget/"+widgetId;
       return $http.put(url,newWidget);
 

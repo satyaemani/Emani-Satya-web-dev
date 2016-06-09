@@ -13,11 +13,20 @@
 
     function findRestaurantsByLocation(searchRestaurant)
     {
-      LocationService.findRestaurantsByLocation(searchRestaurant)
+      set_parameters={location:searchRestaurant};
+
+      LocationService.findRestaurantsByLocation(set_parameters)
         .then(function(response)
         {
           vm.restaurants = response.data;
         })
+
+
+      //LocationService.findRestaurantsByLocation(searchRestaurant)
+      //  .then(function(response)
+      //  {
+      //    vm.restaurants = response.data;
+      //  })
     }
 
   }

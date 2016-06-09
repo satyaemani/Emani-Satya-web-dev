@@ -1,4 +1,6 @@
-module.exports=function(app){
+module.exports=function(app,models){
+
+var userModel=models.userModel;
 
   var users=[
     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -15,15 +17,26 @@ module.exports=function(app){
   function deleteUser(req,res)
   {
     var userId = req.params.userId;
-    for (var i in users) {
-      if (users[i]._id === userId)
+    userModel
+      .deleteUser(userId)
+      .then(
+      function(stats)
       {
-        users.splice(i,1);
+        console.log(stats);
         res.send(200);
-        return;
-      }
-    }
-    res.send(400);
+      },
+      function(error){
+        res.statusCode(404).send(error);
+      });
+    //for (var i in users) {
+    //  if (users[i]._id === userId)
+    //  {
+    //    users.splice(i,1);
+    //    res.send(200);
+    //    return;
+    //  }
+    //}
+    //res.send(400);
   }
 
 
@@ -31,17 +44,29 @@ module.exports=function(app){
 
     var userId = req.params.userId;
     var newUser = req.body;
-    for (var i in users) {
-      if (users[i]._id === userId) {
 
-        users[i].firstName = newUser.firstName;
-        users[i].lastName = newUser.lastName;
-        users[i].email = newUser.email;
+    userModel
+      .updateUser(userId,newUser)
+      .then(function(stats)
+      {
         res.send(200);
-        return;
-      }
-    }
-    res.send(400);
+      },
+        function(error){
+          res.statusCode(404).send(error);
+        }
+      )
+
+    //for (var i in users) {
+    //  if (users[i]._id === userId) {
+    //
+    //    users[i].firstName = newUser.firstName;
+    //    users[i].lastName = newUser.lastName;
+    //    users[i].email = newUser.email;
+    //    res.send(200);
+    //    return;
+    //  }
+    //}
+    //res.send(400);
   }
 
 
@@ -49,22 +74,31 @@ module.exports=function(app){
   function createUser(req,res){
     var user = req.body;
 
-
-
     if(user.password===user.confPassword)
     {
-      var newUser={_id:(new Date).getTime()+"",
-        username:user.username,
-        password:user.password}
-        //firstName:"",
-        //LastName:""};
-      users.push(newUser);
-      console.log(newUser._id);
-    res.send(newUser);
-      return;
+      userModel
+        .createUser(user)
+        .then(
+          function(user)
+          {
+            console.log(user);
+            res.send(user);
+          },
+          function(error){
+            res.statusCode(404).send(error);
+          });
     }
-    else
-      res.send({});
+    res.send({});
+    return;
+    //  var newUser={_id:(new Date).getTime()+"",
+    //    username:user.username,
+    //    password:user.password}
+    //    //firstName:"",
+    //    //LastName:""};
+    //  users.push(newUser);
+    //
+    //res.send(newUser);
+    //  return;
   }
 
 
@@ -74,18 +108,29 @@ function findUserById(req,res)
 
     var userId = req.params.userId;
 
-    for(var i in users){
+    userModel
+      .findUserById(userId)
+      .then(function(user)
+        {
+          res.send(user);
+        },
+        function(error)
+        {
+          res.statusCode(404).send(error);
 
-      if(users[i]._id ===userId)
-      {
-
-        res.send(users[i]);
-        return;
-
-      }
-
-    }
-    res.send({});
+        })
+    //for(var i in users){
+    //
+    //  if(users[i]._id ===userId)
+    //  {
+    //
+    //    res.send(users[i]);
+    //    return;
+    //
+    //  }
+    //
+    //}
+    //res.send({});
   }
 
 
@@ -112,18 +157,27 @@ function findUserById(req,res)
 
 function findUserByUsername(username,res) {
 
+  userModel
+    .findUserByUsername(username)
+    .then(function(users)
+    {
+      res.send(users[0]);
+    },
+    function(error){
+      res.statusCode(404).send(error);
+    })
+
   //checking for all the users with the given username and sending
   // it back to the controller
-  for (var i in users) {
-    console.log(users[i].username );
-    console.log(username);
-    if (users[i].username === username) {
-      res.send(users[i]);
-      return;
-    }
-  }
-  //if none of them match then all of the records must be exhausted and returned null
-  res.send({});
+  //for (var i in users) {
+  //
+  //  if (users[i].username === username) {
+  //    res.send(users[i]);
+  //    return;
+  //  }
+  //}
+  ////if none of them match then all of the records must be exhausted and returned null
+  //res.send({});
 
 }
 
@@ -132,14 +186,24 @@ function findUserByUsernameAndPassword(username, password,res) {
 
   //checking for all the users with the given username and password and sending
   // it back to the controller
-  for (var i in users) {
-    if (users[i].username === username && users[i].password === password) {
-      res.send(users[i]);
-      return;
-    }
-  }
-  //if none of them match then all of the records must be exhausted and returned null
-  res.send({});
+  userModel
+    .findUserByUsernameAndPassword(username,password)
+    .then(function(user)
+    {
+      res.send(user);
+    },
+    function(error)
+    {
+      res.statusCode(404).send(error);
+    })
+  //for (var i in users) {
+  //  if (users[i].username === username && users[i].password === password) {
+  //    res.send(users[i]);
+  //    return;
+  //  }
+  //}
+  ////if none of them match then all of the records must be exhausted and returned null
+  //res.send({});
 
 }
 

@@ -24,24 +24,24 @@
            //or else update the array
            else
            {
+             console.log("in else");
 
              UserService.createUser(user)
                .then(
                  function (response) {
-                 var createUser=response.data;
+                 var createUser = response.data;
+                   console.log(response);
                  if(createUser._id)
                  {
+                   console.log(createUser)
                    $location.url("/user/"+createUser._id);
                  }
                  else
-
                  {
+                   console.log(createUser)
                    vm.error="Passwords don't match";
                  }
                })
-
-
-
 
            }
 

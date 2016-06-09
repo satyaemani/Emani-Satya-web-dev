@@ -12,6 +12,7 @@
 <!--------------------------------------->
 
 <h1>Find Restaurants </h1>
+{{model.restaurants}}
 <p>
 <div class="input-group">
   <input ng-model="model.searchRestaurant" type="text" class="form-control" placeholder="Location">
@@ -25,7 +26,7 @@
 
 <p>
 <div ng-repeat="restaurant in model.restaurants">
-  <a href="">{{restaurant}}</a>
+  <h3><a href="" class="thick">{{restaurant}}</a></h3>
   </div>
 </p>
 
