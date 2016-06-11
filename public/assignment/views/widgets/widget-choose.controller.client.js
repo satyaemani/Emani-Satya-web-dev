@@ -14,17 +14,20 @@
     vm.createHeaderWidget = createHeaderWidget;
     vm.createImageWidget = createImageWidget;
     vm.createYoutubeWidget = createYoutubeWidget;
+    vm.createHTMLWidget = createHTMLWidget;
+    vm.createTEXTWidget = createTEXTWidget;
     var wHeaderType = "HEADER";
     var wImageType = "IMAGE";
     var wYoutubeType = "YOUTUBE";
+    var wHTMLType = "HTML";
+    var wTEXTType = "TEXT";
 
 
     //---------------------create header----------------------------------
     function createHeaderWidget(pageId) {
       var newWidget={
-        _id: (new Date()).getTime()+"",
         widgetType: wHeaderType,
-        pageId: pageId,
+        _page: pageId,
       }
       WidgetService.createWidget(pageId,newWidget)
         .then(function(response){
@@ -44,9 +47,8 @@
     function createImageWidget(pageId) {
 
       var newWidget={
-        _id: (new Date()).getTime()+"",
         widgetType: wImageType,
-        pageId: pageId,
+        _page: pageId,
       }
        WidgetService.createWidget(pageId,newWidget)
          .then(function(response){
@@ -65,9 +67,8 @@
 
     function createYoutubeWidget(pageId) {
       var newWidget={
-        _id: (new Date()).getTime()+"",
         widgetType: wYoutubeType,
-        pageId: pageId,
+       _page: pageId,
       }
 
       WidgetService.createWidget(pageId,newWidget)
@@ -83,12 +84,54 @@
             vm.error = "cannot add a new widget";
 
         })
-      if (newWidget) {
-        console.log(newWidget._id);
-        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+
+
+    }
+    //---------------------------------create HTML-------------------------------
+
+    function createHTMLWidget(pageId) {
+      var newWidget={
+        widgetType: wHTMLType,
+        _page: pageId,
       }
-      else
-        vm.error = "cannot add a new widget";
+
+      WidgetService.createWidget(pageId,newWidget)
+        .then(function(response)
+        {
+          var newWidget = response.data;
+
+          if (newWidget) {
+            console.log(newWidget._id);
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+          }
+          else
+            vm.error = "cannot add a new widget";
+
+        })
+
+
+    }
+//---------------------------------create TEXT widget------------------------
+    function createTEXTWidget(pageId) {
+      var newWidget={
+        widgetType: wTEXTType,
+        _page: pageId,
+      }
+
+      WidgetService.createWidget(pageId,newWidget)
+        .then(function(response)
+        {
+          var newWidget = response.data;
+
+          if (newWidget) {
+            console.log(newWidget._id);
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+          }
+          else
+            vm.error = "cannot add a new widget";
+
+        })
+
 
     }
 

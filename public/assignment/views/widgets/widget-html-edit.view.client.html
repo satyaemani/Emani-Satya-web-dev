@@ -1,0 +1,61 @@
+<!--header-->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+
+    <!--back-->
+    <p class="navbar-text pull-left">
+      <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link ">
+          <span class="glyphicon glyphicon-chevron-left ">
+          </span>
+      </a>
+    </p>
+    <!--name of the page-->
+
+    <p class="navbar-header pull-left">
+      <a class="navbar-brand thick" >
+       HTML Widget Edit
+      </a>
+    </p>
+
+    <!--OK-->
+    <p class="navbar-text pull-right">
+      <a ng-click="model.updateWidget(model.widget)" class="navbar-link ">
+          <span class="glyphicon glyphicon-ok ">
+          </span>
+      </a>
+
+    </p>
+
+  </div>
+</nav>
+<!--header close-->
+
+
+<div ng-model="model.widget.text"
+     text-angular
+     ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+</div>
+<br/>
+<p>
+<a class="btn btn-danger btn-block"
+   ng-click="model.deleteWidget(model.widgetId)">Delete</a>
+</p>
+<!---footer-->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+
+    <!--Link to Profile-->
+    <d  iv class="row navbar-text pull-right">
+
+      <a href="#/user/{{model.userId}}">
+        <span class="glyphicon glyphicon-user "></span>
+      </a>
+
+    </div>
+  </div>
+</nav>
+<!--footer close-->
+

@@ -2,17 +2,33 @@
 <html lang="en" ng-app="RestaurantReservation">
 <head>
     <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Project Home Page</title>
   <!--Bootstrap css CDN-->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
   <!---mobile first---->
   <meta name="apple-mobile-web-app-capable" content ="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content ="black">
   <meta name="viewport" content ="initial-scale=1.25,user-scalable=no">
-  <!--jQuery-->
+ <!-- jQuery-->
   <script   src="https://code.jquery.com/jquery-2.2.4.min.js"
             integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
             crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
 
 
   <!--&lt;!&ndash;&#45;&#45;jquery css&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
@@ -43,6 +59,8 @@
   <!--location service-->
   <script src="services/location.service.client.js"></script>
 
+  <!--restaurant service-->
+  <script src="services/restaurant.service.client.js"></script>
   <!---CONTROLLERS-->
 
   <!--Login Controller-->
@@ -55,7 +73,10 @@
   <!--Location Controller-->
   <script src="views/location/location.controller.client.js"></script>
 
+  <!--Restaurant Controller-->
+  <script src="views/restaurant/restaurant.controller.client.js"></script>
 
+  <script src="./bower_components/oauth-signature/dist/oauth-signature.js"></script>
 
 
 

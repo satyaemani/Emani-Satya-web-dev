@@ -5,28 +5,30 @@
     .controller("LocationController",LocationController);
 
 
-  function LocationController($routeParams,LocationService) {
+  function LocationController($location,LocationService) {
     var vm = this;
 
 
     vm.findRestaurantsByLocation = findRestaurantsByLocation;
+    vm.findRestaurantById = findRestaurantById;
 
     function findRestaurantsByLocation(searchRestaurant)
     {
-      set_parameters={location:searchRestaurant};
 
-      LocationService.findRestaurantsByLocation(set_parameters)
+
+      LocationService.findRestaurantsByLocation(searchRestaurant)
         .then(function(response)
         {
-          vm.restaurants = response.data;
+          console.log(response.data.businesses);
+          vm.businesses = response.data.businesses;
         })
 
+    }
 
-      //LocationService.findRestaurantsByLocation(searchRestaurant)
-      //  .then(function(response)
-      //  {
-      //    vm.restaurants = response.data;
-      //  })
+    function findRestaurantById(restaurantId)
+    {
+      $location.url("/location/"+restaurantId);
+
     }
 
   }

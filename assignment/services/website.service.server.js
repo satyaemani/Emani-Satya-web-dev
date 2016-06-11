@@ -70,15 +70,25 @@ websiteModel
     var websiteId = req.params.websiteId
     var website = req.body;
 
-    for (var i in websites) {
-      if (websites[i]._id === websiteId) {
-        websites[i].name = website.name;
-        websites[i].description = website.description;
+    websiteModel
+      .updateWebsite(websiteId,website)
+      .then(function(stats)
+      {
         res.send(200);
-      }
-
-    }
-    res.send(400);
+      },
+      function(error)
+      {
+        res.statusCode.send(404);
+      })
+    //for (var i in websites) {
+    //  if (websites[i]._id === websiteId) {
+    //    websites[i].name = website.name;
+    //    websites[i].description = website.description;
+    //    res.send(200);
+    //  }
+    //
+    //}
+    //res.send(400);
 
   }
 
@@ -110,19 +120,29 @@ var websiteId =req.params.websiteId;
   {
 
     var websiteId = req.params.websiteId;
+    websiteModel
+      .deleteWebsite(websiteId)
+      .then(function(stats)
+      {
+        res.send(200)
+      },function(error)
+      {
+        res.statusCode(400).send(error);
+      })
 
-    for(var i in websites)
-    {
-      console.log(websiteId);
-      console.log(websites[i]._id);
-      if(websites[i]._id ===websiteId) {
 
-        websites.splice(i,1);
-       res.send(200);
-        return;
-      }
-    }
-    res.send({});
+    //for(var i in websites)
+    //{
+    //  console.log(websiteId);
+    //  console.log(websites[i]._id);
+    //  if(websites[i]._id ===websiteId) {
+    //
+    //    websites.splice(i,1);
+    //   res.send(200);
+    //    return;
+    //  }
+    //}
+    //res.send({});
 
   }
 

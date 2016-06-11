@@ -12,7 +12,7 @@
 <!--------------------------------------->
 
 <h1>Find Restaurants </h1>
-{{model.restaurants}}
+
 <p>
 <div class="input-group">
   <input ng-model="model.searchRestaurant" type="text" class="form-control" placeholder="Location">
@@ -24,10 +24,21 @@
     </span>
 </div>
 
-<p>
-<div ng-repeat="restaurant in model.restaurants">
-  <h3><a href="" class="thick">{{restaurant}}</a></h3>
-  </div>
-</p>
 
-</p>
+
+  <div class="container">
+  <div class="row">
+<div ng-repeat="restaurant in model.businesses" class="col-sm-3">
+  <p>
+  <h6><a ng-click="model.findRestaurantById(restaurant.id)" class="thick">{{restaurant.name}}</a></h6>
+
+  <img ng-src={{restaurant.image_url}} class="img-thumbnail">
+  <h6> Phone:{{restaurant.display_phone}}</h6>
+  <img ng-src={{restaurant.rating_img_url_small}}>
+  </p>
+  </div>
+</div>
+
+
+</div>
+</div>

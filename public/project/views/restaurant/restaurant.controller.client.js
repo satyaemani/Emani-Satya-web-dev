@@ -8,18 +8,22 @@
   function RestaurantController($routeParams,$location,RestaurantService) {
     var vm = this;
 
-    var locationId=$routeParams.locationId;
+    var restaurantId=$routeParams.restaurantId;
 
-    vm.findRestaurantByLocationId;
 
-    function findRestaurantByLocationId(locationId)
+    function init()
     {
-      LocationService.findRestaurantsByLocation(locationId)
+      console.log(restaurantId);
+      RestaurantService.findRestaurantById(restaurantId)
         .then(function(response)
         {
-          var x = response.data;
+          console.log(response.data);
+          vm.restaurant = response.data;
         })
+
     }
+init();
+
 
   }
 

@@ -13,7 +13,26 @@
 </nav>
 
 <!---------Restaurant Search-------->
-<div>
+<div class="container">
+  <img ng-src="{{model.restaurant.image_url}}" width="150px">
 
+ <h1> {{model.restaurant.name}}</h1>
+ <img ng-src="{{model.restaurant.rating_img_url_small}}">
+  <div >
+  <h2>Address:</h2>
+  <div  ng-repeat="location in model.restaurant.location.display_address">
+    {{location}}
+    </div>
+    <h2>Phone:</h2>
+    {{model.restaurant.display_phone}}
+    </div>
 
+<h2>Reviews:</h2>
+  <div ng-repeat="review in model.restaurant.reviews" >
+     <h3>{{review.user.name}}</h3>
+    <img ng-src="{{review.user.image_url}}">
+    {{review.excerpt}}
+    <img ng-src="{{review.rating_image_small_url}}">
+
+</div>
 </div>

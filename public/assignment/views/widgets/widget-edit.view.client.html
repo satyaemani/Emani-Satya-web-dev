@@ -12,12 +12,17 @@
   <div ng-switch-when="YOUTUBE">
     <ng-include src="'views/widgets/widget-youtube.view.client.html'"/>
   </div>
-
+  <div ng-switch-when="HTML">
+    <ng-include src="'views/widgets/widget-html-edit.view.client.html'"/>
+  </div>
+  <div ng-switch-when="TEXT">
+    <ng-include src="'views/widgets/widget-text-edit.view.client.html'"/>
+  </div>
   <!--<div ng-switch-default class="container">-->
     <!--<div  class="alert alert-danger">-->
       <!--<p> Unable to render</p>-->
-    <!--</div>-->
   <!--</div>-->
+  </div>
 </div>
 
 
