@@ -30,7 +30,7 @@
         var url = 'http://api.yelp.com/v2/business/'+restaurantId;
         var params = {
           // callback: 'JSONP_CALLBACK',
-          callback: 'angular.callbacks._0',
+          callback: 'angular.callbacks._1',
           oauth_consumer_key: '4cRjOPq02CMPLg_MYbgXmg', //Consumer Key
           oauth_token: 'UTzHJtkHrYrVSDmwDNAP8wAkZ1lPYtN6', //Token
           oauth_signature_method: "HMAC-SHA1",
@@ -44,14 +44,21 @@
         params['oauth_signature'] = signature;
         console.log(url);
         return $http.jsonp(url, {params: params});
-      //return  $.ajax({
-      //    'url': url,
-      //    'data':{params: params},
-      //    'cache': true,
-      //    'dataType': 'jsonp',
-      //    'jsonpCallback': 'cb',
-      //    success: callback
-      //  });
+        //.then(function (response) {
+        //  // this callback will be called asynchronously
+        //  // when the response is available
+        //
+        //  console.log(response.data);
+        //
+        //}, function (response) {
+        //  // called asynchronously if an error occurs
+        //  // or server returns response with an error status.
+        //
+        //  console.log(response.data);
+        //
+        //});
+
+
       }
 
     }
