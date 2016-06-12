@@ -22,7 +22,6 @@ var userModel=models.userModel;
       .then(
       function(stats)
       {
-        console.log(stats);
         res.send(200);
       },
       function(error){
@@ -73,6 +72,7 @@ var userModel=models.userModel;
 
   function createUser(req,res){
     var user = req.body;
+    console.log("conf password  "+user.confPassword)
 
     if(user.password===user.confPassword)
     {
@@ -88,8 +88,11 @@ var userModel=models.userModel;
             res.statusCode(404).send(error);
           });
     }
-    res.send({});
-    return;
+    else {
+      res.send({});
+      return;
+    }
+
     //  var newUser={_id:(new Date).getTime()+"",
     //    username:user.username,
     //    password:user.password}

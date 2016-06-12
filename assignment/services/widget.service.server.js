@@ -22,7 +22,25 @@ var widgets = [
   app.put("/api/widget/:widgetId",updateWidget);
   app.delete("/api/widget/:widgetId",deleteWidget);
   app.post("/api/upload", upload.single('myFile'), uploadImage);
+  app.put("/api/page/:pageId/widget",reorderWidgets);
 
+  function reorderWidgets(req,res)
+  {
+    var start = parseInt(req.query.start);
+    var stop = parseInt(req.query.end);
+    var pageId = req.params.pageId;
+    //console.log([start,stop]);
+    widgetModel.reorderWidgets(start,stop,pageId)
+      .then(function(stats)
+        {
+          res.send(200);
+        },
+        function(error)
+        {
+          res.statusCode.send(404);
+        });
+
+  }
 
 
   function uploadImage(req, res) {
@@ -220,7 +238,22 @@ widgetModel
     //res.send({});
   }
 
-//--------------------------
+//--------------------------count widgets------------------------
+
+  function countWidgetByPageId(req,res)
+  {
+    var pageId = req.params.pageId;
+
+    widgetModel
+      .countWidgetByPageId(pageId)
+      .then(function(widgets)
+      {
+        console.log(widgets);
+        res.send(widgets);
+      },function(error){
+        res.statusCode(400).send(error);
+      })
+  }
 
 
 

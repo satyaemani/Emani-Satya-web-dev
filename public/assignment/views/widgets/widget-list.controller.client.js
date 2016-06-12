@@ -11,21 +11,31 @@
 
     vm.getSafeHtml=getSafeHtml;
     vm.getSafeUrl=getSafeUrl;
-
+    vm.reorderWidgets=reorderWidgets;
     function init() {
       WidgetService.findWidgetsForPageId(pageId)
         .then(function(response)
         {
           vm.widgets = response.data;
-          $(".container")
-            .sortable({
-              axis:"y"
-            });
+
         })
 
     }
 
     init();
+
+  function reorderWidgets(start,end)
+  {
+    console.log("WidgetListController");
+    console.log(start);
+    console.log(end);
+    WidgetService
+      .reorderWidgets(pageId,start,end)
+      .then(function(response)
+      {
+        console.log(response.data);
+      })
+  }
 
     vm.userId = $routeParams.userId;
     vm.pageId = $routeParams.pageId;

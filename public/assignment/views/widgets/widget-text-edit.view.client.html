@@ -31,6 +31,23 @@
 </nav>
 <!--header close-->
 
+  <label>Text</label>
+  <input ng-model="model.widget.text" class="form-control"/>
+  <label> Rows</label>
+  <input ng-model="model.widget.rows" class="form-control" type="number"/>
+  <label> Placeholder</label>
+  <input ng-model="model.widget.placeholder" class="form-control"/>
+  <label> Formatted </label>
+  <input ng-model="model.widget.formatted" type="checkbox"/>
+
+<p>
+  <a class="btn btn-danger btn-block"
+     ng-click="model.deleteWidget(model.widgetId)">Delete</a>
+</p>
+
+
+
+
 <!---footer-->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container">

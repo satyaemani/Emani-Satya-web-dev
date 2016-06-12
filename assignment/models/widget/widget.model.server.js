@@ -9,7 +9,8 @@ module.exports = function() {
     createWidget:createWidget,
     findWidgetById:findWidgetById,
     updateWidget: updateWidget,
-    deleteWidget: deleteWidget
+    deleteWidget: deleteWidget,
+    reorderWidgets:reorderWidgets
   };
   return api;
   //$set:{//widget:widget
@@ -20,6 +21,46 @@ module.exports = function() {
   ////url:widget.url,
   ////  widgetType:widget.widgetType
   //  }
+
+
+  function reorderWidgets(start,stop,pageId)
+  {
+   return Widget.find(function(err,widgets)
+    {
+      widgets.forEach(function(widget)
+      {
+        if(start > stop)
+        {
+          if(widget.widgetNumber < start && widget.widgetNumber >= stop) {
+            widget.widgetNumber++;
+            widget.save(function(){});
+          }
+          else if(widget.widgetNumber===start) {
+            widget.widgetNumber = stop;
+
+            widget.save(function(){});
+          }
+
+        }
+        else
+        {
+          if(widget.widgetNumber>start && widget.widgetNumber<=stop)
+          {
+            widget.widgetNumber--;
+            widget.save(function(){});
+          }
+          else if(widget.widgetNumber===start)
+          {
+            widget.widgetNumber=stop;
+            widget.save(function(){});
+          }
+        }
+
+
+      });
+
+    });
+  }
 
   function updateWidget(widgetId,widget)
   {

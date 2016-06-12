@@ -50,6 +50,7 @@ div.widget-tool {
   padding-bottom: 5px;
   border-bottom-left-radius: 8px;
   opacity:0.9;
+  z-index: 2;
 }
 
 a.thick {

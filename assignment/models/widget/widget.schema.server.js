@@ -4,12 +4,21 @@ module.exports = function() {
 
   var WidgetSchema = mongoose.Schema({
     _page:{type:mongoose.Schema.ObjectId,ref:"Page"},
-    name:String,
     widgetType:String,
-    size:String,
+    name:String,
     text:String,
-    width:String,
+    placeholder:String,
+    description:String,
     url:String,
+    width:String,
+    height:String,
+    rows:Number,
+    size:Number,
+    class:String,
+    icon: String,
+    deletable:Boolean,
+    formatted: Boolean,
+    widgetNumber:Number,
     dateCreated: {type: Date, default: Date.now}
   }, {collection: "assignment.widget"});
 

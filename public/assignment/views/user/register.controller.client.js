@@ -24,7 +24,7 @@
            //or else update the array
            else
            {
-             console.log("in else");
+             console.log(user);
 
              UserService.createUser(user)
                .then(
