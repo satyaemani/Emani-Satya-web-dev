@@ -67,7 +67,7 @@ var widgets = [
     var widget =
     {
       url:"/uploads/"+filename
-    }
+    };
 
     widgetModel
       .updateWidget(widgetId,widget)

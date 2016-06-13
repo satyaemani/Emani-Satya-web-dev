@@ -57,7 +57,7 @@
 //-----------------------------------------create Image-----------------------------
 
     function createImageWidget(pageId) {
-      WidgetService. findWidgetsForPageId(pageId)
+      WidgetService.findWidgetsForPageId(pageId)
         .then(function(response) {
 
           var length= response.data.length;
