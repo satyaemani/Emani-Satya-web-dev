@@ -30,8 +30,6 @@
         .then(function(response)
         {
          var length= response.data.length;
-
-          console.log(length);
           var newWidget={
             widgetType: wHeaderType,
             _page: pageId,
