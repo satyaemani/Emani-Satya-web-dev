@@ -30,7 +30,17 @@
   </div>
 </nav>
 <!--header close-->
-
+<div class="container`">
+  <div class="form-group">
+    <label for="html">
+      Name
+    </label>
+    <input ng-model="model.widget.name"
+           type="text"
+           class="form-control"
+           id="html"
+           placeholder="htmll-123">
+  </div>
 
 <div ng-model="model.widget.text"
      text-angular
@@ -43,19 +53,21 @@
 <a class="btn btn-danger btn-block"
    ng-click="model.deleteWidget(model.widgetId)">Delete</a>
 </p>
+</div>
+
 <!---footer-->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container">
 
     <!--Link to Profile-->
-    <d  iv class="row navbar-text pull-right">
+    <div class="row navbar-text pull-right">
 
       <a href="#/user/{{model.userId}}">
         <span class="glyphicon glyphicon-user "></span>
       </a>
 
     </div>
-  </div>
+</div>
 </nav>
 <!--footer close-->
 

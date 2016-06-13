@@ -5,6 +5,7 @@ module.exports = function() {
   var Widget = mongoose.model("Widget",WidgetSchema);
 
   var api = {
+    updateDeletedWidget:updateDeletedWidget,
     findAllWidgetsForPage:findAllWidgetsForPage,
     createWidget:createWidget,
     findWidgetById:findWidgetById,
@@ -23,9 +24,26 @@ module.exports = function() {
   //  }
 
 
+  function updateDeletedWidget(pageId,deletedWidgetNumber)
+  {
+    return Widget.find({_page:pageId},function(err,widgets)
+    {
+      widgets.forEach(function(widget)
+      {
+        if(deletedWidgetNumber < widget.widgetNumber)
+        {
+          widget.widgetNumber--;
+          widget.save(function(){});
+        }
+
+      });
+    });
+
+  }
+
   function reorderWidgets(start,stop,pageId)
   {
-   return Widget.find(function(err,widgets)
+   return Widget.find({_page:pageId},function(err,widgets)
     {
       widgets.forEach(function(widget)
       {
@@ -85,8 +103,9 @@ module.exports = function() {
   {
     return Widget.findById(widgetId);
   }
-  function deleteWidget(widgetId)
+  function deleteWidget(widgetId,widgets)
   {
+    console.log(widgets);
     return Widget.remove({_id:widgetId});
   }
 

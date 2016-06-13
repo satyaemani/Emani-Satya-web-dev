@@ -151,7 +151,7 @@
 //---------------------------------create TEXT widget------------------------
     function createTEXTWidget(pageId) {
       WidgetService. findWidgetsForPageId(pageId)
-        .then(function(response) {
+          .then(function(response) {
             var length= response.data.length;
 
           var newWidget = {

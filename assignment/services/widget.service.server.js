@@ -94,15 +94,29 @@ var widgets = [
   function deleteWidget(req,res)
   {
     var widgetId = req.params.widgetId;
+    var pageId=req.query.pageId;
+    var widgetNumber=req.query.widgetNumber;
     widgetModel
-      .deleteWidget(widgetId)
+      .updateDeletedWidget(pageId,widgetNumber)
+      .then(function(widgets)
+    {
+
+    widgetModel
+      .deleteWidget(widgetId,widgets)
       .then(function(stats)
       {
         res.send(200);
       },
       function(error) {
         res.statusCode.send(error);
-      })
+      });
+    },function(error)
+      {
+        res.statusCode.send(error);
+      });
+
+
+
 
     //for(var i in widgets)
     //{

@@ -38,7 +38,17 @@
   <label> Placeholder</label>
   <input ng-model="model.widget.placeholder" class="form-control"/>
   <label> Formatted </label>
-  <input ng-model="model.widget.formatted" type="checkbox"/>
+<div class="input-group">
+  <input type="text"
+         readonly
+         value="Formatted"
+         class="form-control"/>
+    <span class="input-group-addon">
+        <input ng-model="model.widget.formatted"
+               type="checkbox"/>
+    </span>
+</div>
+
 
 <p>
   <a class="btn btn-danger btn-block"

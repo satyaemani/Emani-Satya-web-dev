@@ -25,9 +25,10 @@
         return $http.put(url);
       }
 
-      function deleteWidget(widgetId)
+      function deleteWidget(widgetId,pageId,widgetNumber)
       {
-        var url= "/api/widget/"+widgetId;
+
+        var url= "/api/widget/"+widgetId+"?pageId="+pageId+"&widgetNumber="+widgetNumber;
         return $http.delete(url);
 
 
