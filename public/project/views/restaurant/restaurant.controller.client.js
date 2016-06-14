@@ -10,6 +10,7 @@
 
     var restaurantId=$routeParams.restaurantId;
 
+    vm.date=date;
 
     function init()
     {
@@ -18,11 +19,18 @@
         .then(function(response)
         {
           vm.restaurant = response.data;
-          $('.datetimepicker').datetimepicker();
+
         })
 
     }
 init();
+
+
+    function date(date)
+    {
+      console.log(date);
+
+    }
 
 
   }

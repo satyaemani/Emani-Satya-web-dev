@@ -1,6 +1,6 @@
 (function(){
   angular
-    .module("RestaurantReservation",["ngRoute"]);
+    .module("RestaurantReservation",["ngRoute","jkuri.datepicker"]);
 
   console.log("app");
 })();

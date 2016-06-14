@@ -24,6 +24,7 @@
 
       function findRestaurantsByLocation(searchRestaurant,callback)
       {
+        console.log("In location service");
         var method = 'GET';
         var url = 'http://api.yelp.com/v2/search';
         var params = {

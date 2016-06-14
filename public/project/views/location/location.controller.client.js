@@ -14,14 +14,17 @@
 
     function findRestaurantsByLocation(searchRestaurant)
     {
-
-
+      console.log("In location controller")
       LocationService.findRestaurantsByLocation(searchRestaurant)
         .then(function(response)
         {
           console.log(response.data.businesses);
           vm.businesses = response.data.businesses;
-        })
+        },function(response)
+
+        {
+          console.log(response);
+        });
 
     }
 

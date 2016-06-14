@@ -40,7 +40,7 @@
 
   <div class="col-sm-6">
   <h2><i>Categories:</i></h2>
-  <div ng-repeat="category in model.restaurant.categories"  >
+  <div ng-repeat="category in model.restaurant.categories">
     <h3>{{category[0]}}</h3>
   </div>
     </div>
@@ -66,11 +66,13 @@
 
 </div>
 </div>
-  <div class="input-group date" >
-    <input data-provide="datetimepicker" type="text" class="form-control">
-    <div class="input-group-addon">
-      <span class="glyphicon glyphicon-th"></span>
-    </div>
-  </div>
+
+  <h4>DATE</h4>
+  <ng-datepicker ng-model="model.date1">
+  </ng-datepicker>
+
+  <a ng-click="model.date(model.date1) "class="btn btn-primary btn-block">Reserve</a>
+
+
 
 </div>
