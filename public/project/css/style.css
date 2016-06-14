@@ -60,6 +60,11 @@ div.widget-tool {
 
 a.thick {
   font-weight: bold;
+
 }
 
+div.thick {
+  font-weight: bold;
+  font-style: italic;
+}
 

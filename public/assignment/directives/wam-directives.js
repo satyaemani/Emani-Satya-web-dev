@@ -24,6 +24,8 @@
               stopIndex=ui.item.index();
               //console.log([startIndex,stopIndex]);
               console.log(myScope.data);
+              console.log(startIndex);
+              console.log(stopIndex);
               myScope.callback({start:startIndex,end:stopIndex});
              // var reorderedElement=myScope.data.splice(startIndex,1)[0];
              // console.log(reorderedElement);

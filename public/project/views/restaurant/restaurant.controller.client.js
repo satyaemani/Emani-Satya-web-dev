@@ -17,8 +17,8 @@
       RestaurantService.findRestaurantById(restaurantId)
         .then(function(response)
         {
-          console.log(response.data);
           vm.restaurant = response.data;
+          $('.datetimepicker').datetimepicker();
         })
 
     }

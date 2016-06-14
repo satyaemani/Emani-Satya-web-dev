@@ -1,38 +1,76 @@
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
+  <!--back-->
+  <p class="navbar-text pull-left">
+    <a href="#/location">
+          <span class="glyphicon glyphicon-chevron-left" data-toggle="tooltip" data-placement="top" title="Go Back">
+          </span>
+    </a>
+</p>
+
     <p class="navbar-header pull-left">
       <a  class="navbar-brand thick">
         Restaurants
 
       </a>
     </p>
+    <p class="navbar-text pull-right"  data-toggle="tooltip" data-placement="top" title="Mark Favourite">
 
+      <a >
+          <span class="glyphicon glyphicon-thumbs-up">
+          </span>
+      </a>
+    </p>
 
   </div>
 </nav>
 
 <!---------Restaurant Search-------->
 <div class="container">
+  <div class="row">
+  <div class="col-sm-6">
+    <h1> <b>{{model.restaurant.name}}</b></h1>
   <img ng-src="{{model.restaurant.image_url}}" width="150px">
+    <br/>
+    <img ng-src="{{model.restaurant.rating_img_url_small}}">
 
- <h1> {{model.restaurant.name}}</h1>
- <img ng-src="{{model.restaurant.rating_img_url_small}}">
+  </div>
+
+
+  <div class="col-sm-6">
+  <h2><i>Categories:</i></h2>
+  <div ng-repeat="category in model.restaurant.categories"  >
+    <h3>{{category[0]}}</h3>
+  </div>
+    </div>
+    </div>
+
   <div >
-  <h2>Address:</h2>
+  <h2><i>Address:</i></h2>
   <div  ng-repeat="location in model.restaurant.location.display_address">
     {{location}}
     </div>
-    <h2>Phone:</h2>
+    <h2><i>Phone:</i></h2>
     {{model.restaurant.display_phone}}
     </div>
 
-<h2>Reviews:</h2>
+<h2><i>Reviews:</i></h2>
   <div ng-repeat="review in model.restaurant.reviews" >
+    <div>
      <h3>{{review.user.name}}</h3>
     <img ng-src="{{review.user.image_url}}">
+    <br/>
     {{review.excerpt}}
     <img ng-src="{{review.rating_image_small_url}}">
 
 </div>
+</div>
+  <div class="input-group date" >
+    <input data-provide="datetimepicker" type="text" class="form-control">
+    <div class="input-group-addon">
+      <span class="glyphicon glyphicon-th"></span>
+    </div>
+  </div>
+
 </div>

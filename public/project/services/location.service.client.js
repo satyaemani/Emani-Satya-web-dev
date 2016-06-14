@@ -27,7 +27,7 @@
         var method = 'GET';
         var url = 'http://api.yelp.com/v2/search';
         var params = {
-//          callback: 'JSONP_CALLBACK',
+          //callback: 'JSONP_CALLBACK',
          callback: 'angular.callbacks._0',
           location: searchRestaurant,
           oauth_consumer_key: '4cRjOPq02CMPLg_MYbgXmg', //Consumer Key
