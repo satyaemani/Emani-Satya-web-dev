@@ -20,6 +20,10 @@
         {
           vm.restaurant = response.data;
 
+          console.log( vm.restaurant);
+        },function(response)
+        {
+          console.log( response);
         })
 
     }

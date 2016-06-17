@@ -19,6 +19,11 @@
         controller:"LocationController",
         controllerAs:"model"
       })
+      //.when("/location/:location",{
+      //  templateUrl:"views/location/locationWithRestaurants.view.client.html",
+      //  controller:"LocationWithRestaurantsController",
+      //  controllerAs:"model"
+      //})
       .when("/location/:restaurantId",{
         templateUrl:"views/restaurant/restaurant.view.client.html",
         controller:"RestaurantController",

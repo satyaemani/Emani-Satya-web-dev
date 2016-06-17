@@ -1,6 +1,9 @@
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
 module.exports=function(app,models){
 
-var userModel=models.userModel;
+  var userModel=models.userModel;
 
   var users=[
     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -10,9 +13,80 @@ var userModel=models.userModel;
   ];
   app.get("/api/user/:userId",findUserById);
   app.get("/api/user",getUsers);
+  app.get("/api/loggedIn",loggedIn);
+  app.post("/api/logout",logout);
+  app.post("/api/login",passport.authenticate('wam'),login);
   app.post("/api/user",createUser);
   app.put("/api/user/:userId",updateUser);
   app.delete("/api/user/:userId",deleteUser);
+
+  passport.use('wam',new LocalStrategy(localStrategy));
+  passport.serializeUser(serializeUser);
+  passport.deserializeUser(deserializeUser);
+
+
+
+  function localStrategy(username,password,done)
+  {
+    userModel
+      .findUserByUsernameAndPassword(username,password)
+      .then(
+        function(user)
+        {
+          if(user)
+          {
+            done(null,user);
+          }else
+          {
+            done(null,false);
+          }
+
+        },
+        function(error)
+        {
+          done(null,error);
+        });
+  }
+
+  function serializeUser(user, done) {
+    done(null, user);
+  }
+
+  function deserializeUser(user, done) {
+    userModel
+      .findUserById(user._id)
+      .then(
+        function(user){
+          done(null, user);
+        },
+        function(err){
+          done(err, null);
+        }
+      );
+  }
+
+  function loggedIn(req,res)
+  {
+    if(req.isAuthenticated())
+    {
+      res.json(req.user);
+    }
+    else
+    {
+      res.send('0');
+    }
+  }
+  function login(req,res)
+  {
+    var user = req.user;
+    res.send(user);
+  }
+
+  function logout(req,res)
+  {
+    req.logout();
+    res.send(200);
+  }
 
   function deleteUser(req,res)
   {
@@ -72,7 +146,7 @@ var userModel=models.userModel;
 
   function createUser(req,res){
     var user = req.body;
-    console.log("conf password  "+user.confPassword)
+    console.log("conf password  "+user.confPassword);
 
     if(user.password===user.confPassword)
     {
@@ -147,7 +221,7 @@ function findUserById(req,res)
 
     if(username && password)
     {
-      findUserByUsernameAndPassword(username, password,res);
+      findUserByUsernameAndPassword(username, password,req,res);
     }
     else if(username)
     {
@@ -185,7 +259,7 @@ function findUserByUsername(username,res) {
 }
 
 
-function findUserByUsernameAndPassword(username, password,res) {
+function findUserByUsernameAndPassword(username, password,req,res) {
 
   //checking for all the users with the given username and password and sending
   // it back to the controller
@@ -193,6 +267,8 @@ function findUserByUsernameAndPassword(username, password,res) {
     .findUserByUsernameAndPassword(username,password)
     .then(function(user)
     {
+      console.log(req.session);
+      req.session.currentUser=user;
       res.send(user);
     },
     function(error)
@@ -209,6 +285,7 @@ function findUserByUsernameAndPassword(username, password,res) {
   //res.send({});
 
 }
+
 
 
 

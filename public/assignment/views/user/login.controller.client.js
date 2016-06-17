@@ -8,7 +8,7 @@
     var vm = this;
 
     vm.login = function (username,password) {
-   UserService.findUserByUsernameAndPassword(username,password)
+   UserService.login(username,password)
      .then(function(response){
 
        var user = response.data;

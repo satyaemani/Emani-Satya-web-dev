@@ -1,19 +1,15 @@
-(
-  function(){
+(function(){
     angular
       .module("RestaurantReservation")
       .factory("LocationService",LocationService);
 
 
     function LocationService($http) {
+
       var api = {
         findRestaurantsByLocation: findRestaurantsByLocation,
-
       };
-
       return api;
-
-
 
       function randomString(length, chars) {
         var result = '';
@@ -24,13 +20,17 @@
 
       function findRestaurantsByLocation(searchRestaurant,callback)
       {
-        console.log("In location service");
+
+        var index = angular.callbacks.counter.toString(36);
         var method = 'GET';
         var url = 'http://api.yelp.com/v2/search';
         var params = {
-          //callback: 'JSONP_CALLBACK',
-         callback: 'angular.callbacks._0',
+          //callback: 'JSON_CALLBACK',
+         // callback: 'ewq',
+          callback: 'angular.callbacks._'+index,
           location: searchRestaurant,
+          limit:20,
+          offset:20,
           oauth_consumer_key: '4cRjOPq02CMPLg_MYbgXmg', //Consumer Key
           oauth_token: 'UTzHJtkHrYrVSDmwDNAP8wAkZ1lPYtN6', //Token
           oauth_signature_method: "HMAC-SHA1",
@@ -42,18 +42,19 @@
         var tokenSecret = 'SxoQ7g0RzMMw2eqihgdJiVi4rbU'; //Token Secret
         var signature = oauthSignature.generate(method, url, params, consumerSecret, tokenSecret, { encodeSignature: false});
         params['oauth_signature'] = signature;
-       return $http.jsonp(url, {params: params});
-          //.then(function (response) {
+        index++;
+         return $http.jsonp(url, {params: params});
+          //  .then(function (response) {
           //  // this callback will be called asynchronously
           //  // when the response is available
+          //  console.log(response);
           //
-          //  console.log(response.data);
           //
           //}, function (response) {
           //  // called asynchronously if an error occurs
           //  // or server returns response with an error status.
           //
-          //  console.log(response.data);
+          //  console.log(response);
           //
           //});
 
@@ -61,4 +62,11 @@
 
 
     }
+
   })();
+
+//function ewq(response)
+//{
+//  console.log(response);
+//}
+

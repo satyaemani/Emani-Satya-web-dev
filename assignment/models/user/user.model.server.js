@@ -50,6 +50,6 @@ module.exports = function() {
 
   function findUserByUsernameAndPassword(username,password)
   {
-    return User.findOne({username:username},{password:password});
+    return User.findOne({username: username,password: password});
   }
 }

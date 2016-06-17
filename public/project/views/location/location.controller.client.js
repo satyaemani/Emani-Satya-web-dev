@@ -7,18 +7,23 @@
 
   function LocationController($location,LocationService) {
     var vm = this;
-
+    var index=0;
+//    function init()
+//    {
+//      index=0;
+//    }
+//init();
 
     vm.findRestaurantsByLocation = findRestaurantsByLocation;
     vm.findRestaurantById = findRestaurantById;
 
     function findRestaurantsByLocation(searchRestaurant)
     {
-      console.log("In location controller")
+
       LocationService.findRestaurantsByLocation(searchRestaurant)
         .then(function(response)
         {
-          console.log(response.data.businesses);
+          console.log(response.data);
           vm.businesses = response.data.businesses;
         },function(response)
 

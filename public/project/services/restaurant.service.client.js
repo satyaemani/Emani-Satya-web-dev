@@ -5,7 +5,9 @@
       .factory("RestaurantService",RestaurantService);
 
 
+
     function RestaurantService($http) {
+      var j=1;
       var api = {
 
         findRestaurantById: findRestaurantById
@@ -25,12 +27,12 @@
 
 
       function findRestaurantById(restaurantId,callback) {
-
+        var index = angular.callbacks.counter.toString(36);
         var method = 'GET';
         var url = 'http://api.yelp.com/v2/business/'+restaurantId;
         var params = {
           // callback: 'JSONP_CALLBACK',
-          callback: 'angular.callbacks._1',
+          callback: 'angular.callbacks._'+index,
           oauth_consumer_key: '4cRjOPq02CMPLg_MYbgXmg', //Consumer Key
           oauth_token: 'UTzHJtkHrYrVSDmwDNAP8wAkZ1lPYtN6', //Token
           oauth_signature_method: "HMAC-SHA1",
@@ -42,19 +44,21 @@
         var tokenSecret = 'SxoQ7g0RzMMw2eqihgdJiVi4rbU'; //Token Secret
         var signature = oauthSignature.generate(method, url, params, consumerSecret, tokenSecret, {encodeSignature: false});
         params['oauth_signature'] = signature;
-        console.log(url);
+       j++;
+        console.log("in ");
+
         return $http.jsonp(url, {params: params});
         //.then(function (response) {
         //  // this callback will be called asynchronously
         //  // when the response is available
         //
-        //  console.log(response.data);
+        //  console.log(response);
         //
         //}, function (response) {
         //  // called asynchronously if an error occurs
         //  // or server returns response with an error status.
         //
-        //  console.log(response.data);
+        //  console.log(response);
         //
         //});
 
