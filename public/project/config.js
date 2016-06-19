@@ -12,9 +12,11 @@
         controllerAs:"model"
       })
       .when("/home",{
-        templateUrl:"views/home.view.client.html"
+        templateUrl:"views/home.view.client.html",
+        controller:"HomeController",
+        controllerAs:"model"
       })
-      .when("/location",{
+      .when("/location/:location",{
         templateUrl:"views/location/location.view.client.html",
         controller:"LocationController",
         controllerAs:"model"
@@ -24,7 +26,7 @@
       //  controller:"LocationWithRestaurantsController",
       //  controllerAs:"model"
       //})
-      .when("/location/:restaurantId",{
+      .when("/location/:location/:restaurantId",{
         templateUrl:"views/restaurant/restaurant.view.client.html",
         controller:"RestaurantController",
         controllerAs:"model"

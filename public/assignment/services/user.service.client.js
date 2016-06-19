@@ -7,7 +7,8 @@
 
     function UserService($http) {
       var api = {
-        createUser:createUser,
+       // createUser:createUser,
+        register: register,
         login:login,
         findUserByUsernameAndPassword: findUserByUsernameAndPassword,
         findUserByUsername:findUserByUsername,
@@ -49,7 +50,7 @@
 
 
 
-      function createUser(user)
+      function register(user)
       {
 //console.log(user);
         return $http.post("/api/user",user);

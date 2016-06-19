@@ -20,7 +20,7 @@
         controller:"RegisterController",
         controllerAs:"model"
       })
-      .when("/user/:userId",{
+      .when("/user",{
         templateUrl:"views/user/profile.view.client.html",
         controller:"ProfileController",
         controllerAs:"model",
@@ -84,8 +84,9 @@
       });
 
 
-    function checkLoggedIn(UserService,$location,$q)
+    function checkLoggedIn(UserService,$location,$q,$rootScope)
     {
+      console.log("in check logged in");
       var deferred = $q.defer();
        UserService.loggedIn()
         .then(function(response)
@@ -95,10 +96,13 @@
           if(user=='0')
           {
             console.log("reject");
+            $rootScope.currentUser=null;
             deferred.reject();
             $location.url("/login");
           }
           else{
+            console.log("resolved");
+            $rootScope.currentUser=user;
             deferred.resolve();
           }
         },

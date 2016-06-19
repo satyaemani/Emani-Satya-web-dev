@@ -9,6 +9,7 @@
     var vm = this;
 
     var restaurantId=$routeParams.restaurantId;
+    vm.location=$routeParams.location;
 
     vm.date=date;
 

@@ -11,42 +11,61 @@
 
     function register(user) {
 
-       UserService.findUserByUsername(user.username)
-         .then(function(response){
-           var person = response.data;
+      if(user.password!==user.confPassword)
+      {
+        vm.passerr="Passwords Do not match";
+
+      }
+       //UserService.findUserByUsername(user.username)
+       //  .then(function(response){
+       //    var person = response.data;
+       //
+       //
+       //    if(person._id)
+       //    {
+       //      vm.error = "Username already exists";
+       //    }
+       //
+       //    //or else update the array
+       //    else
+       //    {
+             //console.log(user);
+
+       else {
+        UserService.register(user)
+          .then(
+            function (response) {
+              var createUser = response.data;
+              console.log(createUser);
+
+              if (createUser) {
+                console.log("in if");
+                $location.url("/user");
+              }
+            },
+            function (err) {
+              vm.error = err;
+            }
 
 
-           if(person._id)
-           {
-             vm.error = "Username already exists";
-           }
 
-           //or else update the array
-           else
-           {
-             console.log(user);
+            //if(createUser._id)
+            //{
+            //  console.log(createUser)
+            //  $location.url("/user/"+createUser._id);
+            //}
+            //else
+            //{
+            //  console.log(createUser)
+            //  vm.error="Passwords don't match";
+            //}}
+          );
 
-             UserService.createUser(user)
-               .then(
-                 function (response) {
-                 var createUser = response.data;
-                   console.log(response);
-                 if(createUser._id)
-                 {
-                   console.log(createUser)
-                   $location.url("/user/"+createUser._id);
-                 }
-                 else
-                 {
-                   console.log(createUser)
-                   vm.error="Passwords don't match";
-                 }
-               })
+        // }
 
-           }
+        //  })
 
-         })
-
+      }
     }
 
 

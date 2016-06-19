@@ -9,24 +9,22 @@
 
     vm.login = function (username,password) {
    UserService.login(username,password)
-     .then(function(response){
+     .then(function(response) {
 
        var user = response.data;
 
        //if a mathces then navigate to that url
-       if(user._id)
-       {
-         $location.url("/user/"+user._id);
+       if (user._id) {
+         $location.url("/user" );
        }
+     },function(err){
 
 
        //or else print out error message
-       else
-       {
-         vm.error = "Incorrect Username or Password";
-       }
+       vm.error = err;
 
-     })
+
+     });
 
 
 

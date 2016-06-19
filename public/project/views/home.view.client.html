@@ -48,6 +48,14 @@
 </nav>
 <!---------Restaurant Search-------->
 <div>
-  <a class="btn btn-success btn-block"
-     href="#/location">Find Restaurants</a>
+  <div class="input-group">
+    <input ng-model="model.searchRestaurant" type="text" class="form-control" placeholder="Location">
+    <span class="input-group-btn">
+        <a ng-click="model.findRestaurants(model.searchRestaurant)" class="btn btn-default" type="button">
+          <span class="glyphicon glyphicon-search"></span>
+
+        </a>
+    </span>
+  </div>
+
 </div>

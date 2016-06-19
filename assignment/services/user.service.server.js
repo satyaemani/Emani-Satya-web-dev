@@ -1,39 +1,84 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var bcrypt = require('bcrypt-nodejs');
+var FacebookStrategy = require('passport-facebook').Strategy;
+
 
 module.exports=function(app,models){
 
   var userModel=models.userModel;
 
-  var users=[
-    {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-    {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-    {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-    {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-  ];
+
+  app.get("/auth/facebook", passport.authenticate('facebook'));
+  app.get("/auth/facebook/callback", passport.authenticate('facebook', {
+    successRedirect: '/assignment/#/user',
+    failureRedirect: '/assignment/#/login'
+  }));
   app.get("/api/user/:userId",findUserById);
   app.get("/api/user",getUsers);
   app.get("/api/loggedIn",loggedIn);
   app.post("/api/logout",logout);
+  app.post("/api/user",register);
   app.post("/api/login",passport.authenticate('wam'),login);
-  app.post("/api/user",createUser);
+ // app.post("/api/user",createUser);
   app.put("/api/user/:userId",updateUser);
   app.delete("/api/user/:userId",deleteUser);
+
 
   passport.use('wam',new LocalStrategy(localStrategy));
   passport.serializeUser(serializeUser);
   passport.deserializeUser(deserializeUser);
 
 
+  var facebookConfig = {
+    clientID     : process.env.FACEBOOK_CLIENT_ID,
+    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+    callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+    //FACEBOOK_CALLBACK_URL  : "http://127.0.0.1:3000/auth/facebook/callback",
+    //FACEBOOK_CLIENT_ID   : "1812219052343494",
+    //FACEBOOK_CLIENT_SECRET : "1003457cecc39def13b74ea952a51bb9",
+  };
+
+  passport.use('facebook',new FacebookStrategy(facebookConfig,facebookLogin));
+
+  function facebookLogin(token, refreshToken, profile, done)
+  {
+    console.log(profile);
+    userModel.findFaceBookUser(profile.id)
+      .then(function(faceBookUser)
+      {
+        if(faceBookUser) {
+          done(null,faceBookUser);
+        }
+        else{
+          faceBookUser={
+            username:profile.displayName.replace(/ /g,''),
+          facebook:{
+            token:token,
+              displayName:profile.displayName,
+              id:profile.id
+          }
+          };
+          userModel.createUser(faceBookUser)
+            .then(function(user){
+              done(null,user);
+            })
+
+        }
+      });
+  }
+
+
 
   function localStrategy(username,password,done)
   {
     userModel
-      .findUserByUsernameAndPassword(username,password)
+      .findUserByUsername(username)
       .then(
         function(user)
         {
-          if(user)
+
+          if(user && bcrypt.compareSync(password,user.password))
           {
             done(null,user);
           }else
@@ -86,6 +131,45 @@ module.exports=function(app,models){
   {
     req.logout();
     res.send(200);
+  }
+  function register(req,res)
+  {
+    var username = req.body.username;
+    var password = req.body.password;
+    userModel.findUserByUsername(username)
+      .then(function(user)
+      {
+        if(user)
+        {
+          res.status(400).send("username already in use");
+          return;
+        }else{
+          req.body.password=bcrypt.hashSync(req.body.password);
+          return userModel.createUser(req.body);
+        }
+
+      },function(err)
+      {
+        res.statusCode(400).send(err);
+      })
+      .then(function(user) {
+        if(user)
+      {
+        req.login(user,function(err)
+        {
+          if(err)
+          {
+            res.status(400).send(err);
+          }else{
+            res.json(user);
+          }
+        })
+      }
+      },function(err)
+      {
+        res.statusCode(400).send(err);
+      });
+
   }
 
   function deleteUser(req,res)

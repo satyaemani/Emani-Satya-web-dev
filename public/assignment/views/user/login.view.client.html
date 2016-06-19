@@ -1,7 +1,7 @@
 
 <div class="container">
   <div ng-show="model.error" class="alert alert-danger">
-    {{model.error}}
+    {{model.error.data}}
   </div>
   <h1>Login</h1>
   <input ng-model="username" type="text"
@@ -10,8 +10,11 @@
   <input ng-model="password" type="password"
          class="form-control"
          placeholder="password"/>
-  <a ng-click="model.login(username,password)" class="btn btn-primary  btn-block"
-  >Login</a>
+  <a ng-click="model.login(username,password)" class="btn btn-primary  btn-block">Login</a>
   <a class="btn btn-success btn-block"
      href="#/register">Register</a>
+
+  <a href= "/auth/facebook" class="btn btn-primary btn-block">Login with Facebook
+  <span class="fa fa-facebook-official"></span>
+  </a>
 </div>

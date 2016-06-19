@@ -1,10 +1,14 @@
 
 <div class="container">
 
-  <div ng-show="model.error" class="alert alert-danger">
-    {{model.error}}
+  <div ng-show="model.passerr" class="alert alert-danger">
+    {{model.passerr}}
   </div>
 
+  <div ng-show="model.error" class="alert alert-danger">
+    {{model.error.data}}
+  </div>
+<form name="registerForm" no-validate>
   <h1>Register</h1>
   <input ng-model="model.user.username" type="text"
          class="form-control"
@@ -18,5 +22,7 @@
   <a ng-click="model.register(model.user) "class="btn btn-primary btn-block" >Register</a>
   <a class="btn btn-danger  btn-block"
      href="#/login">Cancel</a>
+  </form>
+  {{registerForm}}
 </div>
 
