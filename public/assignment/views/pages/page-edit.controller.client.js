@@ -28,15 +28,20 @@
     function updatePage(newPage)
     {
 
-     PageService.updatePage(pageId,newPage)
-       .then(function(response) {
-           $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
-       },
+        if(!newPage||!newPage.name){
+          vm.err="Page Name is Mandatory"
+        }
+        else {
+          PageService.updatePage(pageId, newPage)
+            .then(function (response) {
+                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+              },
 
-         function(response){
-           vm.notSuccess="not updated";
+              function (response) {
+                vm.notSuccess = "not updated";
 
-       })
+              });
+        }
 
 
     }

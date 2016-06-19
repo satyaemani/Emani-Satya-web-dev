@@ -36,6 +36,10 @@
 <!--FORM-->
 <div class="container">
 
+  <p ng-show="model.err" class="alert alert-danger">
+    {{model.err}}
+  </p>
+
   <div ng-show="model.success" class="alert alert-success">
     {{model.success}}
   </div>
@@ -45,13 +49,18 @@
   </div>
 
 <!--Name of the new application-->
-  <form>
+  <form name="websiteForm" novalidate>
     <div class="form-group">
       <label for="application name"> Name</label>
-      <input ng-model="model.website.name" type="text"
+      <input  ng-model="model.website.name"
+             type="text"
              class="form-control"
              id="application name"
-             placeholder="Blogger">
+             placeholder="Blogger" required>
+      <p ng-show="model.err" >
+        {{model.err}}
+      </p>
+
     </div>
 
     <!--Description of the  application-->

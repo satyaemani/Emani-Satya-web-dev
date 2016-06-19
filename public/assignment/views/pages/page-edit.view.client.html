@@ -39,7 +39,11 @@
   </div>
 
   <div ng-show="model.error" class="alert alert-danger">
-    {{model.error}}
+  {{model.error}}
+</div>
+
+  <div ng-show="model.err" class="alert alert-danger">
+    {{model.err}}
   </div>
 
   <div ng-show="model.notSuccess" class="alert alert-danger">
@@ -53,7 +57,10 @@
       <input ng-model="model.page.name" type="text"
              class="form-control"
              id="post name"
-             placeholder="Blog Post">
+             placeholder="Blog Post" required>
+      <p ng-show="model.err" >
+        {{model.err}}
+      </p>
     </div>
     <!--Title of the application-->
     <div class="form-group">

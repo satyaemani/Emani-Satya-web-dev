@@ -35,7 +35,9 @@
 <!--FORM-->
 <div class="container">
 
-
+  <div ng-show="model.err" class="alert alert-danger">
+    {{model.err}}
+  </div>
   <div ng-show="model.success" class="alert alert-success">
     {{model.success}}
   </div>
@@ -55,7 +57,10 @@
       <input ng-model="model.website.name" type="text"
              class="form-control"
              id="application name"
-             placeholder="Blogger">
+             placeholder="Blogger" required>
+      <p ng-show="model.err" >
+        {{model.err}}
+      </p>
     </div>
     <!--Description of the  application-->
     <div class="form-group">

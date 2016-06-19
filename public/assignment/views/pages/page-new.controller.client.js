@@ -12,17 +12,21 @@
     vm.createPage = createPage;
 
     function createPage(page){
-      PageService.createPage(page,websiteId)
-        .then(function(response)
-        {
-          var page= response.data;
+      if(!page||!page.name){
+        vm.err="Page Name is Mandatory"
+      }
+      else {
+        PageService.createPage(page, websiteId)
+          .then(function (response) {
+            var page = response.data;
 
-          if(page){
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
-          }
-          else
-            vm.error="Sorry page not created!!";
-        })
+            if (page) {
+              $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+            }
+            else
+              vm.error = "Sorry page not created!!";
+          });
+      }
 
 
     }

@@ -10,8 +10,13 @@
     var developerId =  vm.developerId;
 
     vm.createWebsite = createWebsite;
+
     function createWebsite(website){
-      console.log(website);
+      if(!website||!website.name){
+        vm.err="Website Name is Mandatory"
+      }
+      else{
+
       WebsiteService.createWebsite(website,developerId)
         .then(function(response){
           var website = response.data;
@@ -20,7 +25,8 @@
           }
           else
             vm.error="Sorry website not created!!";
-        })
+        });
   }
+    }
   }
 })();

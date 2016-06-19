@@ -39,20 +39,20 @@
 
     }
     function updateWidget(widget) {
-      WidgetService.updateWidget(widget, widgetId)
-        .then(function (response) {
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-          },
-          function (response) {
-            vm.error = "unable to update";
-          })
+      if(!widget||!widget.name){
+        vm.err="widget Name is Mandatory"
+      }
+      else {
+        WidgetService.updateWidget(widget, widgetId)
+          .then(function (response) {
+              $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+            },
+            function (response) {
+              vm.error = "unable to update";
+            });
+      }
 
     }
-
-
-
-
-
 
   }
 })();

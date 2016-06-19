@@ -1,3 +1,11 @@
+form{
+  margin-bottom:5px;
+}
+input.ng-invalid
+{
+  background-color:#7FFFD4;
+}
+
 input.form-control {
   margin-bottom: 5px;
 }
@@ -13,7 +21,10 @@ a
 
   text-decoration:none;
 }
-
+div.ng.click
+{
+  cursor: hand;
+}
 nav.navbar{
   max-height: 32px;
 }

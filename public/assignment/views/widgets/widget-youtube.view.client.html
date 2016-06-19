@@ -37,6 +37,9 @@
   <div ng-show="model.error" class="alert alert-danger">
     {{model.error}}
   </div>
+  <div ng-show="model.err" class="alert alert-danger">
+    {{model.err}}
+  </div>
   <!--Name of the new application-->
   <form>
     <div class="form-group">
@@ -45,7 +48,10 @@
             type="text"
              class="form-control"
              id="post name"
-             placeholder="youtube video">
+             placeholder="youtube video" required>
+      <p ng-show="model.err" >
+        {{model.err}}
+      </p>
     </div>
     <!--Text-->
     <div class="form-group">

@@ -25,20 +25,23 @@ var websiteId = vm.websiteId;
     vm.updateWebsite= updateWebsite;
 
     function updateWebsite(website)
-    {
-     WebsiteService.updateWebsite(websiteId,website)
-       .then(function(response) {
+    {if(!website||!website.name){
+      vm.err="Website Name is Mandatory"
+    }
+    else {
+      WebsiteService.updateWebsite(websiteId, website)
+        .then(function (response) {
 
 
-         $location.url("/user/" + vm.developerId + "/website");
+            $location.url("/user/" + vm.developerId + "/website");
 
-       },
-         function(response){
+          },
+          function (response) {
 
 
-           vm.notSuccess="not updated";
-       })
-
+            vm.notSuccess = "not updated";
+          });
+    }
 
     }
 

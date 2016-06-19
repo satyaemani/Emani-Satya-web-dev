@@ -30,7 +30,11 @@
   </div>
 </nav>
 <!--header close-->
-<div class="container`">
+<div class="container">
+  <div ng-show="model.err" class="alert alert-danger">
+    {{model.err}}
+  </div>
+
   <div class="form-group">
     <label for="html">
       Name
@@ -39,7 +43,10 @@
            type="text"
            class="form-control"
            id="html"
-           placeholder="htmll-123">
+           placeholder="htmll-123" required>
+    <p ng-show="model.err" >
+      {{model.err}}
+    </p>
   </div>
 
 <div ng-model="model.widget.text"

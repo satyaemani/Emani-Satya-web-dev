@@ -30,9 +30,14 @@
   </div>
 </nav>
 <!--header close-->
-
+<div ng-show="model.err" class="alert alert-danger">
+  {{model.err}}
+</div>
 <label>Name</label>
-<input ng-model="model.widget.name" class="form-control"/>
+<input ng-model="model.widget.name" class="form-control" required/>
+<p ng-show="model.err" >
+  {{model.err}}
+</p>
 
 <label>Text</label>
   <input ng-model="model.widget.text" class="form-control"/>

@@ -36,8 +36,12 @@
   <div ng-show="model.error" class="alert alert-danger">
     {{model.error}}
   </div>
+
+  <div ng-show="model.err" class="alert alert-danger">
+    {{model.err}}
+  </div>
   <!--Name of the new application-->
-  <form>
+  <form name="widget" novalidate>
     <div class="form-group">
       <label for="post name">
         Name
@@ -46,7 +50,10 @@
         type="text"
         class="form-control"
         id="post name"
-        placeholder="heading name">
+        placeholder="heading name" required>
+      <p ng-show="model.err" >
+        {{model.err}}
+      </p>
     </div>
 
     <!--Text-->

@@ -34,6 +34,9 @@
 
 <!--FORM-->
 <div class="container">
+  <div ng-show="model.err" class="alert alert-danger">
+    {{model.err}}
+  </div>
   <div ng-show="model.success" class="alert alert-success">
     {{model.success}}
   </div>
@@ -45,8 +48,16 @@
   <!--Name of the page-->
   <form>
     <div class="form-group">
-      <label for="page name"> Name</label>
-      <input  ng-model="model.page.name" type="text" class="form-control" id="page name" placeholder="Page Name">
+      <label for="pageName"> Name</label>
+      <input
+             ng-model="model.page.name"
+              type="text"
+              class="form-control"
+              id="pageName"
+              placeholder="Page Name" required>
+      <p ng-show="model.err" >
+        {{model.err}}
+      </p>
     </div>
 
     <!--Title-->

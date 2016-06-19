@@ -16,6 +16,10 @@
         vm.passerr="Passwords Do not match";
 
       }
+      else if(!user.password||!user.confPassword)
+      {
+        vm.passnull="password and verify password are mandatory"
+      }
        //UserService.findUserByUsername(user.username)
        //  .then(function(response){
        //    var person = response.data;
