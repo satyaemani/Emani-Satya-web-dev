@@ -26,7 +26,7 @@
     <!--&lt;!&ndash;</p>&ndash;&gt;-->
   <!--</div>-->
 <!--</nav>-->
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav  class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -38,14 +38,17 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#/login">login as costumer</a></li>
-        <li><a href="#/login">login as manager</a></li>
+        <li ng-hide="currentuser"><a href="#/login">login as costumer</a></li>
+        <li ng-hide="currentuser"><a href="#/login">login as manager</a></li>
 
 
       </ul>
     </div>
+
   </div>
 </nav>
+
+
 <!---------Restaurant Search-------->
 <div>
   <div class="input-group">

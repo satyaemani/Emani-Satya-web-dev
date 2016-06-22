@@ -1,0 +1,63 @@
+
+<!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
+<!--<div class="container">-->
+<!--<p class="navbar-header pull-left">-->
+<!--<a  class="navbar-brand thick">-->
+<!--Restaurant Reservation-->
+
+<!--</a>-->
+<!--</p>-->
+
+
+<!--<p class="navbar-text pull-right">-->
+
+
+<!--<a href="#/login">Login as Customer</a>-->
+<!--&lt;!&ndash;<a ng-click="model.updateUser(model.user)" class="navbar-link ">&ndash;&gt;-->
+<!--&lt;!&ndash;<span class="glyphicon glyphicon-ok ">&ndash;&gt;-->
+<!--&lt;!&ndash;</span></a>&ndash;&gt;-->
+<!--</p>-->
+<!--<p class="navbar-text pull-right">-->
+<!--<a href="#/login">Login as Manager</a>-->
+<!--&lt;!&ndash;&lt;!&ndash;<a ng-click="model.updateUser(model.user)" class="navbar-link ">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<span class="glyphicon glyphicon-ok ">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;</p>&ndash;&gt;-->
+<!--</div>-->
+<!--</nav>-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand thick" href="#/loggedIn"> RR  </a>
+    </div>
+
+
+    <div  class="navbar-text pull-right"  data-toggle="tooltip" data-placement="top" title="Mark Favourite">
+
+      <a ng-click="model.logout()">
+          <span class="glyphicon glyphicon-log-out">
+          </span>
+      </a>
+    </div>
+
+    <div class="navbar-text pull-right"  data-toggle="tooltip" data-placement="top" title="Mark Favourite">
+      {{model.user.username}}
+    </div>
+
+  </div>
+</nav>
+<!---------Restaurant Search-------->
+<div class="container">
+
+  <div class="input-group">
+    <input ng-model="model.searchRestaurant" type="text" class="form-control" placeholder="Location">
+    <span class="input-group-btn">
+        <a ng-click="model.findRestaurants(model.searchRestaurant)" class="btn btn-default" type="button">
+          <span class="glyphicon glyphicon-search"></span>
+
+        </a>
+    </span>
+  </div>
+
+</div>

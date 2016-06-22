@@ -1,0 +1,49 @@
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <p class="navbar-header pull-left">
+      <a
+        class="navbar-brand thick"
+      >
+       My Reservations
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+<table class="table">
+  <th>User Name</th>
+  <th>Restaurant Name</th>
+  <th>Date</th>
+  <th>Time</th>
+  <th>No.of People</th>
+  <th>Phone Number</th>
+  <tr ng-repeat="reservation in model.reservations">
+    <td>{{reservation.username}}</td>
+    <td>{{reservation.restaurantName}}</td>
+    <td>{{reservation.date}}</td>
+    <td>{{reservation.time}}</td>
+    <td>{{reservation.noOfPeople}}</td>
+    <td>{{reservation.phone}}</td>
+
+  </tr>
+
+
+  </table>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <div class="row navbar-text pull-right">
+
+      <a href="#/user/">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+
+    </div>
+  </div>
+</nav>
+

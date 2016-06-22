@@ -9,7 +9,21 @@
       .when("/login",{
         templateUrl:"views/user/login.view.client.html",
         controller:"LoginController",
-        controllerAs:"model"
+        controllerAs:"model",
+        resolve:
+        {
+          loggedIn:getLoggedIn
+        }
+
+      })
+      .when("/loggedIn",{
+        templateUrl:"views/user/loggedIn.view.client.html",
+        controller:"LoggedInController",
+        controllerAs:"model",
+        resolve:
+        {
+          loggedIn:checkLoggedIn
+        }
       })
       .when("/home",{
         templateUrl:"views/home.view.client.html",
@@ -21,6 +35,15 @@
         controller:"LocationController",
         controllerAs:"model"
       })
+      .when("/location/:location/:restaurantId/reservation",{
+        templateUrl:"views/reservation/reservation.view.client.html",
+        controller:"ReservationController",
+        controllerAs:"model",
+        resolve:
+        {
+          loggedIn:getLoggedIn
+        }
+      })
       //.when("/location/:location",{
       //  templateUrl:"views/location/locationWithRestaurants.view.client.html",
       //  controller:"LocationWithRestaurantsController",
@@ -29,7 +52,11 @@
       .when("/location/:location/:restaurantId",{
         templateUrl:"views/restaurant/restaurant.view.client.html",
         controller:"RestaurantController",
-        controllerAs:"model"
+        controllerAs:"model",
+        resolve:
+        {
+          loggedIn:checkLoggedIn
+        }
       })
       .when("/",{
 
@@ -40,16 +67,89 @@
        controller:"RegisterController",
         controllerAs:"model"
       })
-      .when("/user/:userId",{
+      .when("/user",{
         templateUrl:"views/user/profile.view.client.html",
         controller:"ProfileController",
-        controllerAs:"model"
+        controllerAs:"model",
+        resolve:
+        {
+          loggedIn:checkLoggedIn
+        }
+      })
+      .when("/user/slot",{
+        templateUrl:"views/slot/slot.view.client.html",
+        controller:"SlotController",
+        controllerAs:"model",
+        resolve:
+        {
+          loggedIn:getLoggedIn
+        }
       })
       .otherwise({
         redirectTo:"/home"
       });
 
 
+    function checkLoggedIn(UserService,$location,$q,$rootScope)
+    {
+
+      var deferred = $q.defer();
+      UserService.loggedIn()
+        .then(function(response)
+          {
+            var user = response.data;
+            console.log(user);
+            if(user=='0')
+            {
+              console.log("reject");
+              $rootScope.currentUser=null;
+              deferred.reject();
+              $location.url("/login");
+            }
+            else{
+              console.log("resolved");
+              $rootScope.currentUser=user;
+              deferred.resolve();
+            }
+          },
+          function(err)
+          {
+            $location.url("/login");
+          });
+      return deferred.promise;
+    }
+
   }
+
+  function getLoggedIn(UserService,$location,$q,$rootScope)
+  {
+
+    var deferred = $q.defer();
+    UserService.loggedIn()
+      .then(function(response)
+        {
+          var user = response.data;
+          console.log(user);
+          if(user=='0')
+          {
+            console.log("reject");
+            //$rootScope.currentUser=null;
+            deferred.resolve();
+          //  $location.url("/login");
+          }
+          else{
+            console.log("resolved");
+            $rootScope.currentUser=user;
+            deferred.resolve();
+          }
+        },
+        function(err)
+        {
+          $location.url("/login");
+        });
+    return deferred.promise;
+  }
+
+
 })();
 

@@ -2,16 +2,27 @@ input.form-control {
   margin-bottom: 5px;
 }
 
+form{
+  margin-bottom:5px;
+}
+input.ng-invalid
+{
+  /*border: #ff3d3d;*/
+  border-color: #cd0a0a;
+  /*background-color:#7FFFD4;*/
+}
+
+
 body {
   /*background-image: url("ocean-restaurant-by-cat-cora.jpg");*/
-  background-color:#8c8c8c;
+  /*background-color:#8c8c8c;*/
   padding-top: 60px;
   padding-bottom: 77px;
 }
-h1,h2,h3,h4,h5,h6
-{
-  color:white
-}
+/*h1,h2,h3,h4,h5,h6*/
+/*{*/
+  /*color:white*/
+/*}*/
 
 label
 {

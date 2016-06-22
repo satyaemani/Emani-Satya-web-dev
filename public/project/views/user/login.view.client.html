@@ -1,17 +1,64 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+
+
+    <p class="navbar-header pull-left">
+      <a href="#/home" class="navbar-brand thick">
+        <span class="glyphicon glyphicon-home">
+          </span>
+
+      </a>
+    </p>
+
+  </div>
+</nav>
 
 <div class="container">
+  <h3>Please login to make reservations or view more details</h3>
   <div ng-show="model.error" class="alert alert-danger">
-    {{model.error}}
+    {{model.error.data}}
+  </div>
+
+  <div ng-show="loginForm.username.$invalid && loginForm.$submitted" class="alert alert-danger">
+    <p>Username is mandatory</p>
+  </div>
+
+  <div ng-show="loginForm.password.$invalid && loginForm.$submitted" class="alert alert-danger">
+    <p>Password is mandatory</p>
   </div>
   <h1>Login</h1>
-  <input ng-model="username" type="text"
-         class="form-control"
-         placeholder="username" required/>
-  <input ng-model="password" type="password"
-         class="form-control"
-         placeholder="password"/>
-  <a ng-click="model.login(username,password)" class="btn btn-primary  btn-block"
-  >Login</a>
+
+  <form name="loginForm" novalidate>
+    <input name="username"
+           ng-model="username"
+           type="text"
+           class="form-control"
+           autocomplete="false"
+           autocapitalize="false"
+           placeholder="username" required/>
+    <p ng-show="loginForm.username.$invalid && loginForm.$submitted">
+      Username is mandatory
+    </p>
+
+    <input name="password"
+           ng-model="password"
+           type="password"
+           class="form-control"
+           placeholder="password" required/>
+    <p ng-show="loginForm.username.$invalid && loginForm.$submitted">
+      Password is mandatory
+    </p>
+    <button type="submit" ng-click="model.login(username,password)" class="btn btn-primary  btn-block">Login</button>
+
+
+
+  </form>
+
+
   <a class="btn btn-success btn-block"
      href="#/register">Register</a>
+  <!--<a href= "/auth/facebook" class="btn btn-primary btn-block">Login with Facebook-->
+    <!--<span class="fa fa-facebook-official"></span>-->
+  <!--</a>-->
+
 </div>

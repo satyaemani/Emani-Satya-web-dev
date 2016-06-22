@@ -15,19 +15,27 @@
 
       </a>
     </p>
-    <p class="navbar-text pull-right"  data-toggle="tooltip" data-placement="top" title="Mark Favourite">
 
-      <a >
-          <span class="glyphicon glyphicon-thumbs-up">
+    <p  class="navbar-text pull-right"  data-toggle="tooltip" data-placement="top" title="Mark Favourite">
+
+      <a ng-click="model.logout()">
+          <span class="glyphicon glyphicon-log-out">
           </span>
       </a>
     </p>
+
+    <p class="navbar-text pull-right"  data-toggle="tooltip" data-placement="top" title="Mark Favourite">
+      {{model.user.username}}
+    </p>
+
+
 
   </div>
 </nav>
 
 <!---------Restaurant Search-------->
 <div class="container">
+
   <div class="row">
   <div class="col-sm-6">
     <h1> <b>{{model.restaurant.name}}</b></h1>
@@ -67,11 +75,8 @@
 </div>
 </div>
 
-  <h4>DATE</h4>
-  <ng-datepicker ng-model="model.date1">
-  </ng-datepicker>
 
-  <a ng-click="model.date(model.date1) "class="btn btn-primary btn-block">Reserve</a>
+  <a href="#/location/{{model.location}}/{{model.restaurantId}}/reservation"   class="btn btn-primary btn-block">Make Reservation</a>
 
 
 

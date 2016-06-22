@@ -33,22 +33,22 @@
       var url ="/api/website/"+websiteId;
       return $http.delete(url);
 
-      for(var i in websites)
-      {
-        console.log(websiteId);
-        console.log(websites[i]._id);
-        if(websites[i]._id ===websiteId) {
-
-          websites.splice(i,1);
-          return true;
-        }
-      }
-      return false;
+      //for(var i in websites)
+      //{
+      //  console.log(websiteId);
+      //  console.log(websites[i]._id);
+      //  if(websites[i]._id ===websiteId) {
+      //
+      //    websites.splice(i,1);
+      //    return true;
+      //  }
+      //}
+      //return false;
 
     }
 
     function createWebsite(website,userId){
-        console.log(userId);
+       // console.log(userId);
         var url="/api/user/"+userId+"/website";
         return $http.post(url,website);
   }
