@@ -10,9 +10,16 @@ module.exports = function() {
 
   var api = {
     createReservation:createReservation,
-    findReservationsForUserId:findReservationsForUserId
+    findReservationsForUserId:findReservationsForUserId,
+    deleteReservation:deleteReservation
   };
   return api;
+
+  function deleteReservation(reservationId)
+  {
+    return Reservation.remove({_id:reservationId});
+
+  }
 
   function createReservation(userId,reservation)
   {

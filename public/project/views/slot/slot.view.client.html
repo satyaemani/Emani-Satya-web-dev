@@ -2,7 +2,7 @@
 
 
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
+  <div class="container-fluid">
     <p class="navbar-header pull-left">
       <a
         class="navbar-brand thick"
@@ -13,8 +13,9 @@
 
   </div>
 </nav>
+<div class="container">
 
-<table class="table">
+<table class="table table-hover ">
   <th>User Name</th>
   <th>Restaurant Name</th>
   <th>Date</th>
@@ -22,19 +23,24 @@
   <th>No.of People</th>
   <th>Phone Number</th>
   <tr ng-repeat="reservation in model.reservations">
+    <div ng-show="model.error">
     <td>{{reservation.username}}</td>
     <td>{{reservation.restaurantName}}</td>
     <td>{{reservation.date}}</td>
     <td>{{reservation.time}}</td>
     <td>{{reservation.noOfPeople}}</td>
     <td>{{reservation.phone}}</td>
-
+   <td> <a ng-click="model.deleteReservation(reservation._id)">
+      <span class="glyphicon glyphicon-remove red"></span>
+    </a>
+   </td>
+    </div>
   </tr>
 
 
   </table>
 
-
+</div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container">
     <div class="row navbar-text pull-right">

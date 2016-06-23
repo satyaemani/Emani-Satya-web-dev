@@ -39,21 +39,12 @@ init();
 
     var time = vm.time;
     var people = vm.people;
-    vm.date=date;
 
-    function date(date)
-    {
-      console.log(date);
 
-    }
     vm.reserve = reserve;
 
     function reserve(reservation,restaurant)
     {
-    console.log(reservation);
-      console.log(restaurant);
-      console.log(user);
-
       var reservation=
       {
         username:user.username,

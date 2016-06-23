@@ -39,7 +39,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li ng-hide="currentuser"><a href="#/login">login as costumer</a></li>
-        <li ng-hide="currentuser"><a href="#/login">login as manager</a></li>
+        <li ng-hide="currentuser"><a href="#/managerLogin">login as manager</a></li>
 
 
       </ul>
@@ -52,7 +52,7 @@
 <!---------Restaurant Search-------->
 <div>
   <div class="input-group">
-    <input ng-model="model.searchRestaurant" type="text" class="form-control" placeholder="Location">
+    <input ng-model="model.searchRestaurant" type="text" class="form-control" placeholder="Location ex:peterborough,boston">
     <span class="input-group-btn">
         <a ng-click="model.findRestaurants(model.searchRestaurant)" class="btn btn-default" type="button">
           <span class="glyphicon glyphicon-search"></span>

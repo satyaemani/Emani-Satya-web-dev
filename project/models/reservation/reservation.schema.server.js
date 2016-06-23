@@ -12,7 +12,7 @@ module.exports = function() {
     noOfPeople:String,
     email:String,
     phone:String,
-    date: Date,
+    date: String,
     time:String,
     //websites:[{type: mongoose.Schema.Types.ObjectId, ref: 'Website'}],
     dateCreated: {type: Date, default: Date.now}

@@ -10,7 +10,7 @@
 
 
 
-  function SlotController($location,$routeParams,$rootScope,ReservationService) {
+  function SlotController($location,$routeParams,$rootScope,ReservationService,UserService) {
 
     var vm = this;
    // vm.updateUser = updateUser;
@@ -25,17 +25,16 @@
 
     function init()
     {
-console.log("slot controller");
+
      ReservationService.findReservationsForUserId(userId)
         .then(function(response){
           console.log(response);
           vm.reservations=response.data;
 
-        console.log(vm.reservations);
         },function(response)
         {
           console.log(response);
-        } )
+        } );
 
     }
     init();
@@ -51,8 +50,25 @@ console.log("slot controller");
             $location.url("/login");
           })
     }
-    function deleteReservation()
+    function deleteReservation(reservationId)
     {
+      ReservationService.deleteReservation(reservationId)
+        .then(function(response)
+        {
+          var result =response.data;
+          ReservationService.findReservationsForUserId(userId)
+            .then(function(response){
+              console.log(response);
+              vm.reservations=response.data;
+
+            },function(response)
+            {
+              console.log(response);
+            } );
+
+          },function(){
+
+        });
 
 
     }

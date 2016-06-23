@@ -43,19 +43,20 @@ var location = $routeParams.location;
     }
 
     function findRestaurantById(restaurantId) {
-    console.log("in finding restaurants");
-      if ($rootScope.currentUser) {
-        console.log("in user");
-        $location.url("/location/" + location + "/" + restaurantId);
-      }
-      else {
-        //if user is not logged in, redirect to login page
-       console.log("in else");
-        $rootScope.previousUrl = "/location/"+location;
-        console.log($rootScope.previousUrl);
-        $location.url('/login');
 
-      }
+      $location.url("/location/" + location + "/" + restaurantId);
+      //if ($rootScope.currentUser) {
+      //  console.log("in user");
+      //  $location.url("/location/" + location + "/" + restaurantId);
+      //}
+      //else {
+      //  //if user is not logged in, redirect to login page
+      // console.log("in else");
+      //  $rootScope.previousUrl = "/location/"+location;
+      //  console.log($rootScope.previousUrl);
+      //  $location.url('/login');
+      //
+      //}
 
     }
   }

@@ -10,7 +10,11 @@
       var j=1;
       var api = {
 
-        findRestaurantById: findRestaurantById
+        findRestaurantById: findRestaurantById,
+        addToFavourites:addToFavourites,
+        findFavRestaurantById:findFavRestaurantById,
+        findFavRestaurantForUserId:findFavRestaurantForUserId,
+        removeFavourites: removeFavourites
       };
 
       return api;
@@ -65,5 +69,30 @@
 
       }
 
+      function addToFavourites(favRestaurant,userId)
+      {
+        var url="/api/user/"+userId+"/restaurant";
+        return $http.post(url,favRestaurant);
+      }
+
+
+      function findFavRestaurantById(favRestaurantId,userId)
+      {
+        var url="/api/restaurant/"+favRestaurantId+"/"+userId;
+        return $http.get(url);
+      }
+
+      function removeFavourites(restaurantId,userId)
+      {
+        var url="/api/restaurant/"+restaurantId+"/"+userId;
+        return $http.delete(url);
+      }
+
+      function  findFavRestaurantForUserId(userId)
+      {
+        console.log("in service");
+        var url = "/api/user/" + userId + "/restaurant";
+        return $http.get(url);
+      }
     }
   })();

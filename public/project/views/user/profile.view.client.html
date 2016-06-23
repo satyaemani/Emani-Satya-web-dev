@@ -30,11 +30,12 @@
       </a>
     </p>
     <p class="navbar-text pull-right">
-      <a ng-click="model.updateUser(model.user)" class="navbar-link ">
-          <span class="glyphicon glyphicon-ok ">
+      <a href="#/loggedIn" class="navbar-link ">
+          <span class="glyphicon glyphicon-home ">
           </span>
       </a>
     </p>
+
 
   </div>
 </nav>
@@ -87,14 +88,24 @@
     </div>
   </form>
 
-  <a class="btn btn-primary btn-block"
-     href="#/user/slot">My Reservations</a>
-  <a class="btn btn-danger  btn-block"
-     ng-click="model.deleteUser(model.user)">UnRegister</a>
+  <!--<a class="btn btn-danger  btn-block"-->
+     <!--ng-click="model.deleteUser(model.user)">UnRegister</a>-->
+  <a class="btn btn-success  btn-block"
+     ng-click="model.updateUser(model.user)">Save</a>
   <a class="btn btn-danger  btn-block"
      href="#/login">Logout</a>
+<hr>
+  <ul class="list-group">
+    <li class="list-group-item"><a href="#/user/slot">My Reservations</a></li>
+    <li class="list-group-item"><a href="#/user/favourites">My Favourites</a></li>
+
+    </ul>
+
+
 
 </div>
+
+
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container">

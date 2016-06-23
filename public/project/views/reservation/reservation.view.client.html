@@ -1,10 +1,17 @@
-<nav class="navbar navbar-inverse navbar-fixed-top container">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <p class="navbar-header pull-left">
       <a href="#/loggedIn" class="navbar-brand thick">
         <span class="glyphicon glyphicon-home"></span>
       </a>
     </p>
+
+    <p class="navbar-header ">
+      <a class="navbar-brand thick">
+        Reservation
+      </a>
+    </p>
+
 
   </div>
 </nav>
@@ -14,10 +21,11 @@
   <form>
 <div class="form-group">
   <span class="label label-default">Date</span>
-  <div>
-  <ng-datepicker ng-model="model.reservation.date1" class="responsive">
-  </ng-datepicker>
-</div>
+  <input type="date" ng-model="model.reservation.date1" class="form-control">
+  <!--<div>    -->
+  <!--<ng-datepicker ng-model="model.reservation.date1" class="responsive">-->
+  <!--</ng-datepicker>-->
+<!--</div>-->
 
   <div class="form-group">
   <div class="form-group">

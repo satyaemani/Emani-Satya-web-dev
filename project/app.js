@@ -6,6 +6,7 @@ module.exports=function(app) {
   require("./services/user.service.server.js")(app,models);
   require("./services/location.service.server.js")(app,models);
   require("./services/reservation.service.server.js")(app,models);
+  require("./services/restaurant.service.server.js")(app,models);
   //require("./services/widget.service.server.js")(app);
   var users=[
     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },

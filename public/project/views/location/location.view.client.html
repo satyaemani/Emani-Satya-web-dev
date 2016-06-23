@@ -15,7 +15,7 @@
 
 <p>
 <div class="input-group">
-  <input ng-model="model.searchRestaurant" type="text" class="form-control" placeholder="Location">
+  <input ng-model="model.searchRestaurant" type="text" class="form-control" placeholder="Location ex:peterborough,boston">
     <span class="input-group-btn">
         <a ng-click="model.findRestaurantsByLocation(model.searchRestaurant)" class="btn btn-default" type="button">
           <span class="glyphicon glyphicon-search"></span>
@@ -32,6 +32,7 @@
   <img ng-src={{restaurant.image_url}} class="img-thumbnail">
   <h6> Phone:{{restaurant.display_phone}}</h6>
   <img ng-src={{restaurant.rating_img_url_small}} >
+  <hr>
   </p>
   </div>
 </div>

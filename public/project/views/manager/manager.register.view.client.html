@@ -1,0 +1,74 @@
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+
+
+    <p class="navbar-header pull-left">
+      <a href="#/home" class="navbar-brand thick">
+        <span class="glyphicon glyphicon-home">
+          </span>
+
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+
+<div class="container">
+
+  <p ng-show="model.passerr" class="alert alert-danger">
+    {{model.passerr}}
+  </p>
+
+  <p ng-show="model.passnull" class="alert alert-danger">
+    {{model.passnull}}
+  </p>
+
+  <p ng-show="model.error" class="alert alert-danger">
+    {{model.error.data}}
+  </p>
+  <form name="registerForm" novalidate>
+    <div ng-show="registerForm.username.$invalid && registerForm.$submitted" class="alert alert-danger">
+      <p> Username is mandatory</p>
+    </div>
+    <h1>Register</h1>
+
+    <input name="username"
+           ng-model="model.user.username"
+           type="text"
+           class="form-control"
+           placeholder="username" required />
+
+
+    <input name="password"
+           ng-model="model.user.password"
+           type="password"
+           class="form-control"
+           placeholder="password" required/>
+
+
+    <input ng-model="model.manager.confPassword" type="password"
+           class="form-control"
+           placeholder="verify password" required/>
+
+    <input name="restaurantId"
+           ng-model="model.user.restaurantId"
+           type="text"
+           class="form-control"
+           placeholder="restaurant-Id ex:galleria-umberto-boston" required/>
+    <p ng-show="loginForm.restaurantId.$invalid && loginForm.$submitted">
+      Password is mandatory
+    </p>
+
+    <button type="submit" ng-click="model.register(model.user)" class="btn btn-primary btn-block" >Register</button>
+
+
+
+  </form>
+  <a  class="btn btn-danger  btn-block"
+      href="#/login">Cancel</a>
+</div>
+

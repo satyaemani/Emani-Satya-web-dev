@@ -1,7 +1,15 @@
 input.form-control {
   margin-bottom: 5px;
 }
+a
+{
+  cursor: hand;
+}
 
+.red
+{
+  color:red;
+}
 form{
   margin-bottom:5px;
 }

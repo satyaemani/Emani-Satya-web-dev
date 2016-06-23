@@ -1,0 +1,38 @@
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <p class="navbar-header pull-left">
+      <a
+        class="navbar-brand thick">
+        My favourites
+      </a>
+    </p>
+
+  </div>
+</nav>
+<div class="container">
+  <ul class="list-group" ng-repeat="favRestaurant in model.favRestaurants">
+  <li class="list-group-item">
+    <a href="#/location/{{favRestaurant.location}}/{{favRestaurant.rId}}">
+    {{favRestaurant.restaurantName}}</a>
+    <a ng-click="model.removeFavourites(favRestaurant)">
+    <span class="glyphicon glyphicon-remove pull-right red"></span>
+      </a>
+  </li>
+
+</ul>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <div class="row navbar-text pull-right">
+
+      <a href="#/user/">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+
+    </div>
+  </div>
+</nav>
+

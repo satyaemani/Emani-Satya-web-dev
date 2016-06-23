@@ -25,7 +25,7 @@
     </p>
 
     <p class="navbar-text pull-right"  data-toggle="tooltip" data-placement="top" title="Mark Favourite">
-      {{model.user.username}}
+     <a href="#/user"> {{model.user.username}}</a>
     </p>
 
 
@@ -35,7 +35,13 @@
 
 <!---------Restaurant Search-------->
 <div class="container">
+  <div ng-show=" model.added " class="alert alert-success">
+    <p>Added to My Favourites</p>
+  </div>
 
+  <div ng-show=" model.remove " class="alert alert-danger">
+    <p>Removed from My Favourites</p>
+  </div>
   <div class="row">
   <div class="col-sm-6">
     <h1> <b>{{model.restaurant.name}}</b></h1>
@@ -45,38 +51,68 @@
 
   </div>
 
+    <hr>
+    <div class="col-sm-6">
+      <div ng-show="!model.favRestaurant">
+      <buton ng-click="model.addToFavourites(model.restaurant)" class="btn btn-success">
+        <span class="glyphicon glyphicon-star-empty"></span> Add to Favourites
+      </buton>
+        </div>
 
-  <div class="col-sm-6">
-  <h2><i>Categories:</i></h2>
-  <div ng-repeat="category in model.restaurant.categories">
-    <h3>{{category[0]}}</h3>
+      <div ng-show="model.favRestaurant">
+        <buton ng-click="model.removeFavourites(model.restaurant)" class="btn btn-danger">
+          Remove from Favourites
+        </buton>
+      </div>
+      <br/>
+      <div>
+      <a ng-click="model.makeReservation()"
+         class="btn btn-primary ">Make Reservation</a>
+      </div>
+    </div>
+
+    </div>
+  <hr>
+  <div class="">
+    <h4><b>Cuisines</b></h4>
+    <div ng-repeat="category in model.restaurant.categories">
+      <h6>{{category[0]}}</h6>
+    </div>
   </div>
-    </div>
-    </div>
 
-  <div >
-  <h2><i>Address:</i></h2>
+  <hr>
+  <div>
+  <h4><b>Address</b></h4>
   <div  ng-repeat="location in model.restaurant.location.display_address">
     {{location}}
     </div>
-    <h2><i>Phone:</i></h2>
+    <hr>
+    <h4><b>Phone:</b></h4>
     {{model.restaurant.display_phone}}
     </div>
-
-<h2><i>Reviews:</i></h2>
+  <hr>
+  <div >
+<h4><b>Reviews from Yelp</b></h4>
+    </div>
   <div ng-repeat="review in model.restaurant.reviews" >
-    <div>
-     <h3>{{review.user.name}}</h3>
-    <img ng-src="{{review.user.image_url}}">
-    <br/>
-    {{review.excerpt}}
-    <img ng-src="{{review.rating_image_small_url}}">
+    <div  class="col-sm-3">
+      <div align="center">
+    <img ng-src="{{review.user.image_url}}" class="img-responsive img-circle">
+        </div>
+      <div align="center">
+      <h6>{{review.user.name}}</h6>
+        </div>
+    </div>
+    <div class="col-sm-6">
+    {{review.excerpt}}<br/>
+      <img ng-src="{{review.rating_image_small_url}}">
+      </div>
+
 
 </div>
 </div>
+<hr>
 
-
-  <a href="#/location/{{model.location}}/{{model.restaurantId}}/reservation"   class="btn btn-primary btn-block">Make Reservation</a>
 
 
 

@@ -6,6 +6,7 @@ module.exports = function() {
   var models = {
     userModel: require("./user/user.model.server")(),
     reservationModel: require("./reservation/reservation.model.server")(),
+    restaurantModel: require("./restaurant/restaurant.model.server")(),
     //pageModel: require("./page/page.model.server")(),
     //widgetModel: require("./widget/widget.model.server")()
   };

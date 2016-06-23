@@ -14,6 +14,7 @@ module.exports=function(app,models) {
 
   app.post("/api/user/:userId/reservation",createReservation);
   app.get("/api/user/:userId/reservation",findReservationsForUserId);
+  app.delete("/api/user/:reservationId/reservation",deleteReservation);
 
 
   function createReservation(req, res) {
@@ -30,19 +31,33 @@ module.exports=function(app,models) {
         });
 
 
-  };
+  }
 
-  function findReservationsForUserId(req,res){
+  function findReservationsForUserId(req,res) {
     var userId = req.params.userId;
     reservationModel
       .findReservationsForUserId(userId)
       .then(function (reservations) {
           res.send(reservations);
         },
-        function(error)
-        {
+        function (error) {
           res.statusCode(404).send(error);
         });
+
+
+  }
+
+
+  function deleteReservation(req, res) {
+
+    var reservationId = req.params.reservationId;
+    reservationModel
+      .deleteReservation(reservationId)
+      .then(function (stats) {
+        res.send(200)
+      }, function (error) {
+        res.statusCode(400).send(error);
+      });
 
   }
 

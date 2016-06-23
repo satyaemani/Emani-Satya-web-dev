@@ -27,6 +27,7 @@
       UserService.logout()
         .then(function(response)
           {
+            $rootScope.currentUser=null;
             $location.url("/home");
           },
           function (response) {

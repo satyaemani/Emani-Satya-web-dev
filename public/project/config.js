@@ -16,6 +16,7 @@
         }
 
       })
+
       .when("/loggedIn",{
         templateUrl:"views/user/loggedIn.view.client.html",
         controller:"LoggedInController",
@@ -55,7 +56,7 @@
         controllerAs:"model",
         resolve:
         {
-          loggedIn:checkLoggedIn
+          loggedIn:getLoggedIn
         }
       })
       .when("/",{
@@ -84,6 +85,35 @@
         {
           loggedIn:getLoggedIn
         }
+      })
+      .when("/user/favourites",{
+        templateUrl:"views/favourites/favourites.view.client.html",
+        controller:"FavouritesController",
+        controllerAs:"model",
+        resolve:
+        {
+          loggedIn:getLoggedIn
+        }
+      })
+      .when("/managerLogin",{
+        templateUrl:"views/manager/manager.login.view.client.html",
+        controller:"ManagerLoginController",
+        ManagercontrollerAs:"model",
+        resolve:
+        {
+          loggedIn:getManagerLoggedIn
+        }
+
+      })
+      .when("/managerRegister",{
+        templateUrl:"views/manager/manager.register.view.client.html",
+        controller:"ManagerRegisterController",
+        controllerAs:"model",
+        resolve:
+        {
+          loggedIn:getManagerLoggedIn
+        }
+
       })
       .otherwise({
         redirectTo:"/home"
@@ -136,6 +166,35 @@
             //$rootScope.currentUser=null;
             deferred.resolve();
           //  $location.url("/login");
+          }
+          else{
+            console.log("resolved");
+            $rootScope.currentUser=user;
+            deferred.resolve();
+          }
+        },
+        function(err)
+        {
+          $location.url("/login");
+        });
+    return deferred.promise;
+  }
+
+  function ManagergetLoggedIn(ManagerService,$location,$q,$rootScope)
+  {
+
+    var deferred = $q.defer();
+    ManagerService.loggedIn()
+      .then(function(response)
+        {
+          var user = response.data;
+          console.log(user);
+          if(user=='0')
+          {
+            console.log("reject");
+            //$rootScope.currentUser=null;
+            deferred.resolve();
+            //  $location.url("/login");
           }
           else{
             console.log("resolved");

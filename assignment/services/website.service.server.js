@@ -128,7 +128,7 @@ var websiteId =req.params.websiteId;
       },function(error)
       {
         res.statusCode(400).send(error);
-      })
+      });
 
 
     //for(var i in websites)
