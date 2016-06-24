@@ -33,14 +33,17 @@
 
     function  logout()
     {
+      console.log("in logout");
       UserService.logout()
         .then(function(response)
           {
+            console.log(response);
             $rootScope.currentUser=null;
             $location.url("/login");
 
           },
           function (response) {
+            console.log(response);
             $location.url("/login");
           })
     }

@@ -8,6 +8,7 @@ module.exports = function() {
     _user:{type:mongoose.Schema.ObjectId,ref:"User"},
     username: {type: String, required: true},
     restaurantName: String,
+    location:String,
     rId:String,
     noOfPeople:String,
     email:String,

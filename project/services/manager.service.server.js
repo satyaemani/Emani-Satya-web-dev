@@ -1,3 +1,9 @@
+/**
+ * Created by subbaraju on 24/6/2016.
+ */
+/**
+ * Created by subbaraju on 23/6/2016.
+ */
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
@@ -6,78 +12,94 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 
 module.exports=function(app,models){
 
-  var userModel=models.userModel;
+
+
   var managerModel=models.managerModel;
 
-  app.get("/auth/facebook", passport.authenticate('facebook'));
-  app.get("/auth/facebook/callback", passport.authenticate('facebook', {
-    successRedirect: '/assignment/#/user',
-    failureRedirect: '/assignment/#/login'
-  }));
-  app.get("/api/user/:userId",findUserById);
-  app.get("/api/user",getUsers);
-  app.get("/api/loggedIn",loggedIn);
-  app.post("/api/logout",logout);
-  app.post("/api/user",register);
-  app.post("/api/login",passport.authenticate('wam'),login);
-  // app.post("/api/user",createUser);
-  app.put("/api/user/:userId",updateUser);
-  app.delete("/api/user/:userId",deleteUser);
+
+  //app.get("/auth/facebook", passport.authenticate('facebook'));
+  //app.get("/auth/facebook/callback", passport.authenticate('facebook', {
+  //  successRedirect: '/assignment/#/user',
+  //  failureRedirect: '/assignment/#/login'
+  //}));
+  app.get("/api/manager/user/:userId",findUserById);
+  app.get("/api/manager/user",getUsers);
+  app.get("/api/manager/loggedIn",loggedIn);
+  app.post("/api/manager/logout",logout);
+  app.post("/api/manager/user",register);
+  app.post("/api/manager/login",passport.authenticate('project'),login);
+  app.get("/api/manager/slots/:restId",findSlotsByRestId);
+  app.put("/api/manager/user/:userId",updateUser);
+  app.delete("/api/manager/user/:userId",deleteUser);
+  app.delete("/api/manager/slots/:restId/:slot/:slotId",deleteSlot);
+  app.post("/api/manager/slots/:restId",insertSlot);
 
 
-  passport.use('wam',new LocalStrategy(localStrategy));
-  passport.serializeUser(serializeUser);
-  passport.deserializeUser(deserializeUser);
+  passport.use('project',new LocalStrategy(managerlocalStrategy));
+  passport.serializeUser(serializeManager);
+  passport.deserializeUser(deserializeManager);
 
 
-  var facebookConfig = {
-    clientID     : process.env.FACEBOOK_CLIENT_ID,
-    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL  : process.env.FACEBOOK_CALLBACK_URL
-    //FACEBOOK_CALLBACK_URL  : "http://127.0.0.1:3000/auth/facebook/callback",
-    //FACEBOOK_CLIENT_ID   : "1812219052343494",
-    //FACEBOOK_CLIENT_SECRET : "1003457cecc39def13b74ea952a51bb9",
-  };
-
-  passport.use('facebook',new FacebookStrategy(facebookConfig,facebookLogin));
-
-  function facebookLogin(token, refreshToken, profile, done)
+  function insertSlot(req,res)
   {
-    console.log(profile);
-    userModel.findFaceBookUser(profile.id)
-      .then(function(faceBookUser)
-      {
-        if(faceBookUser) {
-          done(null,faceBookUser);
+    var restId = req.params.restId;
+    var slot = req.body;
+    console.log(restId);
+    console.log(slot);
+    managerModel
+      .insertSlot(restId,slot)
+      .then(function(stats)
+        {
+          res.send(200);
+        },
+        function(error){
+          res.statusCode(404).send(error);
         }
-        else{
-          faceBookUser={
-            username:profile.displayName.replace(/ /g,''),
-            facebook:{
-              token:token,
-              displayName:profile.displayName,
-              id:profile.id
-            }
-          };
-          userModel.createUser(faceBookUser)
-            .then(function(user){
-              done(null,user);
-            })
+      );
 
-        }
-      });
+
+  }
+
+  function deleteSlot(req,res)
+  {
+    var restId = req.params.restId;
+    var slot = req.params.slot;
+    var slotId = req.params.slotId;
+
+    managerModel.deleteSlot(restId,slotId,slot)
+      .then(
+        function(stats)
+        {
+          res.send(200);
+        },
+        function(error){
+          res.statusCode(404).send(error);
+        });
   }
 
 
+  function findSlotsByRestId(req,res){
+    var restId = req.params.restId;
 
-  function localStrategy(username,password,done)
+    managerModel.findSlotsByRestId(restId)
+      .then(function(slots)
+        {
+          res.send(slots);
+        },
+        function(error)
+        {
+          res.statusCode(404).send(error);
+
+        });
+  }
+
+  function managerlocalStrategy(username,password,done)
   {
-    userModel
+    managerModel
       .findUserByUsername(username)
       .then(
         function(user)
         {
-
           if(user && bcrypt.compareSync(password,user.password))
           {
             done(null,user);
@@ -93,36 +115,20 @@ module.exports=function(app,models){
         });
   }
 
-  function serializeUser(user, done) {
+  function serializeManager(user, done) {
+
     done(null, user);
   }
 
-  function deserializeUser(user, done) {
-    var manager = user;
-    userModel
+  function deserializeManager(user, done) {
+
+    managerModel
       .findUserById(user._id)
       .then(
         function(user){
-          if(user===null)
-          {
-            managerModel
-              .findUserById(manager._id)
-              .then(
-                function(user){
-
-                  done(null, user);
-                },
-                function(err){
-                  done(err, null);
-                }
-              );
-          }
-          else {
-            done(null, user);
-          }
+          done(null, user);
         },
         function(err){
-
           done(err, null);
         }
       );
@@ -130,32 +136,35 @@ module.exports=function(app,models){
 
   function loggedIn(req,res)
   {
+   // console.log("loggedIn-"+req.user);
     if(req.isAuthenticated())
     {
       res.json(req.user);
     }
     else
     {
+
       res.send('0');
     }
   }
   function login(req,res)
   {
+
     var user = req.user;
+    //console.log("login"+user);
     res.send(user);
   }
 
   function logout(req,res)
   {
     req.logout();
-    req.session.destroy();
     res.send(200);
   }
   function register(req,res)
   {
     var username = req.body.username;
     var password = req.body.password;
-    userModel.findUserByUsername(username)
+    managerModel.findUserByUsername(username)
       .then(function(user)
       {
         if(user)
@@ -164,7 +173,7 @@ module.exports=function(app,models){
           return;
         }else{
           req.body.password=bcrypt.hashSync(req.body.password);
-          return userModel.createUser(req.body);
+          return managerModel.createUser(req.body);
         }
 
       },function(err)
@@ -194,7 +203,7 @@ module.exports=function(app,models){
   function deleteUser(req,res)
   {
     var userId = req.params.userId;
-    userModel
+    managerModel
       .deleteUser(userId)
       .then(
         function(stats)
@@ -221,7 +230,7 @@ module.exports=function(app,models){
     var userId = req.params.userId;
     var newUser = req.body;
 
-    userModel
+    managerModel
       .updateUser(userId,newUser)
       .then(function(stats)
         {
@@ -230,7 +239,7 @@ module.exports=function(app,models){
         function(error){
           res.statusCode(404).send(error);
         }
-      )
+      );
 
     //for (var i in users) {
     //  if (users[i]._id === userId) {
@@ -253,7 +262,7 @@ module.exports=function(app,models){
 
     if(user.password===user.confPassword)
     {
-      userModel
+      managerModel
         .createUser(user)
         .then(
           function(user)
@@ -288,7 +297,7 @@ module.exports=function(app,models){
 
     var userId = req.params.userId;
 
-    userModel
+    managerModel
       .findUserById(userId)
       .then(function(user)
         {
@@ -298,7 +307,7 @@ module.exports=function(app,models){
         {
           res.statusCode(404).send(error);
 
-        })
+        });
     //for(var i in users){
     //
     //  if(users[i]._id ===userId)
@@ -337,7 +346,7 @@ module.exports=function(app,models){
 
   function findUserByUsername(username,res) {
 
-    userModel
+    managerModel
       .findUserByUsername(username)
       .then(function(users)
         {
@@ -366,7 +375,7 @@ module.exports=function(app,models){
 
     //checking for all the users with the given username and password and sending
     // it back to the controller
-    userModel
+    managerModel
       .findUserByUsernameAndPassword(username,password)
       .then(function(user)
         {

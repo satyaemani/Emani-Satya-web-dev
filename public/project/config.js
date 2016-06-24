@@ -45,11 +45,6 @@
           loggedIn:getLoggedIn
         }
       })
-      //.when("/location/:location",{
-      //  templateUrl:"views/location/locationWithRestaurants.view.client.html",
-      //  controller:"LocationWithRestaurantsController",
-      //  controllerAs:"model"
-      //})
       .when("/location/:location/:restaurantId",{
         templateUrl:"views/restaurant/restaurant.view.client.html",
         controller:"RestaurantController",
@@ -98,16 +93,40 @@
       .when("/managerLogin",{
         templateUrl:"views/manager/manager.login.view.client.html",
         controller:"ManagerLoginController",
-        ManagercontrollerAs:"model",
+        controllerAs:"model",
+        resolve:
+        {
+          loggedIn:getManagerLoggedIn
+        }
+      })
+      .when("/managerRegister",{
+        templateUrl:"views/manager/manager.register.view.client.html",
+        controller:"ManagerRegisterController",
+        controllerAs:"model"
+      })
+      .when("/manager",{
+        templateUrl:"views/manager/manager.dashboard.view.client.html",
+        controller:"ManagerDashboardController",
+        controllerAs:"model",
+        resolve:
+        {
+          loggedIn:checkLoggedIn
+        }
+
+      })
+      .when("/manager/reservations",{
+        templateUrl:"views/manager/manager.reservations.view.client.html",
+        controller:"ManagerReservationsController",
+        controllerAs:"model",
         resolve:
         {
           loggedIn:getManagerLoggedIn
         }
 
       })
-      .when("/managerRegister",{
-        templateUrl:"views/manager/manager.register.view.client.html",
-        controller:"ManagerRegisterController",
+      .when("/manager/slots",{
+        templateUrl:"views/manager/slots/manager.slots.view.client.html",
+        controller:"ManagerSlotsController",
         controllerAs:"model",
         resolve:
         {
@@ -149,7 +168,38 @@
       return deferred.promise;
     }
 
+
   }
+
+  function managerCheckLoggedIn(UserService,$location,$q,$rootScope)
+  {
+    var deferred = $q.defer();
+    UserService.loggedIn()
+      .then(function(response)
+        {
+          var user = response.data;
+          console.log(user);
+          if(user=='0')
+          {
+            console.log("reject");
+            $rootScope.currentUser=null;
+            deferred.reject();
+            $location.url("/managerLogin");
+          }
+          else{
+            console.log("resolved");
+            $rootScope.currentUser=user;
+            deferred.resolve();
+          }
+        },
+        function(err)
+        {
+          $location.url("/login");
+        });
+    return deferred.promise;
+  }
+
+
 
   function getLoggedIn(UserService,$location,$q,$rootScope)
   {
@@ -180,11 +230,14 @@
     return deferred.promise;
   }
 
-  function ManagergetLoggedIn(ManagerService,$location,$q,$rootScope)
+
+
+
+  function getManagerLoggedIn(UserService,$location,$q,$rootScope)
   {
 
     var deferred = $q.defer();
-    ManagerService.loggedIn()
+    UserService.loggedIn()
       .then(function(response)
         {
           var user = response.data;

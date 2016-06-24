@@ -13,7 +13,8 @@
       findRestaurantById: findRestaurantById,
       createReservation:createReservation,
       findReservationsForUserId:findReservationsForUserId,
-      deleteReservation:deleteReservation
+      deleteReservation:deleteReservation,
+      findReservationsForRestId:findReservationsForRestId
     };
     return api;
 
@@ -65,11 +66,16 @@
 
   function  findReservationsForUserId(reservationId)
   {
-    console.log("in service");
+
     var url = "/api/user/" + reservationId + "/reservation";
     return $http.get(url);
   }
 
+    function findReservationsForRestId(restId)
+    {
+      var url = "/api/user/manager/" + restId + "/reservation";
+      return $http.get(url);
+    }
 
   }
 

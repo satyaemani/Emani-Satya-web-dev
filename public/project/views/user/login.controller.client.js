@@ -38,6 +38,7 @@
         },function(err){
           //or else print out error message
           vm.error = err;
+          console.log(err);
 
 
         });

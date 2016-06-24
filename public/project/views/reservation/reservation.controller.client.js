@@ -8,12 +8,13 @@
     .controller("ReservationController",ReservationController);
 
 
-  function ReservationController($routeParams,$location,ReservationService,$rootScope) {
+  function ReservationController($routeParams,$location,ReservationService,$rootScope,ManagerService) {
     var vm = this;
 
     var restaurantId = $routeParams.restaurantId;
     console.log(restaurantId);
 
+      var location = $routeParams.location;
     function init()
     {
      ReservationService.findRestaurantById(restaurantId)
@@ -21,6 +22,16 @@
         {
           vm.restaurant = response.data;
         console.log(vm.restaurant);
+        ManagerService.findSlotsByRestId(restaurantId)
+          .then(function(response)
+          {
+            vm.slots=response.data[0].slots;
+            console.log(vm.slots);
+
+          },function(response)
+          {
+            console.log( response);
+          });
 
 
         },function(response)
@@ -43,13 +54,15 @@ init();
 
     vm.reserve = reserve;
 
-    function reserve(reservation,restaurant)
+    function reserve(reservation,slot,restaurant)
     {
+      console.log(slot);
       var reservation=
       {
         username:user.username,
         rId:restaurant.id,
         restaurantName:restaurant.name,
+        location:location,
         noOfPeople:reservation.people,
         email:user.email,
         phone:user.phone,

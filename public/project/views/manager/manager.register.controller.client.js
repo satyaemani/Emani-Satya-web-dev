@@ -13,7 +13,7 @@
     vm.register = register;
 
     function register(user) {
-
+        console.log(user);
       if(user.password!==user.confPassword)
       {
         vm.passerr="Passwords Do not match";
@@ -39,7 +39,18 @@
       //console.log(user);
 
       else {
-        UserService.register(user)
+        var slots=[{slot:"09:00"},{slot:"09:30"},{slot:"10:00"},{slot:"10:30"},{slot:"11:00"}
+        ,{slot:"11:30"},{slot:"12:00"},{slot:"12:30"},{slot:"13:00"},{slot:"13:30"},{slot:"14:00"},
+          {slot:"14:30"},{slot:"15:00"},{slot:"15:30"},{slot:"16:00"},{slot:"16:30"},{slot:"17:00"},{slot:"17:30"},
+          {slot:"18:00"},{slot:"18:30"},{slot:"19:00"}];
+        var manager={
+          username:user.username,
+          password:user.password,
+          slots:slots,
+          restaurantId:user.restaurantId
+        }
+
+        ManagerService.register(manager)
           .then(
             function (response) {
               var createUser = response.data;
@@ -47,10 +58,11 @@
 
               if (createUser) {
                 console.log("in if");
-                $location.url("/user");
+                $location.url("/manager");
               }
             },
             function (err) {
+              console.log(err);
               vm.error = err;
             }
 

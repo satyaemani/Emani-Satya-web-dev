@@ -1,0 +1,80 @@
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <p class="navbar-header pull-left">
+      <a
+        class="navbar-brand thick"
+      >
+        Manage Slots
+      </a>
+    </p>
+    <p class="navbar-text pull-right">
+      <a href="#/loggedIn" class="navbar-link ">
+          <span class="glyphicon glyphicon-home ">
+          </span>
+      </a>
+    </p>
+
+
+  </div>
+</nav>
+<div class="container">
+
+  <div ng-show="model.match" class="alert alert-danger">
+   <p>Slot already available </p>
+  </div>
+
+  <div ng-show="model.notMatch" class="alert alert-success">
+    <p>Slot Added </p>
+  </div>
+
+
+
+  <div>
+<select ng-model="model.slot"   class="form-control">
+  <option>09:00</option>
+  <option>09:30</option>
+  <option>10:00</option>
+  <option>10:30</option>
+  <option>11:00</option>
+  <option>11:30</option>
+  <option>12:00</option>
+  <option>13:00</option>
+  <option>13:30</option>
+  <option>14:30</option>
+  <option>15:00</option>
+  <option>15:30</option>
+  <option>16:00</option>
+  <option>16:30</option>
+  <option>17:30</option>
+  <option>18:00</option>
+  <option>18:30</option>
+  <option>19:00</option>
+</select>
+
+
+    <a ng-click="model.insertSlot(model.slot)">
+          <span class="glyphicon glyphicon-plus plus ">
+          </span>
+</a>
+</div>
+<ul class="list-group" ng-repeat="slot in model.slots">
+  <li class="list-group-item">{{slot.slot}} <a ng-click="model.deleteSlot(slot)">
+    <span class="glyphicon glyphicon-remove pull-right red"></span></a></li>
+</ul>
+
+  </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <div class="row navbar-text pull-right">
+
+      <a href="#/user">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+
+    </div>
+  </div>
+</nav>
+

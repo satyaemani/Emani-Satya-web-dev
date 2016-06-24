@@ -11,7 +11,9 @@ module.exports = function() {
   var api = {
     createReservation:createReservation,
     findReservationsForUserId:findReservationsForUserId,
-    deleteReservation:deleteReservation
+    deleteReservation:deleteReservation,
+    findReservationsForRestId:findReservationsForRestId
+
   };
   return api;
 
@@ -32,5 +34,10 @@ module.exports = function() {
   {
     return Reservation.find({_user:userId});
 
+  }
+
+  function findReservationsForRestId(restId)
+  {
+    return Reservation.find({rId:restId});
   }
 };

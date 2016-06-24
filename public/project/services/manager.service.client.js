@@ -5,10 +5,10 @@
   function(){
     angular
       .module("RestaurantReservation")
-      .factory("UserService",UserService);
+      .factory("ManagerService",ManagerService);
 
 
-    function UserService($http) {
+    function ManagerService($http) {
       var api = {
         // createUser:createUser,
         register: register,
@@ -19,19 +19,44 @@
         updateUser: updateUser,
         deleteUser:deleteUser,
         loggedIn:loggedIn,
-        logout:logout
+        logout:logout,
+        findSlotsByRestId:findSlotsByRestId,
+        deleteSlot:deleteSlot,
+        insertSlot:insertSlot
 
       };
       return api;
 
+
+      function insertSlot(restId,slot)
+      {
+        console.log(restId);
+        console.log(slot);
+        var url = "/api/manager/slots/"+restId;
+        return $http.post(url,slot);
+      }
+
+
+      function deleteSlot(restId,slot,slotId)
+      {
+        var url = "/api/manager/slots/"+restId+"/"+slot+"/"+slotId;
+        return $http.delete(url);
+      }
+
+      function findSlotsByRestId(restId)
+      {
+        var url = "/api/manager/slots/"+restId;
+        return $http.get(url);
+      }
+
       function loggedIn()
       {
-        return $http.get("/api/loggedIn");
+        return $http.get("/api/manager/loggedIn");
       }
 
       function logout()
       {
-        return $http.post("/api/logout");
+        return $http.post("/api/manager/logout");
       }
 
       function login(username,password)
@@ -41,12 +66,12 @@
           password:password
         }
 
-        return $http.post("/api/login",user);
+        return $http.post("/api/manager/login",user);
       }
 
       function deleteUser(userId)
       {
-        var url = "/api/user/"+userId;
+        var url = "/api/manager/user/"+userId;
         return $http.delete(url);
 
       }
@@ -55,15 +80,14 @@
 
       function register(user)
       {
-//console.log(user);
-        return $http.post("/api/user",user);
+        return $http.post("/api/manager/user",user);
         ////console.log(username,password,confPassword);
 
       }
 
 
       function updateUser(userId,newUser) {
-        var url = "/api/user/"+userId;
+        var url = "/api/manager/user/"+userId;
         return $http.put(url,newUser);
 
       }
@@ -74,12 +98,12 @@
       // it back to the controller
       function  findUserById(userId) {
 
-        var url ="/api/user/"+userId;
+        var url ="/api/manager/user/"+userId;
         return $http.get(url);
       }
 
       function findUserByUsername(username) {
-        var url="/api/user?username="+username;
+        var url="/api/manager/user?username="+username;
         return $http.get(url);//promise
 
       }
@@ -89,7 +113,7 @@
 
         //checking for all the users with the given username and password and sending
         // it back to the controller
-        var url="/api/user?username="+username+"&password="+password;
+        var url="/api/manager/user?username="+username+"&password="+password;
         return $http.get(url);//promise
       }
     }

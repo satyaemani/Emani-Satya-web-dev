@@ -14,18 +14,23 @@
 
     console.log($rootScope.previousUrl);
 
-    vm.login = function (username,password) {
-      UserService.login(username,password)
+    vm.login =login;
+
+      function login(username,password) {
+      console.log(username);
+      console.log(password);
+      ManagerService.login(username,password)
         .then(function(response) {
 
           var user = response.data;
           $rootScope.currentUser=user;
-          //if a mathces then navigate to that url
+          ////if a mathces then navigate to that url
+          //console.log($rootScope.currentUser);
           if (user._id) {
             if(!$rootScope.previousUrl){
               //if $rootScope.previousUrl is null, which means the user was not redirected to login page from other pages,
               // direct to profile page after login
-              $location.url('/user');
+              $location.url('/manager');
             }
             else
             {
@@ -40,6 +45,7 @@
           }
         },function(err){
           //or else print out error message
+          console.log(err);
           vm.error = err;
 
 

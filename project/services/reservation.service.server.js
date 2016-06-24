@@ -15,7 +15,7 @@ module.exports=function(app,models) {
   app.post("/api/user/:userId/reservation",createReservation);
   app.get("/api/user/:userId/reservation",findReservationsForUserId);
   app.delete("/api/user/:reservationId/reservation",deleteReservation);
-
+  app.get("/api/user/manager/:restId/reservation",findReservationsForRestId);
 
   function createReservation(req, res) {
     var userId = req.params.userId;
@@ -58,6 +58,20 @@ module.exports=function(app,models) {
       }, function (error) {
         res.statusCode(400).send(error);
       });
+
+  }
+
+  function findReservationsForRestId(req,res)
+  {
+    var restId = req.params.restId;
+    reservationModel
+      .findReservationsForRestId(restId)
+      .then(function (reservations) {
+          res.send(reservations);
+        },
+        function (error) {
+          res.statusCode(404).send(error);
+        });
 
   }
 
