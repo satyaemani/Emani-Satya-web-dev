@@ -31,31 +31,94 @@ module.exports=function(app,models){
   app.get("/api/manager/slots/:restId",findSlotsByRestId);
   app.put("/api/manager/user/:userId",updateUser);
   app.delete("/api/manager/user/:userId",deleteUser);
-  app.delete("/api/manager/slots/:restId/:slot/:slotId",deleteSlot);
-  app.post("/api/manager/slots/:restId",insertSlot);
+  app.delete("/api/manager/slots/:restId/:time/:date/:slotId",deleteSlot);
+  app.post("/api/manager/slots/:restId/:date",insertSlot);
+  app.get("/api/manager/slots/:date/:slotId/:restId",findDateBySlotId),
+    app.put("/api/manager/slots/:restId",addDate),
+    app.get("/api/manager/slots/:date/:restId",findTimeByDate)
 
 
   passport.use('project',new LocalStrategy(managerlocalStrategy));
   passport.serializeUser(serializeManager);
   passport.deserializeUser(deserializeManager);
 
+  function findTimeByDate(req,res)
+  {
+    var date = req.params.date;
+    var restId = req.params.restId;
+    managerModel
+      .findTimeByDate(restId,date)
+      .then(function(times)
+        {
+          res.send(times);
+        },
+        function(error)
+        {
+          res.statusCode(404).send(error);
+        });
+  }
 
-  function insertSlot(req,res)
+  function addDate(req,res)
   {
     var restId = req.params.restId;
-    var slot = req.body;
-    console.log(restId);
-    console.log(slot);
+    var slot= req.body;
     managerModel
-      .insertSlot(restId,slot)
-      .then(function(stats)
+      .addDate(restId,slot)
+      .then(function(manager)
+      {
+        res.send(manager);
+      },
+      function(error)
+      {
+        res.statusCode(404).send(error);
+      });
+  }
+
+  function findDateBySlotId(req,res)
+  {
+    var slotId=req.params.slotId;
+    var date = req.params.date;
+    var restId = req.params.restId;
+    managerModel
+      .findDateBySlotId(restId,slotId,date)
+      .then(function(slots)
         {
-          res.send(200);
+          res.send(slots);
         },
         function(error){
           res.statusCode(404).send(error);
         }
       );
+
+  }
+
+  function insertSlot(req,res)
+  {
+    var restId = req.params.restId;
+    var date = req.params.date;
+    var slot = req.body;
+    managerModel
+      .findTimeByDate(restId,date)
+      .then(function(times)
+        {
+          var i = null;
+          var j=null;
+
+          for( i in times[0].slots) {
+            if(times[0].slots[i].date==date){
+              console.log(times[0].slots[i].time);
+              times[0].slots[i].time.push(slot);
+            }
+          }
+          return times[0]
+            .save()
+
+
+        }
+      )
+      .then(function(times){
+        res.json(times);})
+
 
 
   }
@@ -63,18 +126,48 @@ module.exports=function(app,models){
   function deleteSlot(req,res)
   {
     var restId = req.params.restId;
-    var slot = req.params.slot;
-    var slotId = req.params.slotId;
+    var time = req.params.time;
+    var date = req.params.date;
 
-    managerModel.deleteSlot(restId,slotId,slot)
-      .then(
-        function(stats)
+    managerModel
+      .findTimeByDate(restId,date)
+      .then(function(times)
         {
-          res.send(200);
-        },
-        function(error){
-          res.statusCode(404).send(error);
-        });
+          var i = null;
+          var j=null;
+          for( i in times[0].slots) {
+            for( j in times[0].slots[i].time) {
+             if(time==times[0].slots[i].time[j].slot)
+             {
+               times[0].slots[i].time.splice(j,1);
+
+             }
+
+            }}
+         return times[0]
+            .save()
+
+
+      }
+      )
+      .then(function(times){
+        res.json(times);})
+
+
+    //var restId = req.params.restId;
+    //var time = req.params.time;
+    //var date = req.params.date;
+    //var slotId = req.params.slotId;
+    //
+    //managerModel.deleteSlot(restId,time,date,slotId)
+    //  .then(
+    //    function(stats)
+    //    {
+    //      res.send(200);
+    //    },
+    //    function(error){
+    //      res.statusCode(404).send(error);
+    //    });
   }
 
 

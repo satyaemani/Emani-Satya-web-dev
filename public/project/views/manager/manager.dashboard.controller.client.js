@@ -16,6 +16,9 @@
     //vm.updateUser = updateUser;
     //vm.deleteUser = deleteUser;
     vm.logout = logout;
+    
+
+
 
 
 
@@ -34,17 +37,19 @@
     }
     init();
 
+
+
     function  logout()
     {
      UserService.logout()
         .then(function(response)
           {
             $rootScope.currentUser=null;
-            $location.url("/managerLogin");
+            $location.url("/home");
 
           },
           function (response) {
-            $location.url("/managerLogin");
+            $location.url("/home");
           })
     }
 

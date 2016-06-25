@@ -21,7 +21,9 @@
   <form>
 <div class="form-group">
   <span class="label label-default">Date</span>
-  <input type="date" ng-model="model.reservation.date1" class="form-control">
+  <input type="date" ng-model="model.reservation.date" class="form-control">
+  <a class="btn btn-primary"
+     ng-click="model.fetchSlots(model.reservation.date)">Submit Date</a>
   <!--<div>    -->
   <!--<ng-datepicker ng-model="model.reservation.date1" class="responsive">-->
   <!--</ng-datepicker>-->
@@ -48,12 +50,16 @@
 
   <span class="label label-default">Time</span>
 
-  <select ng-model="model.reservation.time"
+  <select ng-show="model.dateAvailable" ng-model="model.reservation.time"
           class="form-control">
-
-
-    <option ng-repeat=" slot in model.slots">{{slot.slot}}</option>
+    <option ng-repeat="slot in model.slots">{{slot.slot}}</option>
   </select>
+  <select ng-show="model.dateNotAvailable" ng-model="model.reservation.time"
+          class="form-control">
+    <option ng-repeat="slot in model.slots.slot">{{slot.slot}}</option>
+  </select>
+
+
 
 </div>
     </form>

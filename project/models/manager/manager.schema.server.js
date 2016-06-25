@@ -8,7 +8,12 @@ module.exports = function() {
     username: {type: String, required: true},
     password: String,
     restaurantId:String,
-    slots:[{slot:String}],
+    slots:[
+          {date:String,
+          time:
+            [{slot:String}]}],
+
+    timing:[{slot:String}],
     messages:[{
       _user:{type:mongoose.Schema.ObjectId,ref:"User"},
       username:String,

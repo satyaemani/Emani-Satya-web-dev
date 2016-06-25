@@ -18,7 +18,10 @@ module.exports = function() {
     //findFaceBookUser:findFaceBookUser,
     findSlotsByRestId:findSlotsByRestId,
     deleteSlot:deleteSlot,
-    insertSlot:insertSlot
+    insertSlot:insertSlot,
+    findDateBySlotId:findDateBySlotId,
+    addDate:addDate,
+    findTimeByDate:findTimeByDate
   };
   return api;
 
@@ -27,21 +30,45 @@ module.exports = function() {
   //    reviews: reviews}}
   //);
 
-
-
-  function insertSlot(restId,slot)
+  function findTimeByDate(restId,date)
   {
-    console.log(restId);
-    console.log(slot);
+    var d =date+"";
+
+    return Manager.find({restaurantId:restId},{slots:[{date:d}]});
+  }
+
+  function addDate(restId,slot)
+  {
+
+
     return Manager
       .update({restaurantId:restId},{$push:{slots:slot} } )
   }
 
-  function deleteSlot(restId,slotId,slot)
+function findDateBySlotId(restId,slotId,date)
+{
+
+
+  return Manager.findOne({restaurantId:restId,slots:[{_id:slotId,date:date}]})
+}
+
+  function insertSlot(restId,slot)
   {
 
     return Manager
-      .update({restaurantId:restId},{$pull:{slots:{slot:slot ,_id: slotId } } })
+      .update({restaurantId:restId},{$push:{slots:slot} } )
+  }
+
+  function deleteSlot(restId,time,date,slotId)
+  {
+
+console.log(time);
+    console.log(date);
+    console.log(slotId);
+    //return Manager
+    //  .update({restaurantId:restId},{slots:[{date:date}]},{$pull:{time:{slot:time,_id:slotId}}})
+    return Manager
+    .update({restaurantId:restId},{slots:[{date:date}]},{$pull:{'slots.$.time':{slot:time,_id:slotId}}})
 
   }
 

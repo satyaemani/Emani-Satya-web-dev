@@ -22,24 +22,48 @@
         logout:logout,
         findSlotsByRestId:findSlotsByRestId,
         deleteSlot:deleteSlot,
-        insertSlot:insertSlot
+        insertSlot:insertSlot,
+        findDateBySlotId:findDateBySlotId,
+        addDate:addDate,
+        findTimeByDate:findTimeByDate
 
       };
       return api;
 
+     // function addDate()
 
-      function insertSlot(restId,slot)
+      function findTimeByDate(date,restId)
+      {
+        var url = "/api/manager/slots/"+date+"/"+restId;
+        return $http.get(url);
+
+      }
+
+      function addDate(slot,restId)
+      {
+        var url = "/api/manager/slots/"+restId;
+        return $http.put(url,slot);
+      }
+
+      function findDateBySlotId(date,slotId,restId)
+      {
+        var url = "/api/manager/slots/"+date+"/"+slotId+"/"+restId;
+        return $http.get(url);
+
+      }
+
+      function insertSlot(date,restId,slot)
       {
         console.log(restId);
         console.log(slot);
-        var url = "/api/manager/slots/"+restId;
+        var url = "/api/manager/slots/"+restId+"/"+date;
         return $http.post(url,slot);
       }
 
 
-      function deleteSlot(restId,slot,slotId)
+      function deleteSlot(restId,time,date,slotId)
       {
-        var url = "/api/manager/slots/"+restId+"/"+slot+"/"+slotId;
+        var url = "/api/manager/slots/"+restId+"/"+time+"/"+date+"/"+slotId;
         return $http.delete(url);
       }
 

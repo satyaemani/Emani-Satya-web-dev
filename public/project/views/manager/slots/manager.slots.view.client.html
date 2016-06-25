@@ -2,19 +2,22 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
-    <p class="navbar-header pull-left">
+
+    <p class="navbar-text pull-left">
+      <a href="#/manager" class="navbar-link ">
+          <span class="glyphicon glyphicon-chevron-left ">
+          </span>
+      </a>
+    </p>
+
+    <p class="navbar-header">
       <a
         class="navbar-brand thick"
       >
         Manage Slots
       </a>
     </p>
-    <p class="navbar-text pull-right">
-      <a href="#/loggedIn" class="navbar-link ">
-          <span class="glyphicon glyphicon-home ">
-          </span>
-      </a>
-    </p>
+
 
 
   </div>
@@ -29,10 +32,30 @@
     <p>Slot Added </p>
   </div>
 
+  <div ng-show="model.err" class="alert alert-danger">
+    <p>Please submit date </p>
+  </div>
 
+  <div ng-show="model.dateerr" class="alert alert-danger">
+    <p>Date is mandatory </p>
+  </div>
+  <div ng-show="model.Timeerr" class="alert alert-danger">
+    <p>Time is mandatory </p>
+  </div>
+
+
+
+  <form>
+    <div class="form-group">
+      <span class="label label-default">Date</span>
+      <input type="date" ng-model="model.date" class="form-control">
+      </div>
+    <a class="btn btn-primary"
+       ng-click="model.addDate(model.date,model.slotId)">Submit Date</a>
+    </form>
 
   <div>
-<select ng-model="model.slot"   class="form-control">
+<select ng-model="model.slot"  class="form-control">
   <option>09:00</option>
   <option>09:30</option>
   <option>10:00</option>
@@ -54,13 +77,13 @@
 </select>
 
 
-    <a ng-click="model.insertSlot(model.slot)">
+    <a ng-click="model.insertSlot(model.date,model.slot)">
           <span class="glyphicon glyphicon-plus plus ">
           </span>
 </a>
 </div>
 <ul class="list-group" ng-repeat="slot in model.slots">
-  <li class="list-group-item">{{slot.slot}} <a ng-click="model.deleteSlot(slot)">
+  <li class="list-group-item">{{slot.slot}} <a ng-click="model.deleteSlot(slot,model.date,slot._id)">
     <span class="glyphicon glyphicon-remove pull-right red"></span></a></li>
 </ul>
 

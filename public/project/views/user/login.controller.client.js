@@ -12,6 +12,7 @@
     console.log($rootScope.previousUrl);
 
     vm.login = function (username,password) {
+
       UserService.login(username,password)
         .then(function(response) {
 
