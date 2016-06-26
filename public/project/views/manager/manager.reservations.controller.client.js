@@ -20,7 +20,8 @@
    // vm.deleteReservation = deleteReservation;
     //vm.logout = logout;
 
-
+    vm.deleteReservation = deleteReservation;
+    vm.searchUser=searchUser;
 
     var restId = $rootScope.currentUser.restaurantId;
 
@@ -41,6 +42,65 @@
 
     }
     init();
+
+    function searchUser(username)
+    {
+      ReservationService.findReservationsForRestId(restId)
+      .then(function(response){
+        console.log(response);
+        vm.reservations=response.data;
+
+
+        for(var i in vm.reservations){
+
+          if(vm.reservations[i].username==username)
+          {
+            ReservationService.findReservationsForUserId(vm.reservations[i]._user)
+              .then(function(response){
+                console.log(response);
+                vm.reservations=response.data;
+
+              },function(response)
+              {
+                console.log(response);
+              } );
+            break;
+          }
+        }
+
+      },function(response)
+      {
+        console.log(response);
+      } );
+
+
+
+    }
+
+
+    function deleteReservation(reservationId)
+    {
+      ReservationService.deleteReservation(reservationId)
+        .then(function(response)
+        {
+          var result =response.data;
+          ReservationService.findReservationsForRestId(restId)
+            .then(function(response){
+              console.log(response);
+              vm.reservations=response.data;
+              //vm.reservationsLength=vm.reservations.length;
+
+            },function(response)
+            {
+              console.log(response);
+            } );
+        },function(){
+
+        });
+
+
+    }
+
 
     //function  logout()
     //{

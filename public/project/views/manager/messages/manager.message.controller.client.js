@@ -19,12 +19,12 @@
 
     vm.logout = logout;
     vm.deleteMessage = deleteMessage;
-
+    vm.searchUser=searchUser;
 
     var userId = $rootScope.currentUser._id;
 
 
-
+    vm.messageShow = false;
 
     function init()
     {
@@ -32,7 +32,7 @@
       ManagerService.findUserById(userId)
       .then(function(response){
         vm.user = response.data;
-        console.log(vm.user);
+
       });
 
 
@@ -40,6 +40,13 @@
     }
     init();
 
+    function searchUser(username)
+    {
+        vm.messageShow=true;
+         vm.username=username;
+
+
+    }
 
     function deleteMessage(message,userId)
     {

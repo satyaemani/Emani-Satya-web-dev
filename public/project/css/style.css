@@ -11,7 +11,7 @@ a
   color:red;
 }
 
-.plus
+.blue
 {
   color:#122b40;
 }
@@ -24,18 +24,25 @@ input.ng-invalid
   border-color: #cd0a0a;
   /*background-color:#7FFFD4;*/
 }
+/*div.image*/
+/*{*/
+  /*background-image: url("ocean-restaurant-by-cat-cora.jpg");*/
+/*}*/
 
 
+li:hover{
+  background-color: #82888a;
+}
 body {
   /*background-image: url("ocean-restaurant-by-cat-cora.jpg");*/
   /*background-color:#8c8c8c;*/
   padding-top: 60px;
   padding-bottom: 77px;
 }
-/*h1,h2,h3,h4,h5,h6*/
-/*{*/
-  /*color:white*/
-/*}*/
+h1,h2,h3,h4,h5,h6
+{
+  color:inherit;
+}
 
 label
 {

@@ -39,7 +39,7 @@
     <p>Added to My Favourites</p>
   </div>
 
-  <div ng-show=" model.remove " class="alert alert-danger">
+  <div ng-show=" model.remove " class="alert alert-danger" role="alert">
     <p>Removed from My Favourites</p>
   </div>
   <div class="row">
@@ -116,7 +116,7 @@
 </div>
 <hr>
 <div ng-show=" model.sentMessage " class="alert alert-success">
-  <p>Message sent successfullly</p>
+  <p>Message sent successfully</p>
 </div>
 <p><b>Message to {{model.restaurant.name}}'s manager:</b></p>
 <div ng-show="model.messageerr">

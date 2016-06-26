@@ -15,7 +15,9 @@
 </nav>
 <div class="container">
 
-<table class="table table-hover ">
+<table class="table table-hover table-responsive">
+  <thead class="thead-inverse">
+  <tr>
   <th>User Name</th>
   <th>Restaurant Name</th>
   <th>Location</th>
@@ -23,6 +25,8 @@
   <th>Time</th>
   <th>No.of People</th>
   <th>Phone Number</th>
+  </tr>
+  </thead>
   <tr ng-repeat="reservation in model.reservations">
     <div ng-show="model.error">
     <td>{{reservation.username}}</td>
