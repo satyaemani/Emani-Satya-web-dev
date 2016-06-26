@@ -25,12 +25,36 @@
         insertSlot:insertSlot,
         findDateBySlotId:findDateBySlotId,
         addDate:addDate,
-        findTimeByDate:findTimeByDate
+        findTimeByDate:findTimeByDate,
+        findManagerByRestId:findManagerByRestID,
+        sendMessage:sendMessage,
+        deleteMessage:deleteMessage
 
       };
       return api;
 
      // function addDate()
+
+      function deleteMessage(userId,messageId)
+      {
+        var url="/api/manager/"+userId+"/"+messageId;
+        return $http.delete(url);
+
+
+      }
+
+      function sendMessage(message,restId)
+      {
+        var url = "/api/manager/"+restId;
+        return $http.post(url,message);
+
+      }
+
+      function findManagerByRestID(restId)
+      {
+        var url = "/api/manager/"+restId;
+        return $http.get(url);
+      }
 
       function findTimeByDate(date,restId)
       {
@@ -121,7 +145,7 @@
       //checking for all the users with the given userID and sending
       // it back to the controller
       function  findUserById(userId) {
-
+      console.log(userId)
         var url ="/api/manager/user/"+userId;
         return $http.get(url);
       }

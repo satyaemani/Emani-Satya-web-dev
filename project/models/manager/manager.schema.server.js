@@ -12,10 +12,8 @@ module.exports = function() {
           {date:String,
           time:
             [{slot:String}]}],
-
-    timing:[{slot:String}],
     messages:[{
-      _user:{type:mongoose.Schema.ObjectId,ref:"User"},
+      userId:String,
       username:String,
       message:String
     }],

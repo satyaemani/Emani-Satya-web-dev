@@ -1,0 +1,36 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <p class="navbar-header pull-left">
+      <a
+        class="navbar-brand thick"
+      >
+        Messages
+      </a>
+    </p>
+
+
+
+  </div>
+</nav>
+
+
+<ul class="list-group" ng-repeat="message in model.user.messages">
+  <li class="list-group-item"><p>{{message.username}}:</p>  <p>{{message.message}}
+   <a ng-click="model.deleteMessage(message,model.user._id)"> <span class="glyphicon glyphicon-trash pull-right"></span></a></p></li>
+
+
+</ul>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <div class="row navbar-text pull-right">
+
+      <a href="#/manager">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+
+    </div>
+  </div>
+</nav>
+

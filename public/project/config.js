@@ -134,6 +134,16 @@
         }
 
       })
+      .when("/manager/messages",{
+        templateUrl:"views/manager/messages/manager.message.view.client.html",
+        controller:"ManagerMessageController",
+        controllerAs:"model",
+        resolve:
+        {
+          loggedIn:getManagerLoggedIn
+        }
+
+      })
       .otherwise({
         redirectTo:"/home"
       });
@@ -241,7 +251,7 @@
       .then(function(response)
         {
           var user = response.data;
-          console.log(user);
+
           if(user=='0')
           {
             console.log("reject");

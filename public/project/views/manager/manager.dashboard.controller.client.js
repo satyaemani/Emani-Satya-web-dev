@@ -16,7 +16,7 @@
     //vm.updateUser = updateUser;
     //vm.deleteUser = deleteUser;
     vm.logout = logout;
-    
+
 
 
 
@@ -32,6 +32,7 @@
       ManagerService.findUserById(userId)
         .then(function(response){
           vm.user = response.data;
+          vm.messageNumber=vm.user.messages.length;
         })
 
     }

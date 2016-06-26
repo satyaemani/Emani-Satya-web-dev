@@ -5,7 +5,7 @@
       <a
         class="navbar-brand thick"
       >
-        Profile
+       DashBoard
       </a>
     </p>
 
@@ -17,8 +17,10 @@
 
 <ul class="list-group">
   <li class="list-group-item"><a href="#/manager/reservations">Reservations</a></li>
-  <li class="list-group-item"><a href="">Messages</a></li>
-  <li class="list-group-item"><a href="#/manager/slots">Manage Slots</a></li>
+  <li class="list-group-item"><a href="#/manager/messages">Messages ({{model.messageNumber}})
+    <span class="glyphicon glyphicon-envelope pull-right blue"></span></a></li>
+  <li class="list-group-item"><a href="#/manager/slots">Manage Slots
+    <span class="glyphicon glyphicon-transfer pull-right blue"></span></a></li>
 
 </ul>
 
@@ -28,7 +30,7 @@
   <div class="container">
     <div class="row navbar-text pull-right">
 
-      <a href="#/user">
+      <a href="#/manager">
         <span class="glyphicon glyphicon-user"></span>
       </a>
 

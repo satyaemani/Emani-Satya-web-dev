@@ -21,14 +21,27 @@ module.exports = function() {
     insertSlot:insertSlot,
     findDateBySlotId:findDateBySlotId,
     addDate:addDate,
-    findTimeByDate:findTimeByDate
+    findTimeByDate:findTimeByDate,
+    findManagerByRestID:findManagerByRestID,
+    sendMessage:sendMessage,
+    deleteMessage:deleteMessage
   };
   return api;
 
-  //.update({tmdbId: id},
-  //  {$push: {ratings: ratings,
-  //    reviews: reviews}}
-  //);
+  function sendMessage(restId,message)
+  {
+  return Manager.update({restaurantId:restId},{$push:{messages:message} } )
+  }
+
+  function deleteMessage(userId,messageId)
+  {
+    return Manager.update({_id:userId},{$pull:{messages:{_id:messageId}} } )
+  }
+
+  function  findManagerByRestID(restId){
+
+    return Manager.findOne({restaurantId:restId});
+  }
 
   function findTimeByDate(restId,date)
   {

@@ -69,6 +69,9 @@
       <a ng-click="model.makeReservation()"
          class="btn btn-primary ">Make Reservation</a>
       </div>
+
+
+
     </div>
 
     </div>
@@ -76,7 +79,7 @@
   <div class="">
     <h4><b>Cuisines</b></h4>
     <div ng-repeat="category in model.restaurant.categories">
-      <h6>{{category[0]}}</h6>
+      <p>{{category[0]}}</p>
     </div>
   </div>
 
@@ -84,7 +87,7 @@
   <div>
   <h4><b>Address</b></h4>
   <div  ng-repeat="location in model.restaurant.location.display_address">
-    {{location}}
+   <p> {{location}}</p>
     </div>
     <hr>
     <h4><b>Phone:</b></h4>
@@ -112,7 +115,25 @@
 </div>
 </div>
 <hr>
+<div ng-show=" model.sentMessage " class="alert alert-success">
+  <p>Message sent successfullly</p>
+</div>
+<p><b>Message to {{model.restaurant.name}}'s manager:</b></p>
+<div ng-show="model.messageerr">
+<form role="form">
+  <div  class="form-group">
 
+    <textarea ng-model="model.message" class="form-control" rows=5"></textarea>
+  </div>
+</form>
+
+  <a ng-click="model.sendMessage(model.message)"
+     class="btn btn-default">Send </a>
+  </div>
+<div ng-show="!model.messageerr">
+  <p>No Manager for this restaurant</p>
+  </div>
+</div>
 
 
 

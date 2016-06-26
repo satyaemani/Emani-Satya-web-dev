@@ -17,11 +17,6 @@ module.exports=function(app,models){
   var managerModel=models.managerModel;
 
 
-  //app.get("/auth/facebook", passport.authenticate('facebook'));
-  //app.get("/auth/facebook/callback", passport.authenticate('facebook', {
-  //  successRedirect: '/assignment/#/user',
-  //  failureRedirect: '/assignment/#/login'
-  //}));
   app.get("/api/manager/user/:userId",findUserById);
   app.get("/api/manager/user",getUsers);
   app.get("/api/manager/loggedIn",loggedIn);
@@ -35,12 +30,65 @@ module.exports=function(app,models){
   app.post("/api/manager/slots/:restId/:date",insertSlot);
   app.get("/api/manager/slots/:date/:slotId/:restId",findDateBySlotId),
     app.put("/api/manager/slots/:restId",addDate),
-    app.get("/api/manager/slots/:date/:restId",findTimeByDate)
+    app.get("/api/manager/slots/:date/:restId",findTimeByDate),
+    app.get("/api/manager/:restId",findManagerByRestID),
+    app.post("/api/manager/:restId",sendMessage),
+    app.delete("/api/manager/:userId/:messageId",deleteMessage)
+
 
 
   passport.use('project',new LocalStrategy(managerlocalStrategy));
   passport.serializeUser(serializeManager);
   passport.deserializeUser(deserializeManager);
+
+
+  function deleteMessage(req,res)
+  {
+    var userId = req.params.userId;
+    var messageId= req.params.messageId;
+    managerModel
+      .deleteMessage(userId,messageId)
+      .then(
+        function(stats)
+        {
+          res.send(200);
+        },
+        function(error){
+          res.statusCode(404).send(error);
+        });
+
+  }
+
+
+  function sendMessage(req,res)
+  {
+    var restId = req.params.restId;
+    var message = req.body;
+    console.log(message);
+    managerModel
+      .sendMessage(restId,message)
+      .then(function(message)
+      {
+        res.send(message);
+      },function(response)
+      {
+        res.statusCode(404).send(error);
+      });
+  }
+
+  function findManagerByRestID(req,res)
+  {
+    var restId = req.params.restId;
+    managerModel
+      .findManagerByRestID(restId)
+      .then(function(manager)
+      {
+        res.send(manager);
+      },function(response){
+        res.statusCode(404).send(error);
+      })
+  }
+
 
   function findTimeByDate(req,res)
   {

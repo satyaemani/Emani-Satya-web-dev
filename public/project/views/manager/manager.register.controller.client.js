@@ -39,14 +39,10 @@
       //console.log(user);
 
       else {
-        var timing=[{slot:"09:00"},{slot:"09:30"},{slot:"10:00"},{slot:"10:30"},{slot:"11:00"}
-        ,{slot:"11:30"},{slot:"12:00"},{slot:"12:30"},{slot:"13:00"},{slot:"13:30"},{slot:"14:00"},
-          {slot:"14:30"},{slot:"15:00"},{slot:"15:30"},{slot:"16:00"},{slot:"16:30"},{slot:"17:00"},{slot:"17:30"},
-          {slot:"18:00"},{slot:"18:30"},{slot:"19:00"}];
+
         var manager={
           username:user.username,
           password:user.password,
-          timing:timing,
           restaurantId:user.restaurantId
         }
 

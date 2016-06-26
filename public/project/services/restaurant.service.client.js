@@ -14,7 +14,7 @@
         addToFavourites:addToFavourites,
         findFavRestaurantById:findFavRestaurantById,
         findFavRestaurantForUserId:findFavRestaurantForUserId,
-        removeFavourites: removeFavourites
+        removeFavourites: removeFavourites,
       };
 
       return api;
@@ -68,6 +68,9 @@
 
 
       }
+
+
+
 
       function addToFavourites(favRestaurant,userId)
       {

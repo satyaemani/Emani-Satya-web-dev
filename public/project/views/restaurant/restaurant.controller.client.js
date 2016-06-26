@@ -5,7 +5,7 @@
     .controller("RestaurantController",RestaurantController);
 
 
-  function RestaurantController($routeParams,$rootScope,$location,RestaurantService,UserService) {
+  function RestaurantController($routeParams,$rootScope,$location,RestaurantService,ManagerService,UserService) {
     var vm = this;
 
     vm.location=$routeParams.location;
@@ -22,16 +22,31 @@
     vm.addToFavourites=addToFavourites;
     vm.makeReservation = makeReservation;
     vm.removeFavourites = removeFavourites;
+    vm.sendMessage=sendMessage;
+
+    vm.messageerr=false;
 
     function init()
     {
+
+      ManagerService
+        .findManagerByRestId(restaurantId)
+        .then(function(response)
+        {
+         if(response.data) {
+           vm.messageerr = true;
+         }
+        },function(response){
+          console.log(response);
+        });
 
       RestaurantService.findRestaurantById(restaurantId)
         .then(function(response)
         {
           vm.restaurant = response.data;
           console.log( vm.restaurant.id);
-          RestaurantService.findFavRestaurantById(vm.restaurant.id,vm.user._id)
+          RestaurantService
+            .findFavRestaurantById(vm.restaurant.id,vm.user._id)
             .then(function(response)
             {
               console.log(response.data);
@@ -43,6 +58,8 @@
                 vm.favRestaurant = false;
                 console.log(vm.favRestaurant);
               }
+
+
 
             },function(response)
             {
@@ -143,6 +160,40 @@ init();
           console.log(response);
 
         });
+
+    }
+
+
+    function sendMessage(message)
+    {
+
+      if ($rootScope.currentUser) {
+        console.log("in user");
+        var message={
+          userId:user._id,
+          username:user.username,
+          message:vm.message
+        };
+        ManagerService
+          .sendMessage(message,restaurantId)
+          .then(function(response)
+          {
+            vm.message=null;
+            vm.sentMessage=true;
+          }, function(response)
+          {
+            console.log(response);
+          });
+
+      }
+      else {
+        //if user is not logged in, redirect to login page
+        console.log("in else");
+        $rootScope.previousUrl = $location.path();
+        console.log($rootScope.previousUrl);
+        $location.url('/login');
+
+      }
 
     }
 
