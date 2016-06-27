@@ -55,9 +55,11 @@ module.exports=function(app,models) {
 
   function findFavRestaurantForUserId(req,res) {
     var userId = req.params.userId;
+    console.log("server"+userId);
     restaurantModel
       .findFavRestaurantForUserId(userId)
       .then(function (restaurants) {
+        console.log(restaurants);
           res.send(restaurants);
         },
         function (error) {
