@@ -1,21 +1,26 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" xmlns="http://www.w3.org/1999/html">
+  <div class="container">
 
-
-
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
     <p class="navbar-header pull-left">
+      <a ng-click="model.back()" class="navbar-brand thick">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </p>
+
+    <p class="navbar-header pull">
       <a
-        class="navbar-brand thick"
-      >
+        class="navbar-brand thick">
        My Reservations
       </a>
     </p>
 
+
+
   </div>
 </nav>
 <div class="container">
-
-<table class="table table-hover table-responsive">
+<div class="table-responsive">
+<table class="table table-hover table-striped">
   <thead class="thead-inverse">
   <tr>
   <th>User Name</th>
@@ -27,12 +32,13 @@
   <th>Phone Number</th>
   </tr>
   </thead>
+  <tbody>
   <tr ng-repeat="reservation in model.reservations">
     <div ng-show="model.error">
     <td>{{reservation.username}}</td>
     <td>{{reservation.restaurantName}}</td>
       <td>{{reservation.location}}</td>
-      <td>{{reservation.date}}</td>
+      <td ng-bind="reservation.date | date:'mediumDate'"></td>
     <td>{{reservation.time}}</td>
     <td>{{reservation.noOfPeople}}</td>
     <td>{{reservation.phone}}</td>
@@ -42,9 +48,11 @@
    </td>
     </div>
   </tr>
+  </tbody>
 
 
   </table>
+  </div>
 
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">

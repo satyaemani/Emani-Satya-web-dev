@@ -14,7 +14,7 @@
 </nav>
 
 <div class="container">
-  <h3>Please login to make reservations or view more details</h3>
+
   <div ng-show="model.error" class="alert alert-danger">
     {{model.error.data}}
   </div>
@@ -26,7 +26,7 @@
   <div ng-show="loginForm.password.$invalid && loginForm.$submitted" class="alert alert-danger">
     <p>Password is mandatory</p>
   </div>
-  <h1>Login</h1>
+  <h1>login</h1>
 
   <form name="loginForm" novalidate>
     <input name="username"
@@ -57,8 +57,10 @@
 
   <a class="btn btn-success btn-block"
      href="#/register">Register</a>
-  <!--<a href= "/auth/facebook" class="btn btn-primary btn-block">Login with Facebook-->
-    <!--<span class="fa fa-facebook-official"></span>-->
-  <!--</a>-->
+
+  <a href="/auth/google" class="btn btn-danger btn-block">
+    <span class="fa fa-google-plus"></span>
+    Google
+  </a>
 
 </div>

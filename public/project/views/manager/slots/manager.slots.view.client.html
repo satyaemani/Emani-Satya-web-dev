@@ -1,6 +1,6 @@
 
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
 
     <p class="navbar-text pull-left">
@@ -47,7 +47,7 @@
 
   <form>
     <div class="form-group">
-      <span class="label label-default">Date</span>
+      <h4><b>Date</b></h4>
       <input type="date" ng-model="model.date" class="form-control">
       </div>
     <a class="btn btn-primary"
@@ -55,6 +55,8 @@
     </form>
 
   <div>
+
+    <h4><b>Slots</b></h4>
 <select ng-model="model.slot"  class="form-control">
   <option>09:00</option>
   <option>09:30</option>
@@ -76,12 +78,15 @@
   <option>19:00</option>
 </select>
 
+  </div>
+<div>
+  <p>
+    <a ng-click="model.insertSlot(model.date,model.slot)" class="btn btn-danger">
+      Add Slot
+    </a>
+    </p>
+  </div>
 
-    <a ng-click="model.insertSlot(model.date,model.slot)">
-          <span class="glyphicon glyphicon-plus plus ">
-          </span>
-</a>
-</div>
 <ul class="list-group" ng-repeat="slot in model.slots">
   <li class="list-group-item">{{slot.slot}} <a ng-click="model.deleteSlot(slot,model.date,slot._id)">
     <span class="glyphicon glyphicon-remove pull-right red"></span></a></li>
@@ -89,15 +94,15 @@
 
   </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container">
-    <div class="row navbar-text pull-right">
+<!--<nav class="navbar navbar-default navbar-fixed-bottom">-->
+  <!--<div class="container">-->
+    <!--<div class="row navbar-text pull-right">-->
 
-      <a href="#/user">
-        <span class="glyphicon glyphicon-user"></span>
-      </a>
+      <!--<a href="#/manager">-->
+        <!--<span class="glyphicon glyphicon-user"></span>-->
+      <!--</a>-->
 
-    </div>
-  </div>
-</nav>
+    <!--</div>-->
+  <!--</div>-->
+<!--</nav>-->
 

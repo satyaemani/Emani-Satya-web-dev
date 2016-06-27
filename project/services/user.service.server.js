@@ -1,7 +1,8 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
-var FacebookStrategy = require('passport-facebook').Strategy;
+//var FacebookStrategy = require('passport-facebook').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 
 module.exports=function(app,models){
@@ -9,11 +10,20 @@ module.exports=function(app,models){
   var userModel=models.userModel;
   var managerModel=models.managerModel;
 
-  app.get("/auth/facebook", passport.authenticate('facebook'));
-  app.get("/auth/facebook/callback", passport.authenticate('facebook', {
-    successRedirect: '/assignment/#/user',
-    failureRedirect: '/assignment/#/login'
-  }));
+  app.get('/auth/google/callback',
+    passport.authenticate('google', {
+      successRedirect: '/project/index.html#/user',
+      failureRedirect: '/project/index.html#/login'
+    }));
+
+
+  //app.get("/auth/facebook", passport.authenticate('facebook'));
+  //app.get("/auth/facebook/callback", passport.authenticate('facebook', {
+  //  successRedirect: '/assignment/#/user',
+  //  failureRedirect: '/assignment/#/login'
+  //}));
+
+  app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
   app.get("/api/user/:userId",findUserById);
   app.get("/api/user",getUsers);
   app.get("/api/loggedIn",loggedIn);
@@ -30,44 +40,96 @@ module.exports=function(app,models){
   passport.deserializeUser(deserializeUser);
 
 
-  var facebookConfig = {
-    clientID     : process.env.FACEBOOK_CLIENT_ID,
-    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL  : process.env.FACEBOOK_CALLBACK_URL
-    //FACEBOOK_CALLBACK_URL  : "http://127.0.0.1:3000/auth/facebook/callback",
-    //FACEBOOK_CLIENT_ID   : "1812219052343494",
-    //FACEBOOK_CLIENT_SECRET : "1003457cecc39def13b74ea952a51bb9",
+  //var facebookConfig = {
+  //  clientID     : process.env.FACEBOOK_CLIENT_ID,
+  //  clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+  //  callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+  //  //FACEBOOK_CALLBACK_URL  : "http://127.0.0.1:3000/auth/facebook/callback",
+  //  //FACEBOOK_CLIENT_ID   : "1812219052343494",
+  //  //FACEBOOK_CLIENT_SECRET : "1003457cecc39def13b74ea952a51bb9",
+  //};
+
+
+  //var googleConfig = {
+  //  clientID     : process.env.GOOGLE_CLIENT_ID,
+  //  clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+  //  callbackURL  : process.env.GOOGLE_CALLBACK_URL
+  //};
+
+  var googleConfig = {
+    clientID     : "772561999884-3uairgv7iihd4s183c47e3b36f522p9f.apps.googleusercontent.com",
+    clientSecret : "aT_LIZ1_vxsSBAjYs0Ksvj1k",
+    callbackURL  : "http://127.0.0.1:3000/auth/google/callback"
   };
 
-  passport.use('facebook',new FacebookStrategy(facebookConfig,facebookLogin));
+  //passport.use('facebook',new FacebookStrategy(facebookConfig,facebookLogin));
 
-  function facebookLogin(token, refreshToken, profile, done)
-  {
-    console.log(profile);
-    userModel.findFaceBookUser(profile.id)
-      .then(function(faceBookUser)
-      {
-        if(faceBookUser) {
-          done(null,faceBookUser);
-        }
-        else{
-          faceBookUser={
-            username:profile.displayName.replace(/ /g,''),
-            facebook:{
-              token:token,
-              displayName:profile.displayName,
-              id:profile.id
-            }
-          };
-          userModel.createUser(faceBookUser)
-            .then(function(user){
-              done(null,user);
-            })
+  passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 
+  //function facebookLogin(token, refreshToken, profile, done)
+  //{
+  //  console.log(profile);
+  //  userModel.findFaceBookUser(profile.id)
+  //    .then(function(faceBookUser)
+  //    {
+  //      if(faceBookUser) {
+  //        done(null,faceBookUser);
+  //      }
+  //      else{
+  //        faceBookUser={
+  //          username:profile.displayName.replace(/ /g,''),
+  //          facebook:{
+  //            token:token,
+  //            displayName:profile.displayName,
+  //            id:profile.id
+  //          }
+  //        };
+  //        userModel.createUser(faceBookUser)
+  //          .then(function(user){
+  //            done(null,user);
+  //          })
+  //
+  //      }
+  //    });
+  //}
+
+
+  function googleStrategy(token, refreshToken, profile, done) {
+    userModel
+      .findUserByGoogleId(profile.id)
+      .then(
+        function(user) {
+          if(user) {
+            return done(null, user);
+          } else {
+            var email = profile.emails[0].value;
+            var emailParts = email.split("@");
+            var newGoogleUser = {
+              username:  emailParts[0],
+                firstName: profile.name.givenName,
+                lastName:  profile.name.familyName,
+                email:     email,
+                google: {
+                id:    profile.id,
+                  token: token
+              }
+            };
+            return userModel.createUser(newGoogleUser);
+          }
+        },
+        function(err) {
+          if (err) { return done(err); }
         }
-      });
+      )
+      .then(
+        function(user){
+          return done(null, user);
+        },
+        function(err){
+          if (err) { return done(err); }
+        }
+      );
   }
-
 
 
   function localStrategy(username,password,done)

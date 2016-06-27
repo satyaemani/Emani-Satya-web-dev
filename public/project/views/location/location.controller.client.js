@@ -5,13 +5,21 @@
     .controller("LocationController",LocationController);
 
 
-  function LocationController($routeParams,$location,LocationService,$rootScope) {
+  function LocationController($routeParams,$location,$rootScope,UserService,LocationService) {
     var vm = this;
 
-var location = $routeParams.location;
 
+    var location = $routeParams.location;
+    vm.user = $rootScope.currentUser;
+    vm.findRestaurantsByLocation = findRestaurantsByLocation;
+    vm.findRestaurantById = findRestaurantById;
+    vm.loggedIn=false;
+    vm.logout=logout;
 
     function init() {
+      if (vm.user) {
+        vm.loggedIn = true;
+      }
       LocationService.findRestaurantsByLocation(location)
         .then(function (response) {
           vm.businesses = response.data.businesses;
@@ -22,8 +30,8 @@ var location = $routeParams.location;
 
     init();
 
-    vm.findRestaurantsByLocation = findRestaurantsByLocation;
-    vm.findRestaurantById = findRestaurantById;
+
+
 
     function findRestaurantsByLocation(searchRestaurant) {
 
@@ -59,7 +67,26 @@ var location = $routeParams.location;
       //}
 
     }
+
+    function  logout()
+    {
+      UserService.logout()
+        .then(function(response)
+          {
+            console.log(response);
+            $rootScope.currentUser=null;
+            vm.loggedIn=false;
+            $location.url("/home");
+
+          },
+          function (response) {
+            console.log(response);
+            $location.url("/home");
+          })
+    }
   }
+
+
 
 })();
 

@@ -29,12 +29,20 @@
       .when("/home",{
         templateUrl:"views/home.view.client.html",
         controller:"HomeController",
-        controllerAs:"model"
+        controllerAs:"model",
+        resolve:
+        {
+          loggedIn:getLoggedIn
+        }
       })
       .when("/location/:location",{
         templateUrl:"views/location/location.view.client.html",
         controller:"LocationController",
-        controllerAs:"model"
+        controllerAs:"model",
+        resolve:
+        {
+          loggedIn:getLoggedIn
+        }
       })
       .when("/location/:location/:restaurantId/reservation",{
         templateUrl:"views/reservation/reservation.view.client.html",

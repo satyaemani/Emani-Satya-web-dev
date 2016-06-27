@@ -12,9 +12,14 @@ module.exports = function() {
     findUserByUsernameAndPassword:findUserByUsernameAndPassword,
     updateUser: updateUser,
     deleteUser: deleteUser,
-    findFaceBookUser:findFaceBookUser
+    //findFaceBookUser:findFaceBookUser
+    findUserByGoogleId:findUserByGoogleId
   };
   return api;
+
+  function findUserByGoogleId(id){
+    return User.findOne({"google.id":id});
+  }
 
   function findFaceBookUser(id)
   {
@@ -28,6 +33,8 @@ module.exports = function() {
     return User
       .update({_id: userId},{
         $set: {
+          email:user.email,
+          phone:user.phone,
           firstName: user.firstName,
           lastName: user.lastName
         }

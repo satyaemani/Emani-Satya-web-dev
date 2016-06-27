@@ -3,6 +3,12 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
+    <p class="navbar-text pull-left">
+      <a href="#/manager" class="navbar-link ">
+          <span class="glyphicon glyphicon-chevron-left ">
+          </span>
+      </a>
+    </p>
     <p class="navbar-header pull-left">
       <a
         class="navbar-brand thick">
@@ -25,8 +31,8 @@
     </span>
   </div>
   </p>
-
-  <table class="table table-hover table-responsive">
+<div class="table-responsive">
+  <table class="table table-hover ">
     <tr>
       <thead class="thead-inverse">
     <th>User Name</th>
@@ -43,7 +49,7 @@
         <td>{{reservation.username}}</td>
         <td>{{reservation.restaurantName}}</td>
         <td>{{reservation.location}}</td>
-        <td>{{reservation.date}}</td>
+        <td ng-bind="reservation.date | date:'mediumDate'"></td>
         <td>{{reservation.time}}</td>
         <td>{{reservation.noOfPeople}}</td>
         <td>{{reservation.phone}}</td>
@@ -56,6 +62,7 @@
 
 
   </table>
+  </div>
 
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">

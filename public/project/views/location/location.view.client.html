@@ -1,21 +1,35 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav  class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
-    <p class="navbar-header pull-left">
-      <a href="#/loggedIn" class="navbar-brand thick">
-        <span class="glyphicon glyphicon-home"></span>
-      </a>
-    </p>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand thick" href="#/home"> RR  </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-inverse navbar-nav navbar-right">
+        <li ng-show="!model.loggedIn"  ><a href="#/login">login as costumer</a></li>
+        <li ng-show="!model.loggedIn" ><a href="#/managerLogin">login as manager</a></li>
+      </ul>
+      <ul class="nav navbar-inverse navbar-nav navbar-right">
+        <li ng-show="model.loggedIn" ><a href="#/user">{{model.user.username}}</a></li>
+        <li ng-show="model.loggedIn"><a ng-click="model.logout()"><span class="glyphicon glyphicon-log-out">
+          </span></a></li>
+      </ul>
+    </div>
 
   </div>
 </nav>
 
 <!--------------------------------------->
 
-<h1>Find Restaurants </h1>
+<h1><b>Find Restaurants</b> </h1>
 
 <p>
 <div class="input-group">
-  <input ng-model="model.searchRestaurant" type="text" class="form-control" placeholder="Location ex:peterborough,boston">
+  <input ng-model="model.searchRestaurant" type="text" class="form-control" placeholder="Location ex:boston">
     <span class="input-group-btn">
         <a ng-click="model.findRestaurantsByLocation(model.searchRestaurant)" class="btn btn-default" type="button">
           <span class="glyphicon glyphicon-search"></span>
@@ -26,17 +40,14 @@
 <div class="container">
   <div class="row">
 <div ng-repeat="restaurant in model.businesses" class="col-sm-3">
-  <p>
-  <h6><a ng-click="model.findRestaurantById(restaurant.id)" class="thick">{{restaurant.name}}</a></h6>
+
+  <p><a ng-click="model.findRestaurantById(restaurant.id)" class="thick">{{restaurant.name}}</a></p>
 
   <img ng-src={{restaurant.image_url}} class="img-thumbnail">
   <h6> Phone:{{restaurant.display_phone}}</h6>
   <img ng-src={{restaurant.rating_img_url_small}} >
   <hr>
-  </p>
+
+</div>
   </div>
-</div>
-
-
-</div>
 </div>

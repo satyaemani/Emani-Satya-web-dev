@@ -30,7 +30,7 @@
       </a>
     </p>
     <p class="navbar-text pull-right">
-      <a href="#/loggedIn" class="navbar-link ">
+      <a href="#/home" class="navbar-link ">
           <span class="glyphicon glyphicon-home ">
           </span>
       </a>
@@ -55,15 +55,16 @@
   <form>
     <!--username-->
     <div class="form-group">
-      <label for="username">Username</label>
+      <h4><b>Username</b></h4>
       <input ng-model="model.user.username" type="text"
              class="form-control"
              id="username"
              placeholder="Username">
     </div>
+
     <!--email id-->
     <div class="form-group">
-      <label for="email">Email address</label>
+      <h4><b>Email address</b></h4>
       <input ng-model="model.user.email"
              type="email"
              class="form-control"
@@ -71,17 +72,29 @@
              placeholder="alice@wonderland.com">
     </div>
 
+
+    <!--Phone no-->
+    <div class="form-group">
+      <h4><b>Phone Number</b></h4>
+      <input type="number"
+             string-to-number
+             ng-model="model.user.phone"
+             class="form-control"
+             id="phone"
+             placeholder="(857) 272 1500">
+    <div>
+
     <!--first-name-->
     <div class="form-group">
-      <label for="first-name">First Name</label>
+      <h4><b>First Name</b></h4>
       <input ng-model="model.user.firstName" type="text"
              class="form-control"
              id="first-name"
              placeholder="Alice">
     </div>
     <div class="form-group">
-      <label for="last-name">Last Name</label>
-      <input ng-model="model.user.lastName" type="text"
+      <h4><b>Last Name</b></h4>
+      <input  ng-model="model.user.lastName" type="text"
              class="form-control"
              id="last-name"
              placeholder="Wonderland">

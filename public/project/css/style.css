@@ -15,19 +15,22 @@ a
 {
   color:#122b40;
 }
-form{
+form,select
+{
   margin-bottom:5px;
 }
+
+
 input.ng-invalid
 {
   /*border: #ff3d3d;*/
   border-color: #cd0a0a;
   /*background-color:#7FFFD4;*/
 }
-/*div.image*/
-/*{*/
-  /*background-image: url("ocean-restaurant-by-cat-cora.jpg");*/
-/*}*/
+div.image
+{
+  background-image: url("ocean-restaurant-by-cat-cora.jpg");
+}
 
 
 li:hover{

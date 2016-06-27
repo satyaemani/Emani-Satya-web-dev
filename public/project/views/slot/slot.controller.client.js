@@ -10,12 +10,13 @@
 
 
 
-  function SlotController($location,$routeParams,$rootScope,ReservationService,UserService) {
+  function SlotController($location,$routeParams,$rootScope,$window,ReservationService,UserService) {
 
     var vm = this;
    // vm.updateUser = updateUser;
     vm.deleteReservation = deleteReservation;
     vm.logout = logout;
+    vm.back=back;
 
 
 
@@ -28,9 +29,9 @@
 
      ReservationService.findReservationsForUserId(userId)
         .then(function(response){
-          console.log(response);
-          vm.reservations=response.data;
 
+          vm.reservations=response.data;
+          vm.reservations.phone= parseInt(vm.reservations.phone);
         },function(response)
         {
           console.log(response);
@@ -38,6 +39,10 @@
 
     }
     init();
+
+    function back(){
+      $window.history.back();
+    }
 
     function  logout()
     {

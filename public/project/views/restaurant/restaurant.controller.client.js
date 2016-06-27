@@ -23,12 +23,14 @@
     vm.makeReservation = makeReservation;
     vm.removeFavourites = removeFavourites;
     vm.sendMessage=sendMessage;
-
+    vm.loggedIn =false;
     vm.messageerr=false;
 
     function init()
     {
-
+      if (vm.user) {
+      vm.loggedIn = true;
+    }
       ManagerService
         .findManagerByRestId(restaurantId)
         .then(function(response)
@@ -80,7 +82,7 @@ init();
         .then(function(response)
           {
             $rootScope.currentUser=null;
-           // $rootScope.restaurant=null;
+           loggedIn=false;
             $location.url("/home");
           },
           function (response) {
@@ -168,22 +170,24 @@ init();
     {
 
       if ($rootScope.currentUser) {
-        console.log("in user");
-        var message={
-          userId:user._id,
-          username:user.username,
-          message:vm.message
+      if(message) {
+        var message = {
+          userId: user._id,
+          username: user.username,
+          message: vm.message
         };
         ManagerService
-          .sendMessage(message,restaurantId)
-          .then(function(response)
-          {
-            vm.message=null;
-            vm.sentMessage=true;
-          }, function(response)
-          {
+          .sendMessage(message, restaurantId)
+          .then(function (response) {
+            vm.message = null;
+            vm.sentMessage = true;
+          }, function (response) {
             console.log(response);
           });
+      }
+        else {
+        vm.empty=true;
+      }
 
       }
       else {

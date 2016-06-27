@@ -1,27 +1,44 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav  class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
-    <p class="navbar-header pull-left">
-      <a href="#/loggedIn" class="navbar-brand thick">
-        <span class="glyphicon glyphicon-home"></span>
-      </a>
-    </p>
-
-    <p class="navbar-header ">
-      <a class="navbar-brand thick">
-        Reservation
-      </a>
-    </p>
-
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <p class="navbar-header pull-left">
+        <a href="#/location/{{model.location}}/{{model.restaurantId}}" class="navbar-brand thick">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </p>
+      <a class="navbar-brand thick" href="#/home"> RR  </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-inverse navbar-nav navbar-right">
+        <li ng-show="!model.loggedIn"  ><a href="#/login">login as costumer</a></li>
+        <li ng-show="!model.loggedIn" ><a href="#/managerLogin">login as manager</a></li>
+      </ul>
+      <ul class="nav navbar-inverse navbar-nav navbar-right">
+        <li ng-show="model.loggedIn" ><a href="#/user">{{model.user.username}}</a></li>
+        <li ng-show="model.loggedIn"><a ng-click="model.logout()"><span class="glyphicon glyphicon-log-out">
+          </span></a></li>
+      </ul>
+    </div>
 
   </div>
 </nav>
 
 <!--------------------------->
 <div class="container">
-  <p>Note: You can only reserve a restaurant if there is a manager for this restaurant</p>
+  <p>Note: You can only reserve a restaurant if there is a manager for this restaurant &</p>
+  <p>Reservations shall be made one day in advance</p>
   <form>
 <div class="form-group">
-  <span class="label label-default">Date</span>
+  <div ng-show="model.date" class="alert alert-danger" role="alert">
+    <p>Sorry  time travel is not possible</p>
+  </div>
+
+  <h4><b>Date</b></h4>
   <input type="date" ng-model="model.reservation.date" class="form-control">
   <a class="btn btn-primary"
      ng-click="model.fetchSlots(model.reservation.date)">Submit Date</a>
@@ -32,7 +49,7 @@
 
   <div class="form-group">
   <div class="form-group">
-    <span class="label label-default">No.of.People</span>
+    <h4><b>No.of.people</b></h4>
     <select ng-model="model.reservation.people"
             class="form-control">
       <option>01</option>
@@ -43,13 +60,11 @@
       <option>06</option>
       <option>07</option>
       <option>08</option>
-      <option>09</option>
-      <option>10</option>
     </select>
   </div>
 </div>
 
-  <span class="label label-default">Time</span>
+  <h4><b>Available Slots</b></h4>
 
   <select ng-show="model.dateAvailable" ng-model="model.reservation.time"
           class="form-control">

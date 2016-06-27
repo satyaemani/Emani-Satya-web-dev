@@ -6,15 +6,13 @@ module.exports = function() {
     password: String,
     firstName: String,
     lastName: String,
-    facebook:{
-      token:String,
-      displayName:String,
-      id:String
-    },
+      google: {
+        id:    String,
+        token: String
+      },
     email:String,
     phone:String,
     dob: Date,
-    //websites:[{type: mongoose.Schema.Types.ObjectId, ref: 'Website'}],
     dateCreated: {type: Date, default: Date.now}
   }, {collection: "project.user"});
 

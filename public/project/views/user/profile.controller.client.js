@@ -26,7 +26,10 @@
       UserService.findUserById(userId)
         .then(function(response){
           vm.user = response.data;
-        })
+          console.log(vm.user);
+          vm.user.phone= parseInt(vm.user.phone);
+        });
+
 
     }
     init();
@@ -64,6 +67,7 @@
 
     function updateUser(newUser)
     {
+      console.log(newUser.phone);
 
       UserService.updateUser(userId,newUser)
         .then(function(response) {

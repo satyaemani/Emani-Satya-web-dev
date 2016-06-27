@@ -34,7 +34,7 @@
         .then(function(response){
           console.log(response);
           vm.reservations=response.data;
-
+          vm.reservations.phone= parseInt(vm.reservations.phone);
         },function(response)
         {
           console.log(response);
