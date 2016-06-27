@@ -140,7 +140,7 @@ module.exports=function(app,models){
 
   }
 
-  function insertSlot(req,res)
+  function inserAAAAAtSlot(req,res)
   {
     var restId = req.params.restId;
     var date = req.params.date;
@@ -171,7 +171,75 @@ module.exports=function(app,models){
 
   }
 
-  function deleteSlot(req,res)
+
+
+  function insertSlot(req,res)
+  {
+    var restId = req.params.restId;
+    var date = req.params.date;
+    var slot = req.body;
+    managerModel
+      .findManagerByRestID(restId)
+      .then(function(times)
+        {
+          var i = null;
+          var j=null;
+          for( i in times.slots) {
+            if (date == times.slots[i].date) {
+              console.log(times.slots[i].time);
+              times.slots[i].time.push(slot);
+            }
+          }
+          return times
+            .save()
+
+
+        }
+      )
+      .then(function(times){
+        res.json(times);});
+
+
+
+  }
+
+ function deleteSlot(req,res){
+
+   var restId = req.params.restId;
+   var time = req.params.time;
+   var date = req.params.date;
+
+   managerModel
+     .findManagerByRestID(restId)
+     .then(function(times)
+       {
+         var i = null;
+         var j=null;
+         for( i in times.slots) {
+           if (date == times.slots[i].date) {
+             for (j in times.slots[i].time) {
+               if (time == times.slots[i].time[j].slot) {
+                 times.slots[i].time.splice(j, 1);
+                 console.log("in if"+times);
+
+               }
+
+             }
+           }
+         }
+           return times
+             .save()
+
+
+       }
+     )
+     .then(function(times){
+       res.json(times);});
+
+
+ }
+
+  function deleteAAAASlot(req,res)
   {
     var restId = req.params.restId;
     var time = req.params.time;
@@ -181,6 +249,7 @@ module.exports=function(app,models){
       .findTimeByDate(restId,date)
       .then(function(times)
         {
+          console.log(times);
           var i = null;
           var j=null;
           for( i in times[0].slots) {

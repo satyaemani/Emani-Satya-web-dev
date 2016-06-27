@@ -45,9 +45,8 @@ module.exports = function() {
 
   function findTimeByDate(restId,date)
   {
-    var d =date+"";
 
-    return Manager.find({restaurantId:restId},{slots:[{date:d}]});
+    return Manager.find({restaurantId:restId},{slots:[{date:date}]});
   }
 
   function addDate(restId,slot)

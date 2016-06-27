@@ -12,6 +12,7 @@ module.exports = function() {
           {date:String,
           time:
             [{slot:String}]}],
+
     messages:[{
       userId:String,
       username:String,
