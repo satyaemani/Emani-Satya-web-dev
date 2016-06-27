@@ -8,7 +8,7 @@
     .controller("ReservationController",ReservationController);
 
 
-  function ReservationController($routeParams,$location,ReservationService,$rootScope,ManagerService) {
+  function ReservationController($routeParams,$location,ReservationService,UserService,$rootScope,ManagerService) {
     var vm = this;
 
     var restaurantId = $routeParams.restaurantId;
@@ -24,7 +24,7 @@
     vm.fetchSlots=fetchSlots;
     var Ndate =new Date();
     vm.date=false;
-
+    vm.logout=logout;
 
 
     function init()
@@ -47,7 +47,19 @@
     }
 init();
 
-
+    function  logout()
+    {
+      UserService.logout()
+        .then(function(response)
+          {
+            $rootScope.currentUser=null;
+            loggedIn=false;
+            $location.url("/home");
+          },
+          function (response) {
+            $location.url("/home");
+          })
+    }
 
 
 
