@@ -27,17 +27,17 @@ input.ng-invalid
   border-color: #cd0a0a;
   /*background-color:#7FFFD4;*/
 }
-div.image
-{
-  background-image: url("ocean-restaurant-by-cat-cora.jpg");
-}
 
+body.image
+{
+  background-image: url("sky-image-17.jpg");
+}
 
 li:hover{
   background-color: #82888a;
 }
 body {
-  /*background-image: url("ocean-restaurant-by-cat-cora.jpg");*/
+  /*background-image: url("sky-image-17.jpg");*/
   /*background-color:#8c8c8c;*/
   padding-top: 60px;
   padding-bottom: 77px;

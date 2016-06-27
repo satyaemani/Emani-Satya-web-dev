@@ -50,7 +50,7 @@
         controllerAs:"model",
         resolve:
         {
-          loggedIn:getLoggedIn
+          loggedIn:checkLoggedIn
         }
       })
       .when("/location/:location/:restaurantId",{
@@ -86,7 +86,7 @@
         controllerAs:"model",
         resolve:
         {
-          loggedIn:getLoggedIn
+          loggedIn:checkLoggedIn
         }
       })
       .when("/user/favourites",{
@@ -95,7 +95,7 @@
         controllerAs:"model",
         resolve:
         {
-          loggedIn:getLoggedIn
+          loggedIn:checkLoggedIn
         }
       })
       .when("/managerLogin",{
@@ -118,7 +118,7 @@
         controllerAs:"model",
         resolve:
         {
-          loggedIn:checkLoggedIn
+          loggedIn:managerCheckLoggedIn
         }
 
       })
@@ -128,7 +128,7 @@
         controllerAs:"model",
         resolve:
         {
-          loggedIn:getManagerLoggedIn
+          loggedIn:managerCheckLoggedIn
         }
 
       })
@@ -138,7 +138,7 @@
         controllerAs:"model",
         resolve:
         {
-          loggedIn:getManagerLoggedIn
+          loggedIn:managerCheckLoggedIn
         }
 
       })
@@ -148,7 +148,8 @@
         controllerAs:"model",
         resolve:
         {
-          loggedIn:getManagerLoggedIn
+
+          loggedIn:managerCheckLoggedIn
         }
 
       })
