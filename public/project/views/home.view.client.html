@@ -1,31 +1,4 @@
 
-<!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
-  <!--<div class="container">-->
-    <!--<p class="navbar-header pull-left">-->
-      <!--<a  class="navbar-brand thick">-->
-        <!--Restaurant Reservation-->
-
-      <!--</a>-->
-    <!--</p>-->
-
-
-    <!--<p class="navbar-text pull-right">-->
-
-
-      <!--<a href="#/login">Login as Customer</a>-->
-      <!--&lt;!&ndash;<a ng-click="model.updateUser(model.user)" class="navbar-link ">&ndash;&gt;-->
-          <!--&lt;!&ndash;<span class="glyphicon glyphicon-ok ">&ndash;&gt;-->
-          <!--&lt;!&ndash;</span></a>&ndash;&gt;-->
-    <!--</p>-->
-    <!--<p class="navbar-text pull-right">-->
-      <!--<a href="#/login">Login as Manager</a>-->
-      <!--&lt;!&ndash;&lt;!&ndash;<a ng-click="model.updateUser(model.user)" class="navbar-link ">&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;<span class="glyphicon glyphicon-ok ">&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;</span>&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;</a>&ndash;&gt;&ndash;&gt;-->
-    <!--&lt;!&ndash;</p>&ndash;&gt;-->
-  <!--</div>-->
-<!--</nav>-->
 <nav  class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -54,10 +27,10 @@
 
 <!---------Restaurant Search-------->
 
-<header>
-  <div class="container-fluid bg-1 text-center">
+<header >
+  <div class="container-fluid bg-1 img-responsive text-center">
     <h1 class="margin"><b>Restaurant Reservation App</b></h1>
-    <h2><b>Find Restaurants</b></h2><h4>(in USA)</h4>
+    <h2><b>Find Restaurants</b></h2>
     <div class="container">
       <div class="input-group">
         <input ng-model="model.searchRestaurant" type="text" class="form-control" placeholder="Location ex:boston">
@@ -75,25 +48,36 @@
 </header>
 
 
-
-
-
-
-<!-- Third Container (Grid) -->
-<div class="container-fluid bg-3 text-center">
-  <h3 class="margin">Where To Find Me?</h3><br>
+<!-- Container (Grid) -->
+<div class="container bg-3 text-center background">
+  <h3 class="margin"><b>Three easy steps</b></h3><br>
   <div class="row">
-    <div class="col-sm-4">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <img src="birds1.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    <div class="col-sm-4 container">
+      <p>Provide a location where you want to find a good restaurant.</p>
+      <!--<img ng-src="download.jpg" class="img-responsive margin" style="width:100%" alt="Image">-->
+      <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-compass fa-stack-1x text-primary"></i>
+                            </span>
     </div>
-    <div class="col-sm-4">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <img src="birds2.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    <div class="col-sm-4 container">
+      <p>We will find you the best restaurants in that location.</p>
+      <!--<img src="download (1)_604x604.jpg" class="img-responsive margin" style="width:100%" alt="Image">-->
+      <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-search fa-stack-1x text-primary"></i>
+                            </span>
     </div>
-    <div class="col-sm-4">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <img src="birds3.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    <div class="col-sm-4 container">
+      <p>All you have to do is reserve a slot to enjoy your meal.</p>
+      <!--<img src="imagesReserve.jpg" class="img-responsive margin" style="width:100%" alt="Image">-->
+      <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-cutlery fa-stack-1x text-primary"></i>
+                            </span>
     </div>
   </div>
 </div>
+
+
+

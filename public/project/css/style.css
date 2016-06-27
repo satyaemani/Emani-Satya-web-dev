@@ -33,7 +33,7 @@ li:hover{
   background-color: #82888a;
 }
 body {
-  /*background-image: url("sky-image-17.jpg");*/
+
   /*background-color:#8c8c8c;*/
   padding-top: 60px;
   padding-bottom: 77px;
@@ -53,8 +53,10 @@ a
   cursor: hand;
 }
 
+
+
 nav.navbar{
-  max-height: 32px;
+  max-height: 34px;
 }
 span.glyphicon.glyphicon-chevron-left
 {
@@ -108,10 +110,11 @@ div.thick {
 /*}*/
 
 p {font-size: 16px;}
-.margin {margin-bottom: 45px;}
+
 .bg-1 {
   /*background-color: #1abc9c; !* Green *!*/
-  background-image: url("restaurant-riad-fes3.jpg");
+  background-image: url("restaurant-widescreen-wallpaper_1298x730.jpg");
+
   color: #ffffff;
 }
 .bg-2 {
@@ -127,8 +130,10 @@ p {font-size: 16px;}
   color: #fff;
 }
 .container-fluid {
-  padding-top: 60px;
-  padding-bottom: 200px;
+  padding-top:50px;
+  padding-bottom: 320px;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
 .carousel-control.right, .carousel-control.left {

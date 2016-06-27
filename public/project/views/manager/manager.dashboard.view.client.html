@@ -3,17 +3,24 @@
   <div class="container">
     <p class="navbar-header pull-left">
       <a
-        class="navbar-brand thick"
-      >
+        class="navbar-brand thick">
        DashBoard
       </a>
     </p>
 
 
+    <p class="navbar-header pull-right">
+      <a href="#/manager">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+
+    </p>
+
 
   </div>
 </nav>
 
+<div class="container">
 <h2><b>{{model.reservations[0].restaurantName}}</b></h2>
 <ul class="list-group">
   <p>
@@ -31,15 +38,5 @@
 
 <a class="btn btn-danger  btn-block"
    ng-click="model.logout()">Logout</a>
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
-  <div class="container">
-    <div class="row navbar-text pull-right">
-
-      <a href="#/manager">
-        <span class="glyphicon glyphicon-user"></span>
-      </a>
-
-    </div>
-  </div>
-</nav>
+</div>
 
