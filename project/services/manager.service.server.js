@@ -33,13 +33,16 @@ module.exports=function(app,models){
     app.get("/api/manager/slots/:date/:restId",findTimeByDate),
     app.get("/api/manager/:restId",findManagerByRestID),
     app.post("/api/manager/:restId",sendMessage),
-    app.delete("/api/manager/:userId/:messageId",deleteMessage)
+    app.delete("/api/manager/:userId/:messageId",deleteMessage),
+
 
 
 
   passport.use('project',new LocalStrategy(managerlocalStrategy));
   passport.serializeUser(serializeManager);
   passport.deserializeUser(deserializeManager);
+
+
 
 
   function deleteMessage(req,res)

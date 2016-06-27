@@ -14,7 +14,8 @@
       createReservation:createReservation,
       findReservationsForUserId:findReservationsForUserId,
       deleteReservation:deleteReservation,
-      findReservationsForRestId:findReservationsForRestId
+      findReservationsForRestId:findReservationsForRestId,
+      findReservationsForUserAndRestId:findReservationsForUserAndRestId
     };
     return api;
 
@@ -49,6 +50,16 @@
       return $http.jsonp(url, {params: params});
 
     }
+
+
+    function findReservationsForUserAndRestId(userId,restId)
+    {
+      var url="/api/user/"+userId+"/"+restId;
+      return $http.get(url);
+
+
+    }
+
 
       function createReservation(reservation,userId)
     {

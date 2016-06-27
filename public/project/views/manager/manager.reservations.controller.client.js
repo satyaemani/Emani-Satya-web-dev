@@ -55,7 +55,7 @@
 
           if(vm.reservations[i].username==username)
           {
-            ReservationService.findReservationsForUserId(vm.reservations[i]._user)
+            ReservationService.findReservationsForUserAndRestId(vm.reservations[i]._user,restId)
               .then(function(response){
                 console.log(response);
                 vm.reservations=response.data;

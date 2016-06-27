@@ -30,10 +30,13 @@
         sendMessage:sendMessage,
         deleteMessage:deleteMessage
 
+
       };
       return api;
 
      // function addDate()
+
+
 
       function deleteMessage(userId,messageId)
       {

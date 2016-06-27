@@ -24,9 +24,12 @@ module.exports = function() {
     findTimeByDate:findTimeByDate,
     findManagerByRestID:findManagerByRestID,
     sendMessage:sendMessage,
-    deleteMessage:deleteMessage
+    deleteMessage:deleteMessage,
+
   };
   return api;
+
+
 
   function sendMessage(restId,message)
   {

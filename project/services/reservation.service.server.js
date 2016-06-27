@@ -16,6 +16,25 @@ module.exports=function(app,models) {
   app.get("/api/user/:userId/reservation",findReservationsForUserId);
   app.delete("/api/user/:reservationId/reservation",deleteReservation);
   app.get("/api/user/manager/:restId/reservation",findReservationsForRestId);
+  app.get("/api/user/:userId/:restId",findReservationsForUserAndRestId);
+
+  function findReservationsForUserAndRestId(req,res){
+
+    var userId = req.params.userId;
+    var restId= req.params.restId;
+
+    reservationModel
+      .findReservationsForUserAndRestId(userId,restId)
+      .then(
+        function(user)
+        {
+          res.send(user);
+        },
+        function(error){
+          res.statusCode(404).send(error);
+        });
+  }
+
 
   function createReservation(req, res) {
     var userId = req.params.userId;

@@ -12,10 +12,17 @@ module.exports = function() {
     createReservation:createReservation,
     findReservationsForUserId:findReservationsForUserId,
     deleteReservation:deleteReservation,
-    findReservationsForRestId:findReservationsForRestId
+    findReservationsForRestId:findReservationsForRestId,
+    findReservationsForUserAndRestId:findReservationsForUserAndRestId
 
   };
   return api;
+
+  function findReservationsForUserAndRestId(userId,restId){
+    console.log(restId);
+    console.log(userId);
+    return Reservation.find({_user:userId,rId:restId});
+  }
 
   function deleteReservation(reservationId)
   {
