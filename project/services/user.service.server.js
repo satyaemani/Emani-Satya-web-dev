@@ -50,17 +50,17 @@ module.exports=function(app,models){
   //};
 
 
-  //var googleConfig = {
-  //  clientID     : process.env.GOOGLE_CLIENT_ID,
-  //  clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-  //  callbackURL  : process.env.GOOGLE_CALLBACK_URL
-  //};
-
   var googleConfig = {
-    clientID     : "772561999884-3uairgv7iihd4s183c47e3b36f522p9f.apps.googleusercontent.com",
-    clientSecret : "aT_LIZ1_vxsSBAjYs0Ksvj1k",
-    callbackURL  : "http://127.0.0.1:3000/auth/google/callback"
+    clientID     : process.env.GOOGLE_CLIENT_ID,
+    clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL  : process.env.GOOGLE_CALLBACK_URL
   };
+
+  //var googleConfig = {
+  //  clientID     : "772561999884-3uairgv7iihd4s183c47e3b36f522p9f.apps.googleusercontent.com",
+  //  clientSecret : "aT_LIZ1_vxsSBAjYs0Ksvj1k",
+  //  callbackURL  : "http://127.0.0.1:3000/auth/google/callback"
+  //};
 
   //passport.use('facebook',new FacebookStrategy(facebookConfig,facebookLogin));
 
