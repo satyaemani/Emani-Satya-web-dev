@@ -53,22 +53,47 @@
 
 
 <!---------Restaurant Search-------->
-<h1><b>Restaurant Reservation</b></h1>
-<div class="image">
-  <img ng-src="/project/css/ocean-restaurant-by-cat-cora.jpg" width="100%">
-</div>
-  <!--<img ng-src="/project/css/sky-image-17.jpg" width="100%">-->
-  <h1><b>Find Restaurants</b></h1>
-  <div class="container">
-  <div class="input-group">
-    <input ng-model="model.searchRestaurant" type="text" class="form-control" placeholder="Location ex:boston">
+
+<header>
+  <div class="container-fluid bg-1 text-center">
+    <h1 class="margin"><b>Restaurant Reservation App</b></h1>
+    <h2><b>Find Restaurants</b></h2><h4>(in USA)</h4>
+    <div class="container">
+      <div class="input-group">
+        <input ng-model="model.searchRestaurant" type="text" class="form-control" placeholder="Location ex:boston">
     <span class="input-group-btn">
         <a ng-click="model.findRestaurants(model.searchRestaurant)" class="btn btn-default" type="button">
           <span class="glyphicon glyphicon-search"></span>
 
         </a>
     </span>
+      </div>
+    </div>
+  </div>
+   <p></p>
+  </div>
+</header>
+
+
+
+
+
+
+<!-- Third Container (Grid) -->
+<div class="container-fluid bg-3 text-center">
+  <h3 class="margin">Where To Find Me?</h3><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <img src="birds1.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-4">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <img src="birds2.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-4">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <img src="birds3.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
   </div>
 </div>
-</div>
-
